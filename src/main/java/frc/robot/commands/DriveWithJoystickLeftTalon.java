@@ -16,8 +16,6 @@ public class DriveWithJoystickLeftTalon extends Command {
     }
 
     public void execute() {
-    
-        
         Robot.drivetrain.setLeftTalon(-1);
     }
 

@@ -10,12 +10,11 @@ public class StopDrive extends Command {
     }
 
     public void execute() {
-        System.out.println("This is stop motors");
-        Robot.drivetrain.setMotors(0);
+        Robot.drivetrain.setLeftNeo(0);
     }
 
     public void end() {
-        Robot.drivetrain.setMotors(0);
+        Robot.drivetrain.setLeftNeo(0);
     }
 
     public boolean isFinished() {

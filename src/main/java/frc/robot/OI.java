@@ -61,7 +61,7 @@ public class OI {
         initButtons();
         initUsed();
 
-        // driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
+     //   driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
         //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
 
         //THESE TWO LINES ARE FOR TESTING
@@ -69,12 +69,16 @@ public class OI {
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
 
 
-        //true does right hp far rocket path, false does right hp bay 1 ship path
-        // driverY.whenReleased(new StopCargoMotor());
-        driverY.whileHeld(new DriveWithJoystickLeftTalon());
-        driverX.whileHeld(new DriveWithJoystickLeft());
-        driverB.whileHeld(new DriveWithJoystickRight());
-        // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
+        // //true does right hp far rocket path, false does right hp bay 1 ship path
+        // // driverY.whenReleased(new StopCargoMotor());
+        // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
+        // driverLB.whileHeld(new DriveWithJoystickRightTalon());
+        // // driverY.whileHeld(new DriveWithJoystickLeftTalon());
+        // //driverX.whenPressed(new DriveWithJoystickLeft(driverStick, 0.1));
+        // driverB.whileHeld(new DriveWithJoystickRight());
+        // // driverX.whenPressed(new DriveWithJoystickLeft());
+        // driverX.whenReleased(new StopDrive());
+        // // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
 
     }
 

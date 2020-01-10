@@ -5,23 +5,24 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class DriveWithJoystickLeft extends Command {
+public class DriveWithJoystickRightTalon extends Command {
     private Joystick stick;
     private boolean isSquaredTurn;
     private double deadzone;
 
-    public DriveWithJoystickLeft() {
-        super("DriveWithJoystickLeft");
+    public DriveWithJoystickRightTalon() {
+        super("DriveWithJoystickRightTalon");
         requires(Robot.drivetrain);
     }
 
     public void execute() {
-        System.out.println("This is left Neo");
-        Robot.drivetrain.setLeftNeo(-1);
+    
+        
+        Robot.drivetrain.setRightTalon(-1);
     }
 
     public void end() {
-        Robot.drivetrain.setLeftNeo(-1);
+        Robot.drivetrain.setRightTalon(0);
     }
 
     public boolean isFinished() {
