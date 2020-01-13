@@ -96,7 +96,7 @@ public class Limelight {
 
     public double getDistance() {
         // returns distance in inches from the robot
-        double distance = (kobjectHeight - kcameraHeight)/tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
+        double distance = (kobjectHeight - kcameraHeight)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
         return distance;
     }
 
@@ -129,7 +129,6 @@ public class Limelight {
     }
 
     public void debug() {
-        if(Constants.debugMode==true){
         SmartDashboard.putString("Limelight Pipeline Index", Double.toString(getIndexPipe()));
         SmartDashboard.putString("Limelight Calculated Distance", Double.toString(getDistance()));
         SmartDashboard.putString("Limelight Distance from Object", Double.toString(getDistance()));
@@ -137,26 +136,10 @@ public class Limelight {
         SmartDashboard.putString("Limelight Sidelength of longest side", Double.toString(getLengthLong()));
         SmartDashboard.putString("Limelight Area", Double.toString(getTargetArea()));
         SmartDashboard.putString("Limelight Skew", Double.toString(getTargetSkew()));
-        }
         SmartDashboard.putString("Limelight Horizontal", Double.toString(getHorizontalOffset()));
         SmartDashboard.putString("Limelight Vertical", Double.toString(getVerticalOffset()));
         SmartDashboard.putString("Limelight Valid", Boolean.toString(targetValid()));
         SmartDashboard.putString("Limelight Horizontal sidelength", Double.toString(getLengthHori()));
         SmartDashboard.putString("Limelight Vertical sidelength", Double.toString(getLengthVert()));
-
-        if(targetValid() && Robot.drivetrain.isLineFound() == false && (getLengthHori() / getLengthVert() > 1.0) && (getLengthHori() / getLengthVert() < 3.3)){
-            Robot.drivetrain.setGreenLED(true);
-            SmartDashboard.putBoolean("Limelight Target Found", true);
-        }
-        else if(Robot.drivetrain.isLineFound()){
-            Robot.drivetrain.setGreenLED(false);
-            Robot.drivetrain.setBlueLED(true);
-        }
-        else{
-            Robot.drivetrain.setBlueLED(false);
-            Robot.drivetrain.setGreenLED(false);
-            SmartDashboard.putBoolean("Limelight Target Found", false);
-        }
-
     }
 }
