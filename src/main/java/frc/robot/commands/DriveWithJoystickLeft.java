@@ -17,11 +17,11 @@ public class DriveWithJoystickLeft extends Command {
 
     public void execute() {
         System.out.println("This is left Neo");
-        Robot.drivetrain.setLeftNeo(-1);
+        Robot.drivetrain.setMotors(-1);
     }
 
     public void end() {
-        Robot.drivetrain.setLeftNeo(-1);
+        Robot.drivetrain.setMotors(-1);
     }
 
     public boolean isFinished() {

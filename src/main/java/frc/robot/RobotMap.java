@@ -62,4 +62,16 @@ public class RobotMap {
     public static final int kRaiseCargoSolenoid = 0;
     public static final int kIntakeVictor = 35;
     public static final int kCargoLimitSwitch = 0;
+  
+  // Shoooter
+    public static final int SHOOTER_NEO = 2;
+  
+    // Elevator
+    public static final int ELEVATOR_TALON = 23;
+
+    //Hopper
+
+    public static final int HOPPER_TALON = 24;
+    //Drivetrain
+	public static final int DRIVETRAIN_NEO = 3;
 }
