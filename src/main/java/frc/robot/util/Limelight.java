@@ -19,8 +19,9 @@ public class Limelight {
     private NetworkTableEntry lengthShort1, lengthLong1, lengthHori1, lengthVert1, indexPipe1;
     //  private static double kProportion = 1.56;
     private static double kcameraHeight = 13.5; // height of the camera IN INCHES
-    private static double kobjectHeight = 97.8; // height of the shooting target IN INCHES
+    private static double kobjectHeight = 97.5; // height of the shooting target IN INCHES
     private static double kmountingAngle = 28.7; // mounting angle of the camera IN DEGREES
+    private static double kverticalDistance = kobjectHeight - kcameraHeight; 
 
 
     public Limelight() {
@@ -69,6 +70,10 @@ public class Limelight {
         return verticalOffset.getDouble(0.0);
     }
 
+    public double getDiagonalOffset() {
+        return Math.sqrt(Math.pow(kverticalDistance,2)+Math.pow(getDistance(),2));
+    }
+
     public double getTargetArea() {
         return targetArea.getDouble(0.0);
     }
@@ -111,7 +116,7 @@ public class Limelight {
 
     public double getDistance() {
         // returns distance in inches from the robot
-        double distance = (kobjectHeight - kcameraHeight)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
+        double distance = (kverticalDistance)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
         return distance;
     }
 
@@ -156,5 +161,6 @@ public class Limelight {
         SmartDashboard.putString("Limelight Valid", Boolean.toString(targetValid()));
         SmartDashboard.putString("Limelight Horizontal sidelength", Double.toString(getLengthHori()));
         SmartDashboard.putString("Limelight Vertical sidelength", Double.toString(getLengthVert()));
+        SmartDashboard.putString("Limelight Diagonal" , Double.toString(getDiagonalOffset()));
     }
 }
