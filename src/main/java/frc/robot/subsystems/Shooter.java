@@ -45,9 +45,9 @@ public class Shooter extends Subsystem {
     }
     @Override
     protected void initDefaultCommand() {
-        defaultCommand = new MoveShooterPassive();
-        // TODO Auto-generated method stub
-        defaultCommand.start();
+        // defaultCommand = new MoveShooterPassive();
+        // // TODO Auto-generated method stub
+        // defaultCommand.start();
 
     }
 

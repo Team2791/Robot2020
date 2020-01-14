@@ -27,21 +27,21 @@ public final class Constants {
     public static final double DEADZONE = 0.55;
 
 
-	public static final double ELEVATOR_OUTPUT = -1;
+	public static final double ELEVATOR_OUTPUT = -.5;
 
 
-	public static final double HOPPER_OUTPUT = -1;
+	public static final double HOPPER_OUTPUT = -.5;
 
 
-	public static final double SHOOTER_OUTPUT = -1;
+	public static final double SHOOTER_OUTPUT = -.8;
 
 
-	public static final double DRIVETRAIN_OUTPUT = -1;
+	public static final double DRIVETRAIN_OUTPUT = -.5;
 
 
 	public static final double SHOOTER_OUTPUT_PASSIVE = -.1;
 
 
-	public static final double MANUAL_POWER = 1;
+	public static final double MANUAL_POWER = .5;
 
 }
