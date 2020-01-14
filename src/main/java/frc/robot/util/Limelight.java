@@ -19,8 +19,8 @@ public class Limelight {
     private NetworkTableEntry lengthShort1, lengthLong1, lengthHori1, lengthVert1, indexPipe1;
     //  private static double kProportion = 1.56;
     private static double kcameraHeight = 13.5; // height of the camera IN INCHES
-    private static double kobjectHeight = 100.0; // height of the shooting target IN INCHES
-    private static double kmountingAngle = 28.0; // mounting angle of the camera IN DEGREES
+    private static double kobjectHeight = 97.8; // height of the shooting target IN INCHES
+    private static double kmountingAngle = 28.7; // mounting angle of the camera IN DEGREES
 
 
     public Limelight() {
