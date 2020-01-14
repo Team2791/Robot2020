@@ -15,10 +15,12 @@ public class Limelight {
     NetworkTable table;
     private NetworkTableEntry camMode, ledMode, horizontalOffset, verticalOffset, targetArea, validTargets, targetSkew, pipelineLatency;
     private NetworkTableEntry lengthShort, lengthLong, lengthHori, lengthVert, indexPipe;
+    private NetworkTableEntry camMode1, ledMode1, horizontalOffset1, verticalOffset1, targetArea1, validTargets1, targetSkew1, pipelineLatency1;
+    private NetworkTableEntry lengthShort1, lengthLong1, lengthHori1, lengthVert1, indexPipe1;
     //  private static double kProportion = 1.56;
-    private static double kcameraHeight = 0; // height of the camera IN INCHES
-    private static double kobjectHeight = 98.25; // height of the shooting target IN INCHES
-    private static double kmountingAngle = 27; // mounting angle of the camera IN DEGREES
+    private static double kcameraHeight = 13.5; // height of the camera IN INCHES
+    private static double kobjectHeight = 100.0; // height of the shooting target IN INCHES
+    private static double kmountingAngle = 28.0; // mounting angle of the camera IN DEGREES
 
 
     public Limelight() {
@@ -26,17 +28,30 @@ public class Limelight {
         table = NetworkTableInstance.getDefault().getTable("limelight");
 
         // Get stats
-        horizontalOffset = table.getEntry("tx"); //Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
-        verticalOffset = table.getEntry("ty"); //Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
-        targetArea = table.getEntry("ta"); //Target Area (0% of image to 100% of image)
-        validTargets = table.getEntry("tv"); //Whether the limelight has any valid targets (0 or 1)
-        targetSkew = table.getEntry("ts"); //Skew or rotation (-90 degrees to 0 degrees)
-        pipelineLatency = table.getEntry("tl"); //The pipeline’s latency contribution (ms) Add at least 11ms for image capture latency.
-        lengthShort = table.getEntry("tshort"); //Sidelength of shortest side of the fitted bounding box (pixels)
-        lengthLong = table.getEntry("tlong"); //Sidelength of longest side of the fitted bounding box (pixels)
-        lengthHori = table.getEntry("thor"); //Horizontal sidelength of the rough bounding box (0 - 320 pixels)
-        lengthVert = table.getEntry("tvert"); //Vertical sidelength of the rough bounding box (0 - 320 pixels)
-        indexPipe = table.getEntry("getpipe"); //True active pipeline index of the camera (0 .. 9)
+        horizontalOffset1 = table.getEntry("tx"); //Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
+        verticalOffset1 = table.getEntry("ty"); //Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+        targetArea1 = table.getEntry("ta"); //Target Area (0% of image to 100% of image)
+        validTargets1 = table.getEntry("tv"); //Whether the limelight has any valid targets (0 or 1)
+        targetSkew1 = table.getEntry("ts"); //Skew or rotation (-90 degrees to 0 degrees)
+        pipelineLatency1 = table.getEntry("tl"); //The pipeline’s latency contribution (ms) Add at least 11ms for image capture latency.
+        lengthShort1 = table.getEntry("tshort"); //Sidelength of shortest side of the fitted bounding box (pixels)
+        lengthLong1 = table.getEntry("tlong"); //Sidelength of longest side of the fitted bounding box (pixels)
+        lengthHori1 = table.getEntry("thor"); //Horizontal sidelength of the rough bounding box (0 - 320 pixels)
+        lengthVert1 = table.getEntry("tvert"); //Vertical sidelength of the rough bounding box (0 - 320 pixels)
+        indexPipe1 = table.getEntry("getpipe"); //True active pipeline index of the camera (0 .. 9)
+
+        horizontalOffset=horizontalOffset1;
+        verticalOffset=verticalOffset1;
+        targetArea=targetArea1;
+        validTargets=validTargets1;
+        targetSkew=targetSkew1;
+        pipelineLatency=pipelineLatency1;
+        lengthShort=lengthShort1;
+        lengthHori=lengthHori1;
+        lengthVert=lengthVert1;
+        indexPipe=indexPipe1;
+        lengthLong=lengthLong1;
+        
 
 
         ledMode = table.getEntry("ledMode");
