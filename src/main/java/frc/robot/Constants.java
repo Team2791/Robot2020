@@ -24,13 +24,13 @@ public final class Constants {
     
     // public static final double kCamOffset = 0;
     //Joystick constant
-    public static final double DEADZONE = 0.55;
+    public static final double DEADZONE = 0.4;
 
 
-	public static final double ELEVATOR_OUTPUT = -.5;
+	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-	public static final double HOPPER_OUTPUT = -.5;
+	public static final double HOPPER_OUTPUT = -.1;
 
 
 	public static final double SHOOTER_OUTPUT = -.8;
@@ -42,6 +42,6 @@ public final class Constants {
 	public static final double SHOOTER_OUTPUT_PASSIVE = -.1;
 
 
-	public static final double MANUAL_POWER = .5;
+	public static final double MANUAL_POWER = .2;
 
 }

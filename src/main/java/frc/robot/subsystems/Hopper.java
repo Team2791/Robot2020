@@ -30,7 +30,7 @@ public class Hopper extends Subsystem {
     }
     public double getHopperVoltage() {
         return hopper_talon.getMotorOutputVoltage();
-    }
+        }
 
     public void debug(){
         SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
