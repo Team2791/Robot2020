@@ -37,7 +37,6 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
-        loopCounter += 1;
         drivetrain.debug();
         hopper.debug();
 
