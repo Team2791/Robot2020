@@ -30,7 +30,7 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-	public static final double HOPPER_OUTPUT = -.1;
+	public static final double HOPPER_OUTPUT = -.20; // 20% is sweet spot
 
 
 	public static final double SHOOTER_OUTPUT = -.8;
