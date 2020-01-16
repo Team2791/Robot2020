@@ -79,7 +79,7 @@ public class OI {
         // // driverX.whenPressed(new DriveWithJoystickLeft());
         // driverX.whenReleased(new StopDrive());
         // // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
-
+        driverDPadRight.whileHeld(new AdjustLimelight());
     }
 
     private void initButtons(){

@@ -1,5 +1,7 @@
 package frc.robot;
 
+import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -13,14 +15,17 @@ public class Robot extends TimedRobot {
     public static OI oi;
     public static PowerDistributionPanel pdp;
     public static Compressor compressor;
+    public static Drivetrain drivetrain;
     public static Limelight limelight;
 
 
     @Override
     public void robotInit() {
+        oi = new OI();
         limelight = new Limelight();
-        pdp = new PowerDistributionPanel(RobotMap.kPDP);
-        // oi = new OI();
+        pdp = new PowerDistributionPanel(RobotMap.PDP);
+        drivetrain = new Drivetrain();
+        
         
     }
     
@@ -28,7 +33,6 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
         loopCounter += 1;
-        
 
     }
 
