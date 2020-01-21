@@ -12,14 +12,31 @@ public class AdjustLimelight extends Command {
 
     public AdjustLimelight() {
         super("AdjustLimelight");
-        TURN_FACTOR = 0.3;
+        TURN_FACTOR = 0.03;
     }
 
     public void execute() {
         double thrust = 0;
-        
-        double turn = Robot.limelight.getHorizontalOffset() * TURN_FACTOR;
-        
+        double xOffset = Robot.limelight.getHorizontalOffset();
+        double turn;
+        //try to get it to turn at a slow speed until it hits the center
+        //once that's done, try to have this type of if where it is faster
+        //farther away
+
+        if(xOffset >= 15|| xOffset <= -15){
+            turn = Robot.limelight.getHorizontalOffset() * TURN_FACTOR;
+        }
+        if((xOffset < 15 && xOffset > 10)||(xOffset < 15 && xOffset > 10)){
+            turn = Robot.limelight.getHorizontalOffset() * 0.06;
+        }
+        else{
+        if(xOffset < 0)
+            turn = -.55;
+        else
+            turn = .55;
+        if(xOffset == 0)
+            turn = 0;
+        }
         double left = Math.max(Math.min(thrust + turn, 1), -1);
         double right = Math.max(Math.min(thrust - turn, 1), -1);
         
