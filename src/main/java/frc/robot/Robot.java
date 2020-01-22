@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
     public static Shooter shooter;
     public static Elevator elevator;
     public static Hopper hopper;
-
+    public static RobotMap robotmap;
 
     @Override
     public void robotInit() {
@@ -30,8 +30,8 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
-         oi = new OI();
-        
+         oi = new OI(); 
+        robotmap = new RobotMap();
     }
     
     @Override
@@ -63,6 +63,7 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         // autoCommand.cancel();
         System.out.println("This is init");
+        
 
     }
 
