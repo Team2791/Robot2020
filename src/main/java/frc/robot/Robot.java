@@ -85,7 +85,8 @@ public class Robot extends TimedRobot {
         // Robot.drivetrain.setLeftTalon(.7);
         // Robot.drivetrain.setRightNeo(1);
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
-        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
+        
+         Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);   
         Scheduler.getInstance().run();
     }
     @Override

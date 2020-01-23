@@ -76,8 +76,8 @@ public class OI {
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
         // driverA.whenPressed(new MoveShooter());
         // driverA.whenReleased(new StopShooter());
-        // driverB.whenPressed(new MoveElevator());
-        // driverB.whenReleased(new StopElevator());
+        //driverB.whenPressed(new MoveElevator());
+        //driverB.whenReleased(new StopElevator());
         // driverX.whenPressed(new MoveHopper());
         // driverX.whenReleased(new StopHopper());
         // driverY.whenPressed(new MoveDrivetrain());

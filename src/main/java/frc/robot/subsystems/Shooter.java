@@ -66,5 +66,6 @@ public class Shooter extends Subsystem {
         SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
         SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter1());
         SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
+        SmartDashboard.putNumber("Shooter Neo ramp rate-",Constants.kNeoRampTime);
     }
 }
