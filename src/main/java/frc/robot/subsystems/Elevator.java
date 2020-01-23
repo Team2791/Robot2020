@@ -26,23 +26,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Elevator extends Subsystem {
-    public TalonSRX elevator_talon;
-
-
+    private CANSparkMax elevator;
 
     public Elevator(){
-        elevator_talon = new TalonSRX(RobotMap.ELEVATOR_TALON);
+        elevator = new CANSparkMax(RobotMap.ELEVATOR_NEO, MotorType.kBrushless);
+        elevator.setOpenLoopRampRate(Constants.kNeoRampTime);
     }
 
     public void setElevator(double output) {
-        elevator_talon.set(ControlMode.PercentOutput, output);
+        elevator.set(output);
 
     }
 
-    public double getElevatorVoltage(){
-        return elevator_talon.getMotorOutputVoltage();
-    }
+    public double getElevatorVelocity(){
+         return elevator.getEncoder().getVelocity();
+     }
 
+    
     @Override
     protected void initDefaultCommand() {
         // TODO Auto-generated method stub
@@ -50,7 +50,7 @@ public class Elevator extends Subsystem {
     }
 
     public void debug(){
-        SmartDashboard.putNumber("Elevator Voltage -", getElevatorVoltage());
+        SmartDashboard.putNumber("Elevator Velocity -", getElevatorVelocity());
     }
     
 }

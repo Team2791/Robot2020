@@ -16,7 +16,7 @@ import frc.robot.commands.*;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
-
+import frc.robot.subsystems.Elevator;
 // import frc.robot.commands.Lifter.ExtendBothLifters;
 import frc.robot.util.Util;
 // import frc.robot.commands.CargoManipulator.ScoreInRocketCalculated;
@@ -50,7 +50,7 @@ public class OI {
     public static Joystick driverStick;
     public static Joystick operatorStick;
     private Button driveButton;
-    private Button driverLB, driverRB;
+    private Button driverLB, driverRB, driverLT, driverRT;
     private Button driverStart, driverBack;
     private Button operatorStart;
     private Button driverA, driverB, driverY;
@@ -74,21 +74,22 @@ public class OI {
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
-        driverA.whenPressed(new MoveShooter());
-        driverA.whenReleased(new StopShooter());
-        driverB.whenPressed(new MoveElevator());
-        driverB.whenReleased(new StopElevator());
-        driverX.whenPressed(new MoveHopper());
-        driverX.whenReleased(new StopHopper());
-        driverY.whenPressed(new MoveDrivetrain());
-        driverY.whenReleased(new StopDrivetrain());
-        driverLB.whenPressed(new runHopperElevator());
-        driverLB.whenReleased(new stopHopperElevator());
-        driverRB.whenPressed(new runDrivetrainShooter());
-        driverRB.whenReleased(new stopDrivetrainShooter());
-        driverLS.whenPressed(new runElevatorShooter());
-        driverLS.whenReleased(new stopElevatorShooter());
-        operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
+        // driverB.whenPressed(new MoveElevator());
+        // driverB.whenReleased(new StopElevator());
+        // driverX.whenPressed(new MoveHopper());
+        // driverX.whenReleased(new StopHopper());
+        // driverY.whenPressed(new MoveDrivetrain());
+        // driverY.whenReleased(new StopDrivetrain());
+        // driverLB.whenPressed(new runHopperElevator());
+        // driverLB.whenReleased(new stopHopperElevator());
+        // driverRB.whenPressed(new runDrivetrainShooter());
+        // driverRB.whenReleased(new stopDrivetrainShooter());
+        // driverLS.whenPressed(new runElevatorShooter());
+        // driverLS.whenReleased(new stopElevatorShooter());
+        // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+        
         // //true does right hp far rocket path, false does right hp bay 1 ship path
         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
@@ -99,7 +100,10 @@ public class OI {
         // // driverX.whenPressed(new DriveWithJoystickLeft());
         // driverX.whenReleased(new StopDrive());
         // // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
-
+        driverA.whenPressed(new MoveElevator());
+        driverA.whenReleased(new StopElevator());
+        driverRT.whenPressed(new MoveHopper());
+        driverRT.whenReleased(new StopHopper());
     }
 
     private void initButtons(){
@@ -111,8 +115,11 @@ public class OI {
             driverY = new JoystickButton(driverStick,4);
             driverBack = new JoystickButton(driverStick, 7);
             driverStart = new JoystickButton(driverStick, 8);
+            driverLT = new AnalogButton(driverStick, 2);
+            driverRT = new AnalogButton(driverStick, 3);
             driverRB = new JoystickButton(driverStick, 6);
             driverLB = new JoystickButton(driverStick, 5);
+
             driverLS = new JoystickButton(driverStick,9);
             // driverRS = new JoystickButton(driverStick,10);
             driverRX = new AnalogButton(driverStick, 4);

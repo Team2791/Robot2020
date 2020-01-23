@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -18,22 +20,22 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Hopper extends Subsystem {
-    public TalonSRX hopper_talon;
+    private CANSparkMax hopper;
 
     
     public Hopper(){
-        hopper_talon = new TalonSRX(RobotMap.HOPPER_TALON);
+        hopper = new CANSparkMax(RobotMap.HOPPER_NEO, MotorType.kBrushless);
     }
 
     public void setHopper(final double output){
-        hopper_talon.set(ControlMode.PercentOutput, output);
+        hopper.set(output);
     }
-    public double getHopperVoltage() {
-        return hopper_talon.getMotorOutputVoltage();
-        }
+    public double getHopperVelocity() {
+         return hopper.getEncoder().getVelocity();
+         }
 
     public void debug(){
-        SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
+        SmartDashboard.putNumber("Hopper Velocity - ", getHopperVelocity());
 
     }
     @Override

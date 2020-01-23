@@ -24,24 +24,34 @@ import frc.robot.util.Util;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-    private CANSparkMax shooter_neo;
+    private CANSparkMax shooter_leader;
+    private CANSparkMax shooter_follower;
     private MoveShooterPassive defaultCommand;
 
 
 
     public Shooter(){
-        shooter_neo = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
-        shooter_neo.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_leader = new CANSparkMax(RobotMap.SHOOTER_LEADER, MotorType.kBrushless);
+        shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_follower= new CANSparkMax(RobotMap.SHOOTER_FOLLOWER, MotorType.kBrushless);
+        shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
     }
 
     public void setShooter(final double output){
-        shooter_neo.set(output);
+        shooter_leader.set(output);
+        shooter_follower.set(output*-1);
     }
-    public double getShooterVelocity(){
-        return shooter_neo.getEncoder().getVelocity();
+    public double getShooterVelocity1(){
+        return shooter_leader.getEncoder().getVelocity();
     }
-    public double getShooter(){
-        return shooter_neo.getEncoder().getCountsPerRevolution();
+    public double getShooterVelocity2(){
+        return shooter_follower.getEncoder().getVelocity();
+    }
+    public double getShooter1(){
+        return shooter_leader.getEncoder().getCountsPerRevolution();
+    }
+    public double getShooter2(){
+        return shooter_follower.getEncoder().getCountsPerRevolution();
     }
     @Override
     protected void initDefaultCommand() {
@@ -52,7 +62,9 @@ public class Shooter extends Subsystem {
     }
 
     public void debug() {
-        SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
-        SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
+        SmartDashboard.putNumber("Shooter Neo Velocity 1-", getShooterVelocity1());
+        SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
+        SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter1());
+        SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
     }
 }
