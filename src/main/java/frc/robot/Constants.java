@@ -30,10 +30,10 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = 1; //was at 1
 
 
-	public static final double HOPPER_OUTPUT = -.30; // 35 % is sweet spot
+	public static final double HOPPER_OUTPUT = -.17; //35% is sweet spot      slowed down to 17%
 
 
-	public static final double SHOOTER_OUTPUT = 0.20;
+    public static final double SHOOTER_OUTPUT = 1.0; //89% for near trench      40% for wall shot       100% too short for long shot
 
 
 	public static final double DRIVETRAIN_OUTPUT = -.5;
