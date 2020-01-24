@@ -43,8 +43,12 @@ public class Robot extends TimedRobot {
         hopper.debug();
         shooter.debug();
         elevator.debug();
-
-
+        SmartDashboard.putNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+        SmartDashboard.putNumber("Hopper Speed Percent", Constants.HOPPER_OUTPUT);
+        SmartDashboard.putNumber("Elevator Speed Percent", Constants.ELEVATOR_OUTPUT);
+        //These putNumbers are set once, default to Constants, and are never updated
+        //Used for prototyping to change speeds through SmartDashboard rather than deploying code through constants
+        //Remember to CHANGE CONSTANTS to match the ideal speeds we find
     }
 
     @Override
@@ -85,8 +89,8 @@ public class Robot extends TimedRobot {
         // Robot.drivetrain.setLeftTalon(.7);
         // Robot.drivetrain.setRightNeo(1);
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
-        
-         Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);   
+         double shootSpeed = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+         Robot.shooter.setShooter(shootSpeed);     
         Scheduler.getInstance().run();
     }
     @Override
