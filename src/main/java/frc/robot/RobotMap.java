@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalOutput;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -62,4 +64,18 @@ public class RobotMap {
     public static final int kRaiseCargoSolenoid = 0;
     public static final int kIntakeVictor = 35;
     public static final int kCargoLimitSwitch = 0;
+  
+  // Shoooter
+    public static final int SHOOTER_LEADER = 31;
+    public static final int SHOOTER_FOLLOWER = 33;
+  
+    // Elevator
+    public static final int ELEVATOR_NEO = 34;
+
+    //Hopper
+
+    public static final int HOPPER_NEO = 32;
+    //Drivetrain
+  public static final int DRIVETRAIN_NEO = 3;
+  
 }
