@@ -64,7 +64,18 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         drivetrain = new Drivetrain();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
+<<<<<<< Updated upstream
         
+=======
+         oi = new OI(); 
+        robotmap = new RobotMap();
+        SmartDashboard.putNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+        SmartDashboard.putNumber("Hopper Speed Percent", Constants.HOPPER_OUTPUT);
+        SmartDashboard.putNumber("Elevator Speed Percent", Constants.ELEVATOR_OUTPUT);
+        //These putNumbers are set once, default to Constants, and are never updated
+        //Used for prototyping to change speeds through SmartDashboard rather than deploying code through constants
+        //Remember to CHANGE CONSTANTS to match the ideal speeds we find
+>>>>>>> Stashed changes
     }
     
     @Override
@@ -72,7 +83,13 @@ public class Robot extends TimedRobot {
         // //EACH debug only runs once per 10 loops
         loopCounter += 1;
         drivetrain.debug();
+<<<<<<< Updated upstream
 
+=======
+        hopper.debug();
+        shooter.debug();
+        elevator.debug();
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -106,6 +123,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
+<<<<<<< Updated upstream
+=======
+        double shootSpeed = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+        Robot.shooter.setShooter(shootSpeed);   
+>>>>>>> Stashed changes
         Scheduler.getInstance().run();
     }
     
