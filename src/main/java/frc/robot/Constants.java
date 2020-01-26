@@ -22,6 +22,15 @@ public final class Constants {
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
     
+    public static final double kP = 5e-5;
+    public static final double kI = 1e-6;
+    public static final double kD = 0;
+    public static final double kIz = 0;
+    public static final double kFF = 0;
+    public static final double MaxOutput = 1;
+    public static final double MinOutput = -1;
+    public static final double maxRPM = 5000;
+
     // public static final double kCamOffset = 0;
     //Joystick constant
     public static final double DEADZONE = 0.4;

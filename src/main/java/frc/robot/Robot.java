@@ -34,21 +34,21 @@ public class Robot extends TimedRobot {
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
          oi = new OI(); 
         robotmap = new RobotMap();
-    }
-    
-    @Override
-    public void robotPeriodic() {
-        // //EACH debug only runs once per 10 loops
-        // drivetrain.debug();
-        hopper.debug();
-        shooter.debug();
-        elevator.debug();
         SmartDashboard.putNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
         SmartDashboard.putNumber("Hopper Speed Percent", Constants.HOPPER_OUTPUT);
         SmartDashboard.putNumber("Elevator Speed Percent", Constants.ELEVATOR_OUTPUT);
         //These putNumbers are set once, default to Constants, and are never updated
         //Used for prototyping to change speeds through SmartDashboard rather than deploying code through constants
         //Remember to CHANGE CONSTANTS to match the ideal speeds we find
+    }
+    
+    @Override
+    public void robotPeriodic() {
+        // //EACH debug only runs once per 10 loops
+        // drivetrain.debug();
+        // hopper.debug();
+        // shooter.debug();
+        // elevator.debug();
     }
 
     @Override
@@ -89,8 +89,13 @@ public class Robot extends TimedRobot {
         // Robot.drivetrain.setLeftTalon(.7);
         // Robot.drivetrain.setRightNeo(1);
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
-         double shootSpeed = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
-         Robot.shooter.setShooter(shootSpeed);     
+         
+        //  double shootSpeed = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+        //  Robot.shooter.setShooter(shootSpeed);     
+        double shootPercent = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
+        double shootSpeed = shootPercent * Constants.maxRPM;
+        Robot.shooter.setShooterPid(shootSpeed);
+
         Scheduler.getInstance().run();
     }
     @Override

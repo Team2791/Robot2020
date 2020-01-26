@@ -10,6 +10,9 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.ControlType;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,7 +28,8 @@ import frc.robot.util.Util;
 public class Shooter extends Subsystem {
     private CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
-
+    private CANPIDController shooter_pid;
+    private double speed;
 
 
     public Shooter(){
@@ -37,7 +41,22 @@ public class Shooter extends Subsystem {
 
     public void setShooter(final double output){
         shooter_leader.set(output);
-        shooter_follower.set(output*-1);
+        shooter_follower.follow(shooter_leader, true);
+    }
+    public void setShooterPid(final double velocity){
+        shooter_pid = shooter_leader.getPIDController();
+        
+        shooter_pid.setP(Constants.kP);
+        shooter_pid.setI(Constants.kI);
+        shooter_pid.setD(Constants.kD);
+        shooter_pid.setIZone(Constants.kIz);
+        shooter_pid.setFF(Constants.kFF);
+        shooter_pid.setOutputRange(Constants.MinOutput, Constants.MaxOutput);
+
+        shooter_pid.setReference(velocity, ControlType.kVelocity);
+        shooter_follower.follow(shooter_leader);
+
+        speed = velocity;
     }
     public double getShooterVelocity1(){
         return shooter_leader.getEncoder().getVelocity();
@@ -51,6 +70,10 @@ public class Shooter extends Subsystem {
     public double getShooter2(){
         return shooter_follower.getEncoder().getCountsPerRevolution();
     }
+    public double getPIDSetpoint(){
+        return speed;
+    }
+
     @Override
     protected void initDefaultCommand() {
         // defaultCommand = new MoveShooterPassive();
@@ -62,6 +85,7 @@ public class Shooter extends Subsystem {
     public void debug() {
         SmartDashboard.putNumber("Shooter Neo Velocity 1-", getShooterVelocity1());
         SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
+        SmartDashboard.putNumber("Shooter Speed Set Point", getPIDSetpoint());
         SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter1());
         SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
         SmartDashboard.putNumber("Shooter Neo ramp rate-",Constants.kNeoRampTime);
