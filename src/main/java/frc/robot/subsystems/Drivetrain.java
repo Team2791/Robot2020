@@ -5,7 +5,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-
+import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,8 +14,11 @@ import frc.robot.RobotMap;
 import frc.robot.util.Util;
 
 public class Drivetrain extends Subsystem {
-
-    public CANSparkMax drivetrain_neo;
+    private CANSparkMax leftleader;
+    private CANSparkMax rightleader;
+    private CANSparkMax leftfollower;
+    private CANSparkMax rightfollower;
+    
 
     public Drivetrain() {
         drivetrain_neo  = new CANSparkMax(RobotMap.DRIVETRAIN_NEO, MotorType.kBrushless);
