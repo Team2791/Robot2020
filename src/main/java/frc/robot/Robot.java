@@ -95,7 +95,6 @@ public class Robot extends TimedRobot {
         double shootPercent = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
         double shootSpeed = shootPercent * Constants.maxRPM;
         Robot.shooter.setShooterPid(shootSpeed);
-
         Scheduler.getInstance().run();
     }
     @Override

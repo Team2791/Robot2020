@@ -32,11 +32,13 @@ public class Shooter extends Subsystem {
     private double speed;
 
 
+
     public Shooter(){
         shooter_leader = new CANSparkMax(RobotMap.SHOOTER_LEADER, MotorType.kBrushless);
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower= new CANSparkMax(RobotMap.SHOOTER_FOLLOWER, MotorType.kBrushless);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
+        
     }
 
     public void setShooter(final double output){
@@ -44,6 +46,7 @@ public class Shooter extends Subsystem {
         shooter_follower.follow(shooter_leader, true);
     }
     public void setShooterPid(final double velocity){
+
         shooter_pid = shooter_leader.getPIDController();
         
         shooter_pid.setP(Constants.kP);
@@ -58,18 +61,18 @@ public class Shooter extends Subsystem {
 
         speed = velocity;
     }
-    public double getShooterVelocity1(){
+    public double getShooterVelocity(){
         return shooter_leader.getEncoder().getVelocity();
     }
-    public double getShooterVelocity2(){
-        return shooter_follower.getEncoder().getVelocity();
-    }
-    public double getShooter1(){
+    //public double getShooterVelocity2(){
+       // return shooter_follower.getEncoder().getVelocity();
+    //}
+    public double getShooter(){
         return shooter_leader.getEncoder().getCountsPerRevolution();
     }
-    public double getShooter2(){
-        return shooter_follower.getEncoder().getCountsPerRevolution();
-    }
+    //public double getShooter2(){
+        //return shooter_follower.getEncoder().getCountsPerRevolution();
+    //}
     public double getPIDSetpoint(){
         return speed;
     }
@@ -83,11 +86,12 @@ public class Shooter extends Subsystem {
     }
 
     public void debug() {
-        SmartDashboard.putNumber("Shooter Neo Velocity 1-", getShooterVelocity1());
-        SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
+        SmartDashboard.putNumber("Shooter Neo Velocity 1-", getShooterVelocity());
+       // SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
         SmartDashboard.putNumber("Shooter Speed Set Point", getPIDSetpoint());
-        SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter1());
-        SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
+        SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter());
+        //SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
         SmartDashboard.putNumber("Shooter Neo ramp rate-",Constants.kNeoRampTime);
+        SmartDashboard.putNumber("Shootspeed-", speed);
     }
 }
