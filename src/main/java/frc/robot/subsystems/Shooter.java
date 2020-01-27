@@ -35,37 +35,38 @@ public class Shooter extends Subsystem {
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower= new CANSparkMax(RobotMap.SHOOTER_FOLLOWER, MotorType.kBrushless);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_follower.follow(shooter_leader,true);
     }
 
     public void setShooter(final double output){
         shooter_leader.set(output);
-        shooter_follower.set(output*-1);
+        //shooter_follower.set(output*-1);
     }
     public double getShooterVelocity1(){
         return shooter_leader.getEncoder().getVelocity();
     }
-    public double getShooterVelocity2(){
-        return shooter_follower.getEncoder().getVelocity();
-    }
+    //public double getShooterVelocity2(){
+        //return shooter_follower.getEncoder().getVelocity();
+    //}
     public double getShooter1(){
         return shooter_leader.getEncoder().getCountsPerRevolution();
     }
-    public double getShooter2(){
-        return shooter_follower.getEncoder().getCountsPerRevolution();
-    }
+    //public double getShooter2(){
+        //return shooter_follower.getEncoder().getCountsPerRevolution();
+    //}
     @Override
     protected void initDefaultCommand() {
         // defaultCommand = new MoveShooterPassive();
         // // TODO Auto-generated method stub
         // defaultCommand.start();
-
     }
+    
 
     public void debug() {
         SmartDashboard.putNumber("Shooter Neo Velocity 1-", getShooterVelocity1());
-        SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
+        //SmartDashboard.putNumber("Shooter Neo Velocity 2-", getShooterVelocity2());
         SmartDashboard.putNumber("Shooter Neo CPR 1-", getShooter1());
-        SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
+        //SmartDashboard.putNumber("Shooter Neo CPR 2-", getShooter2());
         SmartDashboard.putNumber("Shooter Neo ramp rate-",Constants.kNeoRampTime);
     }
 }
