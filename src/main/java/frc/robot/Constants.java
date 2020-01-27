@@ -21,6 +21,7 @@ public final class Constants {
     public static final double kCamStraightSuperFast = 0.75;
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
+    public static final double kDeviceID = 3.1415
     
     // public static final double kCamOffset = 0;
     //Joystick constant
