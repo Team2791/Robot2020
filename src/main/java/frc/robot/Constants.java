@@ -22,14 +22,14 @@ public final class Constants {
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
     
-    public static final double kP = 5e-5;
-    public static final double kI = 1e-6;
-    public static final double kD = 0;
+    public static final double kP = 6e-4;
+    public static final double kI = 0;
+    public static final double kD = 1e-5;
     public static final double kIz = 0;
     public static final double kFF = 0;
     public static final double MaxOutput = 1;
     public static final double MinOutput = -1;
-    public static final double maxRPM = 5000;
+    public static final double maxRPM = 4500;
 
     // public static final double kCamOffset = 0;
     //Joystick constant
@@ -42,7 +42,7 @@ public final class Constants {
 	public static final double HOPPER_OUTPUT = -.17; //35% is sweet spot      slowed down to 17%
 
 
-    public static final double SHOOTER_OUTPUT = 1.0; //89% for near trench      40% for wall shot       100% too short for long shot
+    public static final double SHOOTER_OUTPUT = 0.1; //89% for near trench      40% for wall shot       100% too short for long shot
 
 
 	public static final double DRIVETRAIN_OUTPUT = -.5;

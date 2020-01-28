@@ -12,6 +12,7 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class MoveShooter extends Command {
+  
   public MoveShooter() {
     super("MoveShooter");
     requires(Robot.shooter);
@@ -29,6 +30,7 @@ public class MoveShooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
     Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
   }
 

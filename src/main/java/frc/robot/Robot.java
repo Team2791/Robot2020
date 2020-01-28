@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
         // //EACH debug only runs once per 10 loops
         // drivetrain.debug();
         // hopper.debug();
-        // shooter.debug();
+        shooter.debug();
         // elevator.debug();
     }
 
@@ -91,10 +91,12 @@ public class Robot extends TimedRobot {
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
          
         //  double shootSpeed = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
-        //  Robot.shooter.setShooter(shootSpeed);     
+        //  Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);     
         double shootPercent = SmartDashboard.getNumber("Shooter Speed Percent", Constants.SHOOTER_OUTPUT);
         double shootSpeed = shootPercent * Constants.maxRPM;
+        //Robot.shooter.setShooter(shootSpeed);
         Robot.shooter.setShooterPid(shootSpeed);
+        
         Scheduler.getInstance().run();
     }
     @Override

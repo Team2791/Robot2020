@@ -1,9 +1,6 @@
 package frc.robot.util;
 
-<<<<<<< Updated upstream
 import java.lang.Math;
-=======
->>>>>>> Stashed changes
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -18,7 +15,6 @@ public class Limelight {
     NetworkTable table;
     private NetworkTableEntry camMode, ledMode, horizontalOffset, verticalOffset, targetArea, validTargets, targetSkew, pipelineLatency;
     private NetworkTableEntry lengthShort, lengthLong, lengthHori, lengthVert, indexPipe;
-<<<<<<< Updated upstream
     private NetworkTableEntry camMode1, ledMode1, horizontalOffset1, verticalOffset1, targetArea1, validTargets1, targetSkew1, pipelineLatency1;
     private NetworkTableEntry lengthShort1, lengthLong1, lengthHori1, lengthVert1, indexPipe1;
     //  private static double kProportion = 1.56;
@@ -26,13 +22,7 @@ public class Limelight {
     private static double kobjectHeight = 97.5; // height of the shooting target IN INCHES
     private static double kmountingAngle = 28.7; // mounting angle of the camera IN DEGREES
     private static double kverticalDistance = kobjectHeight - kcameraHeight; 
-=======
-    //  private static double kProportion = 1.56;
-    private static double kcameraHeight = .085;
-    private static double kobjectHeight = 0.5;
-    private static double kmountingAngle = 0;
-    private static double kangletoTarget = 0;
->>>>>>> Stashed changes
+
 
 
     public Limelight() {
@@ -40,7 +30,6 @@ public class Limelight {
         table = NetworkTableInstance.getDefault().getTable("limelight");
 
         // Get stats
-<<<<<<< Updated upstream
         horizontalOffset1 = table.getEntry("tx"); //Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
         verticalOffset1 = table.getEntry("ty"); //Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
         targetArea1 = table.getEntry("ta"); //Target Area (0% of image to 100% of image)
@@ -64,20 +53,7 @@ public class Limelight {
         lengthVert=lengthVert1;
         indexPipe=indexPipe1;
         lengthLong=lengthLong1;
-        
-=======
-        horizontalOffset = table.getEntry("tx"); //Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
-        verticalOffset = table.getEntry("ty"); //Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
-        targetArea = table.getEntry("ta"); //Target Area (0% of image to 100% of image)
-        validTargets = table.getEntry("tv"); //Whether the limelight has any valid targets (0 or 1)
-        targetSkew = table.getEntry("ts"); //Skew or rotation (-90 degrees to 0 degrees)
-        pipelineLatency = table.getEntry("tl"); //The pipeline’s latency contribution (ms) Add at least 11ms for image capture latency.
-        lengthShort = table.getEntry("tshort"); //Sidelength of shortest side of the fitted bounding box (pixels)
-        lengthLong = table.getEntry("tlong"); //Sidelength of longest side of the fitted bounding box (pixels)
-        lengthHori = table.getEntry("thor"); //Horizontal sidelength of the rough bounding box (0 - 320 pixels)
-        lengthVert = table.getEntry("tvert"); //Vertical sidelength of the rough bounding box (0 - 320 pixels)
-        indexPipe = table.getEntry("getpipe"); //True active pipeline index of the camera (0 .. 9)
->>>>>>> Stashed changes
+
 
 
         ledMode = table.getEntry("ledMode");
@@ -95,13 +71,9 @@ public class Limelight {
         return verticalOffset.getDouble(0.0);
     }
 
-<<<<<<< Updated upstream
     public double getDiagonalOffset() {
         return Math.sqrt(Math.pow(kverticalDistance,2)+Math.pow(getDistance(),2));
     }
-
-=======
->>>>>>> Stashed changes
     public double getTargetArea() {
         return targetArea.getDouble(0.0);
     }
@@ -143,12 +115,8 @@ public class Limelight {
     }
 
     public double getDistance() {
-<<<<<<< Updated upstream
         // returns distance in inches from the robot
         double distance = (kverticalDistance)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
-=======
-        double distance = (kcameraHeight-kobjectHeight)/java.lang.Math.tan(kmountingAngle-kangletoTarget);
->>>>>>> Stashed changes
         return distance;
     }
 
@@ -181,7 +149,6 @@ public class Limelight {
     }
 
     public void debug() {
-<<<<<<< Updated upstream
         SmartDashboard.putString("Limelight Pipeline Index", Double.toString(getIndexPipe()));
         SmartDashboard.putString("Limelight Calculated Distance", Double.toString(getDistance()));
         SmartDashboard.putString("Limelight Distance from Object", Double.toString(getDistance()));
@@ -189,26 +156,11 @@ public class Limelight {
         SmartDashboard.putString("Limelight Sidelength of longest side", Double.toString(getLengthLong()));
         SmartDashboard.putString("Limelight Area", Double.toString(getTargetArea()));
         SmartDashboard.putString("Limelight Skew", Double.toString(getTargetSkew()));
-=======
-        if(Constants.debugMode==true){
-            SmartDashboard.putString("Limelight Pipeline Index", Double.toString(getIndexPipe()));
-            SmartDashboard.putString("Limelight Distance", Double.toString(getDistance()));
-            SmartDashboard.putString("Limelight Distance from Object", Double.toString(getDistance()));
-            SmartDashboard.putString("Limelight Sidelength of shortest side", Double.toString(getLengthShort()));
-            SmartDashboard.putString("Limelight Sidelength of longest side", Double.toString(getLengthLong()));
-            SmartDashboard.putString("Limelight Area", Double.toString(getTargetArea()));
-            SmartDashboard.putString("Limelight Skew", Double.toString(getTargetSkew()));
-        }
->>>>>>> Stashed changes
         SmartDashboard.putString("Limelight Horizontal", Double.toString(getHorizontalOffset()));
         SmartDashboard.putString("Limelight Vertical", Double.toString(getVerticalOffset()));
         SmartDashboard.putString("Limelight Valid", Boolean.toString(targetValid()));
         SmartDashboard.putString("Limelight Horizontal sidelength", Double.toString(getLengthHori()));
         SmartDashboard.putString("Limelight Vertical sidelength", Double.toString(getLengthVert()));
-<<<<<<< Updated upstream
         SmartDashboard.putString("Limelight Diagonal" , Double.toString(getDiagonalOffset()));
-=======
-
->>>>>>> Stashed changes
     }
 }

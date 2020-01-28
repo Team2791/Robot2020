@@ -13,6 +13,7 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class MoveHopper extends Command {
+  private double hopperSpeed;
   public MoveHopper() {
     super("MoveHopper");
     requires(Robot.hopper);
@@ -28,7 +29,7 @@ public class MoveHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double hopperSpeed = SmartDashboard.getNumber("Hopper Speed Percent", Constants.HOPPER_OUTPUT);
+    hopperSpeed = SmartDashboard.getNumber("Hopper Speed Percent", Constants.HOPPER_OUTPUT);
     Robot.hopper.setHopper(hopperSpeed);
   }
 

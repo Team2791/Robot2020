@@ -29,7 +29,8 @@ public class Shooter extends Subsystem {
     private CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
     private CANPIDController shooter_pid;
-    private double speed;
+    private CANPIDController shooter_pid1;
+    private double speed, error, tempOutput;
 
 
 
@@ -57,9 +58,12 @@ public class Shooter extends Subsystem {
         shooter_pid.setOutputRange(Constants.MinOutput, Constants.MaxOutput);
 
         shooter_pid.setReference(velocity, ControlType.kVelocity);
-        shooter_follower.follow(shooter_leader);
+        shooter_follower.follow(shooter_leader, true);
 
         speed = velocity;
+        tempOutput = SmartDashboard.getNumber("Shooter Neo Velocity 1-", velocity);
+        error = Math.abs(velocity - tempOutput);
+        SmartDashboard.putNumber("Error", error);
     }
     public double getShooterVelocity(){
         return shooter_leader.getEncoder().getVelocity();

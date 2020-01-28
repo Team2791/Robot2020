@@ -13,6 +13,7 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class MoveElevator extends Command {
+  private double elevatorSpeed;
   public MoveElevator() {
     super("MoveElevator");
     requires(Robot.elevator);
@@ -28,7 +29,7 @@ public class MoveElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double elevatorSpeed = SmartDashboard.getNumber("Elevator Speed Percent", Constants.ELEVATOR_OUTPUT);
+    elevatorSpeed = SmartDashboard.getNumber("Elevator Speed Percent", Constants.ELEVATOR_OUTPUT);
     Robot.elevator.setElevator(elevatorSpeed);
   }
 
