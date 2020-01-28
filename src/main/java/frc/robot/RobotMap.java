@@ -76,5 +76,6 @@ public class RobotMap {
     public static final int HOPPER_TALON = 24;
     //Drivetrain
   public static final int DRIVETRAIN_NEO = 3;
+public static Object kleftFollower;
   
 }
