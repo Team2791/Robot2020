@@ -44,12 +44,12 @@ public class Robot extends TimedRobot {
 
     @Override
     public void disabledInit() {
-        drivetrain.setMotors(0);
+        drivetrain.setMotors(0,0);
     }
 
     @Override
     public void disabledPeriodic() {
-         drivetrain.setMotors(0);
+         drivetrain.setMotors(0,0);
         // Robot.drivetrain.resetGyro();
         // autoCommand.start();
     }

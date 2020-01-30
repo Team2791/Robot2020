@@ -74,8 +74,10 @@ public class OI {
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
-        driverA.whenPressed(new MoveShooter());
-        driverA.whenReleased(new StopShooter());
+        driverA.whenPressed(new Turn45WithAccelerometer());
+        driverA.whenReleased(new StopDrivetrain());
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
         driverB.whenPressed(new MoveElevator());
         driverB.whenReleased(new StopElevator());
         driverX.whenPressed(new MoveHopper());

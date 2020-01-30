@@ -11,9 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveDrivetrain extends Command {
-  public MoveDrivetrain() {
-    super("MoveDrivetrain");
+public class Turn45WithAccelerometer extends Command {
+  
+  public Turn45WithAccelerometer() {
+    super("Turn45WithAccelerometer");
     requires(Robot.drivetrain);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,7 +28,16 @@ public class MoveDrivetrain extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.setMotors(Constants.DRIVETRAIN_OUTPUT, Constants.DRIVETRAIN_OUTPUT);
+
+    double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
+    double turningValue = error * Constants.P;
+
+    final double left = turningValue;
+    final double right = - turningValue;
+    // final double left = Math.max(Math.min(thrust + turningValue, 1), -1);
+    // final double right = Math.max(Math.min(thrust - turningValue, 1), -1);
+        
+    Robot.drivetrain.setMotors(left, right);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,6 +49,7 @@ public class MoveDrivetrain extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.drivetrain.setMotors(0,0);
   }
 
   // Called when another command which requires one or more of the same
