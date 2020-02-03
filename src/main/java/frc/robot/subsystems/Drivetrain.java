@@ -1,19 +1,12 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.analog.adis16470.frc.ADIS16470_IMU;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import frc.robot.Constants;
 import frc.robot.RobotMap;
-import frc.robot.util.Util;
 
 public class Drivetrain extends Subsystem {
 
@@ -39,13 +32,46 @@ public class Drivetrain extends Subsystem {
         imu.reset();
     }
 
+    public double getAngleZ(){
+        return imu.getGyroInstantZ();
+    }
+
+    public double getAngleX(){
+        return imu.getGyroInstantX();
+    }
+
+    public double getAngleY(){
+        return imu.getGyroInstantY();
+    }
+
     public double getAngle(){
         return imu.getAngle();
+    }
+
+    public double getError(){
+        double error = Constants.ANGLE_SETPOINT - imu.getAngle();
+        return error;
+    }
+
+    public double getTurningValue(){
+        double error = Constants.ANGLE_SETPOINT - imu.getAngle();
+        double turning = error*Constants.P;
+        return turning;
     }
 
     public void setMotors(final double left, final double right) {
         drivetrain_drive.tankDrive(left, right);
     }
     public void debug() {
+        SmartDashboard.putNumber("Angle Z - ", getAngleZ());
+        SmartDashboard.putNumber("Angle X - ", getAngleX());
+        SmartDashboard.putNumber("Angle Y - ", getAngleY());
+        SmartDashboard.putNumber("Angle  - ", getAngle());
+        SmartDashboard.putNumber("Error  - ", getError());
+        SmartDashboard.putNumber("Turning Value  - ", getTurningValue());
+
+
+
+
     }
 }  

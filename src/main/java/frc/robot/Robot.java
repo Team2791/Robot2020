@@ -32,13 +32,14 @@ public class Robot extends TimedRobot {
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
          oi = new OI(); 
         robotmap = new RobotMap();
+        System.out.println("Everything good here");
     }
     
     @Override
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
         drivetrain.debug();
-        hopper.debug();
+        // hopper.debug();
 
     }
 

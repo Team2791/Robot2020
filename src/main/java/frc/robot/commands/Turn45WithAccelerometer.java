@@ -29,16 +29,33 @@ public class Turn45WithAccelerometer extends Command {
   @Override
   protected void execute() {
 
-    double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
-    double turningValue = error * Constants.P;
+    if(Constants.ANGLE_SETPOINT > Robot.drivetrain.getAngle()){
+      System.out.println("Angle too low");
+      double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
+      double turning = error*Constants.P;
+      Robot.drivetrain.setMotors(-turning, turning);
 
-    final double left = turningValue;
-    final double right = - turningValue;
+    } else if (Constants.ANGLE_SETPOINT < Robot.drivetrain.getAngle()){
+      System.out.println("Angle too high");
+      double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
+      double turning = error*Constants.P;
+      Robot.drivetrain.setMotors(-turning, turning);
+    } else if (Constants.ANGLE_SETPOINT == Robot.drivetrain.getAngle()){
+      System.out.println("Just right");
+      double turningValue = 0;
+      final double left = turningValue;
+      final double right = - turningValue;
+      Robot.drivetrain.setMotors(0, 0);
+
+    } else{
+      System.out.println("Its fine");
+    }
+    }
+
+ 
     // final double left = Math.max(Math.min(thrust + turningValue, 1), -1);
     // final double right = Math.max(Math.min(thrust - turningValue, 1), -1);
         
-    Robot.drivetrain.setMotors(left, right);
-  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
