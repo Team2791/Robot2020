@@ -31,15 +31,45 @@ public class Turn45WithAccelerometer extends Command {
 
     if(Constants.ANGLE_SETPOINT > Robot.drivetrain.getAngle()){
       System.out.println("Angle too low");
-      double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
+      double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.imu.getAngle();
       double turning = error*Constants.P;
       Robot.drivetrain.setMotors(-turning, turning);
+       if(error> -10 && error < 0){
+         Robot.drivetrain.setMotors(- Constants.DEADZONE_SPEED, Constants.DEADZONE_SPEED);
+        } else if( -0.5 < error && error < 0.5) {
+          Robot.drivetrain.setMotors(0, 0);
+          
+        } else {
+         
+       }
+       if(error < 10 && error > 0){
+        Robot.drivetrain.setMotors( Constants.DEADZONE_SPEED, - Constants.DEADZONE_SPEED);
+      } else if( -0.5 < error && error < 0.5) {
+        Robot.drivetrain.setMotors(0, 0);
+        
+      } else {
+        
+      }
 
     } else if (Constants.ANGLE_SETPOINT < Robot.drivetrain.getAngle()){
       System.out.println("Angle too high");
       double error = Constants.ANGLE_SETPOINT - Robot.drivetrain.getAngle();
       double turning = error*Constants.P;
       Robot.drivetrain.setMotors(-turning, turning);
+      if(error> -10 && error < 0){
+        Robot.drivetrain.setMotors(- Constants.DEADZONE_SPEED, Constants.DEADZONE_SPEED);
+      } else if( -0.5 < error && error < 0.5) {
+        Robot.drivetrain.setMotors(0, 0);
+        
+      }
+      if(error < 10 && error > 0){
+       Robot.drivetrain.setMotors( Constants.DEADZONE_SPEED, - Constants.DEADZONE_SPEED);
+     } else if ( -0.5 < error && error < 0.5) {
+       Robot.drivetrain.setMotors(0, 0);
+     }else{
+
+     }
+
     } else if (Constants.ANGLE_SETPOINT == Robot.drivetrain.getAngle()){
       System.out.println("Just right");
       double turningValue = 0;

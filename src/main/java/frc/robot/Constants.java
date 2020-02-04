@@ -46,6 +46,9 @@ public final class Constants {
     
     public static final double ANGLE_SETPOINT = 83;
 
-    public static final double P = 0.005;
+    public static final double P = 0.05;
+
+
+	public static final double DEADZONE_SPEED = 0.45;
 
 }
