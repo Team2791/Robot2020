@@ -12,11 +12,11 @@ public class moveRight extends Command {
     }
 
     public void execute() {
-        Robot.drivetrain.setLeftRightMotorOutputs(0.7, 0.5);
+        Robot.drivetrain.setMotors(0.7, 0.5);
     }
 
     public void end() {
-        Robot.drivetrain.setLeftRightMotorOutputs(0.0, 0.0);
+        Robot.drivetrain.setMotors(0.0, 0.0);
     }
 
     public boolean isFinished() {
