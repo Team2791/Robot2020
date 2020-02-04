@@ -9,6 +9,7 @@ import frc.robot.subsystems.Drivetrain;
 public class AdjustLimelight extends Command {
 
     public double TURN_FACTOR;
+    private boolean foundOuter;
 
     public AdjustLimelight() {
         super("AdjustLimelight");
@@ -22,7 +23,6 @@ public class AdjustLimelight extends Command {
         //try to get it to turn at a slow speed until it hits the center
         //once that's done, try to have this type of if where it is faster
         //farther away
-
         if(xOffset >= 15|| xOffset <= -15){
             turn = Robot.limelight.getHorizontalOffset() * TURN_FACTOR;
         }
@@ -34,8 +34,9 @@ public class AdjustLimelight extends Command {
             turn = -.55;
         else
             turn = .55;
-        if(xOffset >=-1 && xOffset <=1)
+        if(xOffset >= -1 && xOffset <= 1)
             turn = 0;
+            foundOuter = true;
         }
         double left = Math.max(Math.min(thrust + turn, 1), -1);
         double right = Math.max(Math.min(thrust - turn, 1), -1);
@@ -48,6 +49,6 @@ public class AdjustLimelight extends Command {
     }
 
     public boolean isFinished() {
-        return false;
+        return foundOuter;
     }
 }

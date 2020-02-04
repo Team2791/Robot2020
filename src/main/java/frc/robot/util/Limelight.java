@@ -22,6 +22,11 @@ public class Limelight {
     private static double kobjectHeight = 97.5; // height of the shooting target IN INCHES
     private static double kmountingAngle = 28.7; // mounting angle of the camera IN DEGREES
     private static double kverticalDistance = kobjectHeight - kcameraHeight; 
+    
+    private static double kBetweenInnerOuter = 29.25;
+    public static double kInnerMaxAngle = 20;
+    //calculation variables for distances
+    private static double distXTotal, angle, distance, xCoord, yCoord, innerDistance;
 
 
     public Limelight() {
@@ -116,8 +121,25 @@ public class Limelight {
 
     public double getDistance() {
         // returns distance in inches from the robot
-        double distance = (kverticalDistance)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
+        distance = (kverticalDistance)/Math.tan(Math.toRadians(kmountingAngle)+Math.toRadians(getVerticalOffset()));
         return distance;
+    }
+
+    public double getInnerDistance(){
+        //returns distance to wall under inner target
+        angle = getTargetSkew();
+        xCoord = distance * Math.cos(angle);
+        yCoord = distance * Math.sin(angle);
+        distXTotal = xCoord + kBetweenInnerOuter;
+        innerDistance = Math.sqrt(Math.pow(distXTotal, 2) + Math.pow(yCoord, 2));
+        return innerDistance;
+    }
+
+    public boolean limelightAimInner(){
+        if(angle > kInnerMaxAngle || angle < -kInnerMaxAngle)
+            return false;
+        else
+            return true;
     }
 
 
