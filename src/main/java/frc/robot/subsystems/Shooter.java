@@ -24,24 +24,28 @@ import frc.robot.util.Util;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-    private CANSparkMax shooter_neo;
+    private CANSparkMax shooter_leader;
+    private CANSparkMax shooter_follower;
     private MoveShooterPassive defaultCommand;
 
 
 
     public Shooter(){
-        shooter_neo = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
-        shooter_neo.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_leader = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
+        shooter_follower = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
+        shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
     }
 
     public void setShooter(final double output){
-        shooter_neo.set(output);
+        shooter_leader.set(output);
+        shooter_follower.follow(shooter_leader,true);
     }
     public double getShooterVelocity(){
-        return shooter_neo.getEncoder().getVelocity();
+        return shooter_leader.getEncoder().getVelocity();
     }
     public double getShooter(){
-        return shooter_neo.getEncoder().getCountsPerRevolution();
+        return shooter_leader.getEncoder().getCountsPerRevolution();
     }
     @Override
     protected void initDefaultCommand() {
