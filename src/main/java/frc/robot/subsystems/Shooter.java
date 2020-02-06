@@ -12,11 +12,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 import frc.robot.commands.MoveShooter;
+import frc.robot.util.IrSensor;
 // import frc.robot.commands.MoveShooterPassive;
 import frc.robot.util.Util;
 /**
@@ -24,6 +26,7 @@ import frc.robot.util.Util;
  */
 public class Shooter extends Subsystem {
     private CANSparkMax shooter_neo;
+    private IrSensor hoodGyro;
     // private MoveShooterPassive defaultCommand;
 
 
@@ -60,6 +63,9 @@ public class Shooter extends Subsystem {
     }
     public double getShooter(){
         return shooter_neo.getEncoder().getCountsPerRevolution();
+    }
+    public int getHoodAngle() {
+        return hoodGyro.getValue();
     }
     @Override
     protected void initDefaultCommand() {
