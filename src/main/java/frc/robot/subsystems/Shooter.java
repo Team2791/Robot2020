@@ -26,7 +26,7 @@ import frc.robot.util.Util;
  */
 public class Shooter extends Subsystem {
     private CANSparkMax shooter_neo;
-    private IrSensor hoodGyro;
+    private Gyro hoodGyro; 
     // private MoveShooterPassive defaultCommand;
 
 
@@ -64,8 +64,11 @@ public class Shooter extends Subsystem {
     public double getShooter(){
         return shooter_neo.getEncoder().getCountsPerRevolution();
     }
-    public int getHoodAngle() {
-        return hoodGyro.getValue();
+    public double getHoodAngle() {
+        return hoodGyro.getAngle();
+    }
+    public void setHoodAngle() {
+        hoodGyro.setAngle();
     }
     @Override
     protected void initDefaultCommand() {
