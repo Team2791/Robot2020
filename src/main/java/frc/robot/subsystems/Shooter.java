@@ -38,6 +38,14 @@ public class Shooter extends Subsystem {
         double velocity = Math.sqrt( (gravityInches*Math.pow(dist,2)) / (2*Math.pow(Math.cos(angle),2) * (dist*Math.tan(angle)-height))); //speed in inches/second
         return velocity;
     }
+    public double applyDrag(double velocity){
+        velocity*=Constants.kDrag;
+        return velocity;
+    }
+    public double applyMagnus(double velocity){
+        velocity/=Constants.kMagnus;
+        return velocity;
+    }
     public double velocityToRPM(double velocity){
         double shooterRotationsPerSecond = velocity/(.5*Constants.ShooterDiameter); //rotation per second
         double shooterRPM = shooterRotationsPerSecond*60;

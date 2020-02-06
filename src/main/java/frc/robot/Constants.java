@@ -33,6 +33,8 @@ public final class Constants {
     public static final double kGravity = 32.1741;  //acceleration due to gravity in ft/s/s
     public static final double ShooterDiameter = 6; //inches
     public static final double ShooterGearing = 2; //Shooter spins twice for every one time motor spins
+    public static final double kDrag = 1;
+    public static final double kMagnus = 1;
 
     public static final double DrivekP = 6e-4;
     public static final double DrivekI = 0;
