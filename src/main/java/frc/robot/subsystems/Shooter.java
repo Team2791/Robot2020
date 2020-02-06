@@ -17,15 +17,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 import frc.robot.commands.MoveShooter;
-import frc.robot.commands.MoveShooterPassive;
+// import frc.robot.commands.MoveShooterPassive;
 import frc.robot.util.Util;
-
 /**
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
     private CANSparkMax shooter_neo;
-    private MoveShooterPassive defaultCommand;
+    // private MoveShooterPassive defaultCommand;
 
 
 
@@ -33,7 +32,18 @@ public class Shooter extends Subsystem {
         shooter_neo = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
         shooter_neo.setOpenLoopRampRate(Constants.kNeoRampTime);
     }
-
+    public double idealVelocity(double angle, double dist, double height){
+        double gravityInches = Constants.kGravity*12;
+        angle = Math.toRadians(angle);
+        double velocity = Math.sqrt( (gravityInches*Math.pow(dist,2)) / (2*Math.pow(Math.cos(angle),2) * (dist*Math.tan(angle)-height))); //speed in inches/second
+        return velocity;
+    }
+    public double velocityToRPM(double velocity){
+        double shooterRotationsPerSecond = velocity/(.5*Constants.ShooterDiameter); //rotation per second
+        double shooterRPM = shooterRotationsPerSecond*60;
+        double motorRPM = shooterRPM/Constants.ShooterGearing;
+        return motorRPM;
+    }
     public void setShooter(final double output){
         shooter_neo.set(output);
     }
