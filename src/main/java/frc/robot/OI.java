@@ -68,19 +68,21 @@ public class OI {
         initButtons();
         initUsed();
 
-       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
+       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
         //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
 
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
 
-        driverA.whenPressed(new MoveShooter());
-        driverA.whenReleased(new StopShooter());
-        driverB.whenPressed(new MoveElevator());
-        driverB.whenReleased(new StopElevator());
-        driverX.whenPressed(new MoveHopper());
-        driverX.whenReleased(new StopHopper());
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
+        // driverB.whenPressed(new MoveElevator());
+        // driverB.whenReleased(new StopElevator());
+        // driverX.whenPressed(new MoveHopper());
+        // driverX.whenReleased(new StopHopper());
+        driverB.whenPressed(new DrivetrainBackwards());
+        driverB.whenReleased(new StopDrivetrain());
         driverY.whenPressed(new MoveDrivetrain());
         driverY.whenReleased(new StopDrivetrain());
         driverLB.whenPressed(new runHopperElevator());

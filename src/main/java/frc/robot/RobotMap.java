@@ -24,8 +24,8 @@ public class RobotMap {
     //Drivetrain
     public static final int kLeftLeader = 1;
     public static final int kRightLeader = 3;
-    public static final int[] kLeftFollowers = {24};
-    public static final int[] kRightFollowers = {23};
+    public static final int[] kLeftFollowers = {24};// check if these are the right ids
+    public static final int[] kRightFollowers = {23}; // check if these are the right ids
   //  public static final int[] kLineSensors = {7, 6, 5, 4};
     public static final int[] kLineSensors = {4,5,6,7};
     public static final int kLEDBlueSolenoid = 7;
