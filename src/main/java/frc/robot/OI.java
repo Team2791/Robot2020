@@ -68,12 +68,13 @@ public class OI {
         initButtons();
         initUsed();
 
-     //   driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
+       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
         //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
 
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
+
         driverA.whenPressed(new MoveShooter());
         driverA.whenReleased(new StopShooter());
         driverB.whenPressed(new MoveElevator());
