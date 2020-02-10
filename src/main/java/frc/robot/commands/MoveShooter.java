@@ -7,10 +7,9 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;5
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.util.Limelight;
 
 public class MoveShooter extends Command {
   public MoveShooter() {
@@ -30,7 +29,6 @@ public class MoveShooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
     Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
   }
 
