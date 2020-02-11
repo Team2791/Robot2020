@@ -9,13 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AimWithLimelight extends CommandGroup {
   public AimWithLimelight() {
-    if(Robot.limelight.limelightAimInner()){
-      new AdjustLimelightInner();
-    }
-    else{
-      new AdjustLimelight();
-    }
-        
+    addSequential(new AdjustLimelight(true));
+    addSequential(new AdjustLimelightInner(true)); 
   }
 }
 

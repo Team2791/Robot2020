@@ -10,10 +10,14 @@ public class AdjustLimelight extends Command {
 
     public double TURN_FACTOR;
     private boolean foundOuter;
+    private boolean aimInner = Robot.limelight.limelightAimInner();
+    private boolean commandGroupRun;
 
-    public AdjustLimelight() {
+    public AdjustLimelight(boolean runCommandGroup) {
         super("AdjustLimelight");
+        commandGroupRun = runCommandGroup;
         TURN_FACTOR = 0.05;
+        
     }
 
     public void execute() {
@@ -49,6 +53,17 @@ public class AdjustLimelight extends Command {
     }
 
     public boolean isFinished() {
-        return foundOuter;
+        //return foundOuter;
+        if(commandGroupRun){
+            if(Robot.limelight.limelightAimInner()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return foundOuter;
+        }
     }
 }

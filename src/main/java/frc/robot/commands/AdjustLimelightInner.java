@@ -11,9 +11,11 @@ public class AdjustLimelightInner extends Command {
     public double TURN_FACTOR;
     public double kBetweenInnerOuter = 29.25;
     private boolean foundInner;
+    private boolean commandGroupRun;
 
-    public AdjustLimelightInner() {
+    public AdjustLimelightInner(boolean runCommandGroup) {
         super("AdjustLimelightInner");
+        commandGroupRun = runCommandGroup;
         requires(Robot.drivetrain);
         TURN_FACTOR = 0.05;
     }
@@ -57,6 +59,16 @@ public class AdjustLimelightInner extends Command {
     }
 
     public boolean isFinished() {
-        return foundInner;
+        if(commandGroupRun){
+            if(Robot.limelight.limelightAimInner()){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        else{
+            return foundInner;
+        }
     }
 }

@@ -80,8 +80,8 @@ public class OI {
         // driverX.whenReleased(new StopDrive());
         // // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
         driverDPadRight.whileHeld(new AimWithLimelight());
-        driverA.whileHeld(new AdjustLimelight());
-        driverX.whileHeld(new AdjustLimelightInner());
+        driverA.whileHeld(new AdjustLimelight(false));
+        driverX.whileHeld(new AdjustLimelightInner(false));
     }
 
     private void initButtons(){

@@ -136,10 +136,21 @@ public class Limelight {
     }
 
     public boolean limelightAimInner(){
-        if(angle > kInnerMaxAngle || angle < -kInnerMaxAngle)
-            return false;
-        else
-            return true;
+        if(angle < 0){
+            double possibleY = .314 * xCoord - 17;
+            if(yCoord > possibleY)
+                return true;
+            else
+                return false;
+        }
+        else{
+            double possibleY = .314 * xCoord + 17;
+            if(yCoord < possibleY)
+                return true;
+            else
+                return false;
+        }
+        
     }
 
 
