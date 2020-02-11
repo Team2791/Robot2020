@@ -1,10 +1,13 @@
 package frc.robot;
 
-import frc.robot.subsystems.Drivetrain;
-
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Hopper;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.util.Limelight;
 
@@ -15,35 +18,39 @@ public class Robot extends TimedRobot {
     public static OI oi;
     public static PowerDistributionPanel pdp;
     public static Compressor compressor;
-    public static Drivetrain drivetrain;
-    public static Limelight limelight;
 
+    public static Shooter shooter;
+    public static Elevator elevator;
+    public static Hopper hopper;
+    public static RobotMap robotmap;
 
     @Override
     public void robotInit() {
-        oi = new OI();
-        limelight = new Limelight();
-        pdp = new PowerDistributionPanel(RobotMap.PDP);
+        hopper = new Hopper();
+        elevator = new Elevator();
+        shooter = new Shooter();
         drivetrain = new Drivetrain();
-        
-        
+        pdp = new PowerDistributionPanel(RobotMap.kPDP);
+        oi = new OI(); 
+        limelight = new Limelight();
+        robotmap = new RobotMap();
     }
     
     @Override
     public void robotPeriodic() {
-        // //EACH debug only runs once per 10 loops
-        loopCounter += 1;
-
+        drivetrain.debug();
+        hopper.debug();
+        limelight.debug();
     }
 
     @Override
     public void disabledInit() {
-        
+        drivetrain.setMotors(0,0);
     }
 
     @Override
     public void disabledPeriodic() {
-        limelight.debug();
+        drivetrain.setMotors(0,0);
         // Robot.drivetrain.resetGyro();
         // autoCommand.start();
     }
@@ -57,18 +64,12 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         // autoCommand.cancel();
         System.out.println("This is init");
-        limelight.debug();
     }
 
     @Override
     public void teleopPeriodic() {
-        limelight.debug();
-        // Robot.drivetrain.setMotors(-1);
-        
-         // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
         Scheduler.getInstance().run();
     }
-    
     @Override
     public void testPeriodic() {
     }

@@ -3,7 +3,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
+import frc.robot.Autons.RunElevatorWithJoystick;
+import frc.robot.Autons.RunHopperWithJoystick;
+import frc.robot.Autons.runDrivetrainShooter;
+import frc.robot.Autons.runElevatorShooter;
+import frc.robot.Autons.runHopperElevator;
+import frc.robot.Autons.stopDrivetrainShooter;
+import frc.robot.Autons.stopElevatorShooter;
+import frc.robot.Autons.stopHopperElevator;
 import frc.robot.commands.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
@@ -51,7 +58,7 @@ public class OI {
     private Button operatorRB, operatorLT, operatorLB, operatorRT;
     public Button operatorLS, operatorBack;
     private Button driverX;
-    // private Button driverRS, driverLS;
+    private Button driverRS, driverLS;
     private Button driverRX;
     protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft;
     private Button operatorA, operatorB, operatorX, operatorY;
@@ -61,14 +68,30 @@ public class OI {
         initButtons();
         initUsed();
 
-     //   driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); //this should be the default command of the DT
+       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
         //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
 
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
 
-
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
+        // driverB.whenPressed(new MoveElevator());
+        // driverB.whenReleased(new StopElevator());
+        // driverX.whenPressed(new MoveHopper());
+        // driverX.whenReleased(new StopHopper());
+        driverB.whenPressed(new DrivetrainBackwards());
+        driverB.whenReleased(new StopDrivetrain());
+        driverY.whenPressed(new MoveDrivetrain());
+        driverY.whenReleased(new StopDrivetrain());
+        driverLB.whenPressed(new runHopperElevator());
+        driverLB.whenReleased(new stopHopperElevator());
+        driverRB.whenPressed(new runDrivetrainShooter());
+        driverRB.whenReleased(new stopDrivetrainShooter());
+        driverLS.whenPressed(new runElevatorShooter());
+        driverLS.whenReleased(new stopElevatorShooter());
+        operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
         // //true does right hp far rocket path, false does right hp bay 1 ship path
         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
@@ -93,7 +116,7 @@ public class OI {
             driverStart = new JoystickButton(driverStick, 8);
             driverRB = new JoystickButton(driverStick, 6);
             driverLB = new JoystickButton(driverStick, 5);
-            // driverLS = new JoystickButton(driverStick,9);
+            driverLS = new JoystickButton(driverStick,9);
             // driverRS = new JoystickButton(driverStick,10);
             driverRX = new AnalogButton(driverStick, 4);
             driverDPadDown = new DPadButton(driverStick, DPadButton.kDPadDown);

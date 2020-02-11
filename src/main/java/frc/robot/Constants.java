@@ -21,9 +21,28 @@ public final class Constants {
     public static final double kCamStraightSuperFast = 0.75;
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
+    
     // public static final double kCamOffset = 0;
     //Joystick constant
-    public static final double DEADZONE = 0.05;
-    
+
+    public static final double DEADZONE = 0.4;
+
+
+	public static final double ELEVATOR_OUTPUT = -.05;
+
+
+	public static final double HOPPER_OUTPUT = -.20; // 20% is sweet spot
+
+
+	public static final double SHOOTER_OUTPUT = -.8;
+
+
+	public static final double DRIVETRAIN_OUTPUT = -.5;
+
+
+	public static final double SHOOTER_OUTPUT_PASSIVE = -.1;
+
+
+	public static final double MANUAL_POWER = .2;
 
 }
