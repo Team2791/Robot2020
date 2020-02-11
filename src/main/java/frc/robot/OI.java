@@ -69,7 +69,8 @@ public class OI {
         initUsed();
 
        driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
-        //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
+        
+       //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
 
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());

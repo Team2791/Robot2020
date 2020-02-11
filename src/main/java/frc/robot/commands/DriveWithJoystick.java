@@ -65,6 +65,7 @@ public class DriveWithJoystick extends Command {
         double left = Math.max(Math.min(thrust + turn, 1), -1);
         double right = Math.max(Math.min(thrust - turn, 1), -1);
         
+        // Robot.drivetrain.setMotors(left, right);
         Robot.drivetrain.setMotors(left, right);
     }
 
