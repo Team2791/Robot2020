@@ -51,6 +51,26 @@ public class Drivetrain extends Subsystem {
         leftLeader.set(-left);
         rightLeader.set(right);
         }
+
+    public double getLeftMotor(){
+        return leftLeader.getEncoder().getVelocity();
+    }
+
+    public double getRightMotor(){
+        return rightLeader.getEncoder().getVelocity();
+    }
+
+    public double getRightPosition(){
+        return leftLeader.getAlternateEncoder().getPosition();
+    }
+
+    public double getLeftPosition(){
+        return rightLeader.getAlternateEncoder().getPosition();
+    }
     public void debug() {
+        SmartDashboard.putNumber("Get Left Velocity", getLeftMotor());
+        SmartDashboard.putNumber("Get Right Velocity", getRightMotor());
+        SmartDashboard.putNumber("Get Right Position", getRightPosition());
+        SmartDashboard.putNumber("Get Left Position", getLeftPosition());
     }
 }  
