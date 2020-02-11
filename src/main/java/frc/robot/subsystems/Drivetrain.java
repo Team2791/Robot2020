@@ -23,9 +23,9 @@ public class Drivetrain extends Subsystem {
 
 
     public Drivetrain() {
-        leftLeader  = new CANSparkMax(RobotMap.DRIVETRAIN_NEO, MotorType.kBrushless);
+        leftLeader  = new CANSparkMax(RobotMap.kLeftLeader, MotorType.kBrushless);
         leftLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
-        rightLeader  = new CANSparkMax(RobotMap.DRIVETRAIN_NEO, MotorType.kBrushless);
+        rightLeader  = new CANSparkMax(RobotMap.kRightLeader, MotorType.kBrushless);
         rightLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
 
         leftFollowers = new CANSparkMax[RobotMap.kLeftFollowers.length];
@@ -34,9 +34,9 @@ public class Drivetrain extends Subsystem {
             leftFollowers[i].setOpenLoopRampRate(Constants.kNeoRampTime);
             leftFollowers[i].follow(leftLeader);
         }
-        rightFollowers = new CANSparkMax[RobotMap.kLeftFollowers.length];
-        for(int i = 0; i < leftFollowers.length; ++i) {
-            rightFollowers[i] = new CANSparkMax(RobotMap.kLeftFollowers[i], MotorType.kBrushless);
+        rightFollowers = new CANSparkMax[RobotMap.kRightFollowers.length];
+        for(int i = 0; i < rightFollowers.length; ++i) {
+            rightFollowers[i] = new CANSparkMax(RobotMap.kRightFollowers[i], MotorType.kBrushless);
             rightFollowers[i].setOpenLoopRampRate(Constants.kNeoRampTime);
             rightFollowers[i].follow(rightLeader);
         }
@@ -48,7 +48,7 @@ public class Drivetrain extends Subsystem {
 
 
     public void setMotors(double left, double right) {
-        leftLeader.set(left);
+        leftLeader.set(-left);
         rightLeader.set(right);
         }
     public void debug() {

@@ -27,7 +27,7 @@ public class MoveDrivetrain extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.setMotors(Constants.DRIVETRAIN_OUTPUT,Constants.DRIVETRAIN_OUTPUT);
+    Robot.drivetrain.setMotors(Constants.DRIVETRAIN_OUTPUT,-Constants.DRIVETRAIN_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()

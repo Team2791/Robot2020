@@ -44,4 +44,7 @@ public final class Constants {
 
 	public static final double MANUAL_POWER = .2;
 
+
+	public static final double TURN_FACTOR = 0.16;
+
 }
