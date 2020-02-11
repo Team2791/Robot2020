@@ -23,6 +23,8 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
+    public static Limelight limelight;
+    public static Drivetrain drivetrain;
 
     @Override
     public void robotInit() {

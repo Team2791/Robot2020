@@ -11,6 +11,7 @@ import frc.robot.Autons.runHopperElevator;
 import frc.robot.Autons.stopDrivetrainShooter;
 import frc.robot.Autons.stopElevatorShooter;
 import frc.robot.Autons.stopHopperElevator;
+import frc.robot.Autons.LimelightInnerOuter;
 import frc.robot.commands.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
@@ -81,17 +82,17 @@ public class OI {
         // driverB.whenReleased(new StopElevator());
         // driverX.whenPressed(new MoveHopper());
         // driverX.whenReleased(new StopHopper());
-        driverB.whenPressed(new DrivetrainBackwards());
-        driverB.whenReleased(new StopDrivetrain());
-        driverY.whenPressed(new MoveDrivetrain());
-        driverY.whenReleased(new StopDrivetrain());
-        driverLB.whenPressed(new runHopperElevator());
-        driverLB.whenReleased(new stopHopperElevator());
-        driverRB.whenPressed(new runDrivetrainShooter());
-        driverRB.whenReleased(new stopDrivetrainShooter());
-        driverLS.whenPressed(new runElevatorShooter());
-        driverLS.whenReleased(new stopElevatorShooter());
-        operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+            // driverB.whenPressed(new DrivetrainBackwards());
+            // driverB.whenReleased(new StopDrivetrain());
+            // driverY.whenPressed(new MoveDrivetrain());
+            // driverY.whenReleased(new StopDrivetrain());
+            // driverLB.whenPressed(new runHopperElevator());
+            // driverLB.whenReleased(new stopHopperElevator());
+            // driverRB.whenPressed(new runDrivetrainShooter());
+            // driverRB.whenReleased(new stopDrivetrainShooter());
+            // driverLS.whenPressed(new runElevatorShooter());
+            // driverLS.whenReleased(new stopElevatorShooter());
+            // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
         // //true does right hp far rocket path, false does right hp bay 1 ship path
         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
@@ -102,7 +103,11 @@ public class OI {
         // // driverX.whenPressed(new DriveWithJoystickLeft());
         // driverX.whenReleased(new StopDrive());
         // // driverRX.whileHeld(new PreciseTurnJoystick(driverStick, 0.1));
-        driverDPadRight.whileHeld(new AdjustLimelight());
+        driverDPadRight.whileHeld(new LimelightInnerOuter(true));
+        driverDPadLeft.whileHeld(new LimelightInnerOuter(false));
+        driverX.whileHeld(new AdjustLimelightOuter(false));
+        driverB.whileHeld(new AdjustLimelightOuter(true));
+        driverA.whileHeld(new AdjustLimelightInner());
     }
 
     private void initButtons(){

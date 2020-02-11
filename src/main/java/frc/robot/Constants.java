@@ -21,6 +21,11 @@ public final class Constants {
     public static final double kCamStraightSuperFast = 0.75;
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
+
+    // Limelight constants
+    public static final double kDistInnerOuter = 1;
+    public static final double kThresholdAngle = 1;
+
     
     // public static final double kCamOffset = 0;
     //Joystick constant

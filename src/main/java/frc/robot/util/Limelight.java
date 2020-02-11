@@ -120,6 +120,17 @@ public class Limelight {
         return distance;
     }
 
+    public boolean chooseInner(){
+        double thresholdFromWall = 90 - Constants.kThresholdAngle;
+        double distToWall = kverticalDistance/Math.tan(Math.toRadians(verticalOffset.getDouble(0.0)));
+        double horizDistance = distToWall * Math.tan(Math.toRadians(horizontalOffset.getDouble(0.0)));
+        double angleFromWall = Math.atan((distToWall+Constants.kDistInnerOuter)/horizDistance);
+
+        if (Math.abs(angleFromWall)<thresholdFromWall){
+            return true;
+        } 
+        return false;
+    }
 
     // Methods to set Camera settings
 

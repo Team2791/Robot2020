@@ -6,13 +6,14 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drivetrain;
 
-public class AdjustLimelight extends Command {
+public class AdjustLimelightOuter extends Command {
 
     public double TURN_FACTOR;
-
-    public AdjustLimelight() {
-        super("AdjustLimelight");
+    private boolean chooseInnerOuter;
+    public AdjustLimelightOuter(boolean InnerOuterChoice) {
+        super("AdjustLimelightOuter");
         TURN_FACTOR = 0.05;
+        chooseInnerOuter = InnerOuterChoice;
     }
 
     public void execute() {
@@ -40,14 +41,17 @@ public class AdjustLimelight extends Command {
         double left = Math.max(Math.min(thrust + turn, 1), -1);
         double right = Math.max(Math.min(thrust - turn, 1), -1);
         
-        Robot.drivetrain.setLeftRightMotorOutputs(left, right);
+        Robot.drivetrain.setMotors(left, right);
     }
 
     public void end() {
-        Robot.drivetrain.setLeftRightMotorOutputs(0, 0);
+        Robot.drivetrain.setMotors(0, 0);
     }
 
     public boolean isFinished() {
+        if(chooseInnerOuter){
+            return Robot.limelight.chooseInner();
+        }
         return false;
     }
 }
