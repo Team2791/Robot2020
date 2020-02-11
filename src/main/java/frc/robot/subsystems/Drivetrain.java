@@ -27,7 +27,6 @@ public class Drivetrain extends Subsystem {
         leftLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
         rightLeader  = new CANSparkMax(RobotMap.kRightLeader, MotorType.kBrushless);
         rightLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
-
         leftFollowers = new CANSparkMax[RobotMap.kLeftFollowers.length];
         for(int i = 0; i < leftFollowers.length; ++i) {
             leftFollowers[i] = new CANSparkMax(RobotMap.kLeftFollowers[i], MotorType.kBrushless);
@@ -67,10 +66,19 @@ public class Drivetrain extends Subsystem {
     public double getLeftPosition(){
         return rightLeader.getAlternateEncoder().getPosition();
     }
+    public double getLeftCPR(){
+        return leftLeader.getAlternateEncoder().getCountsPerRevolution();
+    }
+
+    public double getRightCPR(){
+        return rightLeader.getAlternateEncoder().getCountsPerRevolution();
+    }
     public void debug() {
         SmartDashboard.putNumber("Get Left Velocity", getLeftMotor());
         SmartDashboard.putNumber("Get Right Velocity", getRightMotor());
         SmartDashboard.putNumber("Get Right Position", getRightPosition());
         SmartDashboard.putNumber("Get Left Position", getLeftPosition());
+        SmartDashboard.putNumber("Get Right CPR", getRightCPR());
+        SmartDashboard.putNumber("Get Left CPR", getLeftCPR());
     }
 }  
