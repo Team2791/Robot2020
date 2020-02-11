@@ -67,6 +67,6 @@ public final class Constants {
 	public static final double SHOOTER_OUTPUT_PASSIVE = -.1;
 
 
-	public static final double MANUAL_POWER = .2;
+    public static final double MANUAL_POWER = .2;
 
 }

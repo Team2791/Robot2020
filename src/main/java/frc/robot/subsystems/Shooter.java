@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,7 +28,7 @@ import frc.robot.util.Util;
 public class Shooter extends Subsystem {
     private CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
-    private Gyro hoodGyro; 
+    private Solenoid hood_1;
     // private MoveShooterPassive defaultCommand;
 
 
@@ -37,6 +38,7 @@ public class Shooter extends Subsystem {
         shooter_follower = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
+        hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_1);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;
@@ -60,7 +62,7 @@ public class Shooter extends Subsystem {
     }
     public void setShooter(final double output){
         shooter_leader.set(output);
-        shooter_follower.follow(shooter_leader,true);
+        shooter_follower.follow(shooter_leader, true);
     }
     public double getShooterVelocity(){
         return shooter_leader.getEncoder().getVelocity();
@@ -68,11 +70,12 @@ public class Shooter extends Subsystem {
     public double getShooter(){
         return shooter_leader.getEncoder().getCountsPerRevolution();
     }
-    public double getHoodAngle() {
-        return hoodGyro.getAngle();
+    public void setHood1(boolean extended) {
+        hood_1.set(extended);
     }
-    public void setHoodAngle() {
-        hoodGyro.setAngle();
+
+    public boolean getHood1(){
+        return hood_1.get();
     }
     @Override
     protected void initDefaultCommand() {
@@ -85,5 +88,6 @@ public class Shooter extends Subsystem {
     public void debug() {
         SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
         SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
+        SmartDashboard.putBoolean("Hood Position", getHood1());
     }
 }
