@@ -45,11 +45,11 @@ public class AdjustLimelight extends Command {
         double left = Math.max(Math.min(thrust + turn, 1), -1);
         double right = Math.max(Math.min(thrust - turn, 1), -1);
         
-        Robot.drivetrain.setLeftRightMotorOutputs(left, right);
+        Robot.drivetrain.setMotors(left, right);
     }
 
     public void end() {
-        Robot.drivetrain.setLeftRightMotorOutputs(0, 0);
+        Robot.drivetrain.setMotors(0, 0);
     }
 
     public boolean isFinished() {

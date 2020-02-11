@@ -111,11 +111,8 @@ public class Drivetrain extends Subsystem{
 		shakyDrive.stopMotor();
 	}
 	
-	/** 
-	 * Drivetrain motor outputs; Accepts values between -1.0 and +1.0
-	 * @param left motor output
-	 * @param right motor output*/
-	public void setLeftRightMotorOutputs(double left, double right){
+
+	public void setMotors(double left, double right) {
 		
 		shakyDrive.tankDrive(left,right);
 	}
