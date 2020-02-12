@@ -36,8 +36,8 @@ public class Drivetrain extends Subsystem {
         rightLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
         leftFollowers = new CANSparkMax[RobotMap.kLeftFollowers.length];
 
-        m_leftAlternateEncoder = leftLeader.getAlternateEncoder(kAltEncType, 4096);
-        m_rightAlternateEncoder = rightLeader.getAlternateEncoder(kAltEncType, 4096);
+        m_leftAlternateEncoder = leftLeader.getAlternateEncoder(kAltEncType, 1024);
+        m_rightAlternateEncoder = rightLeader.getAlternateEncoder(kAltEncType, 1024);
 
         for(int i = 0; i < leftFollowers.length; ++i) {
             leftFollowers[i] = new CANSparkMax(RobotMap.kLeftFollowers[i], MotorType.kBrushless);

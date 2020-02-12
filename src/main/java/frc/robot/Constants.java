@@ -8,7 +8,7 @@ public final class Constants {
     // Drivetrain constants
     public static final double kFastDrive = 1.0;
     public static final double kSlowDrive = 0.5;
-    public static final double kCreep = .6;
+    public static final double kCreep = .3;
     public static final double kSlowish = 0.5; //Testing should be 0.5
     public static final double kLineFollowStraight = 0.19; //0.27;
     public static final double kLineFollowTurn = 0.2; //0.5;
