@@ -9,7 +9,7 @@ package frc.robot.Autons;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.StopElevator;
-import frc.robot.commands.StopShooter;
+import frc.robot.commands.Shooter.StopShooter;
 
 public class stopElevatorShooter extends CommandGroup {
   /**

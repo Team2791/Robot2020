@@ -8,20 +8,15 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.MoveShooter;
-import frc.robot.util.IrSensor;
 // import frc.robot.commands.MoveShooterPassive;
-import frc.robot.util.Util;
 /**
  * Add your docs here.
  */
@@ -83,6 +78,14 @@ public class Shooter extends Subsystem {
         // // TODO Auto-generated method stub
         // defaultCommand.start();
 
+    }
+    protected boolean checkWheelSpeed(){
+        if(Robot.shooter.getShooterVelocity() >= Constants.SHOOTER_OUTPUT - .01 && Robot.shooter.getShooterVelocity() <= Constants.SHOOTER_OUTPUT + .01){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void debug() {

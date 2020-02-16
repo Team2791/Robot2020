@@ -2,9 +2,9 @@ package frc.robot.Autons;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.MoveDrivetrain;
-import frc.robot.commands.MoveShooter;
+import frc.robot.commands.Shooter.MoveShooter;
 import frc.robot.commands.StopDrivetrain;
-import frc.robot.commands.StopShooter;
+import frc.robot.commands.Shooter.StopShooter;
 
 public class stopDrivetrainShooter extends CommandGroup {
   /**

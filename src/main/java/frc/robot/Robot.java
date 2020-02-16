@@ -3,10 +3,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.commands.MoveHopper;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Shooter;
+import frc.robot.util.IrSensor;
+import frc.robot.subsystems.Manipulator;
 import edu.wpi.first.wpilibj.Compressor;
 
 
@@ -22,16 +25,20 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
+    public static Manipulator manipulator; 
+    public static IrSensor irSensor;
 
     @Override
     public void robotInit() {
         hopper = new Hopper();
         elevator = new Elevator();
         shooter = new Shooter();
+        manipulator = new Manipulator(); 
         drivetrain = new Drivetrain();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
-         oi = new OI(); 
+        oi = new OI(); 
         robotmap = new RobotMap();
+        irSensor = new IrSensor(RobotMap.HORIZONTAL_HOPPER); //is thsi right????
     }
     
     @Override
@@ -39,6 +46,10 @@ public class Robot extends TimedRobot {
         // //EACH debug only runs once per 10 loops
         drivetrain.debug();
         hopper.debug();
+        if (Robot.irSensor.getValue() < Constants.kIrSensorVal) {
+            new MoveHopper();
+        }
+        
 
     }
 

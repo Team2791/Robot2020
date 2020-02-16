@@ -72,10 +72,17 @@ public class RobotMap {
     public static final int ELEVATOR_TALON = 23;
 
     //Hopper
-
-    public static final int HOPPER_TALON = 24;
+    public static final int HOPPER_SOLENOID = 2; //temp value
+    //public static final int HOPPER_TALON = 24; do we need this??
+    public static final int VERTICAL_HOPPER = 41;
+    public static final int HORIZONTAL_HOPPER = 42;
     //Drivetrain
-  public static final int DRIVETRAIN_NEO = 3;
-public static final int HOOD_1 = 10;
-  
+    public static final int DRIVETRAIN_NEO = 3;
+    public static final int HOOD_1 = 10;
+    //Manipulator
+    public static final int MANIPULATOR_NEO = 40;
+    public static final int MANIPULATOR_SOLENOID = 0; 
+    //Control Panel Mech
+    public static final int PANELMECH_NEO = 50; 
+    public static final int PANELMECH_SOLENOID = 4; 
 }

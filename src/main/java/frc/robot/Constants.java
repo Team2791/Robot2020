@@ -47,6 +47,8 @@ public final class Constants {
 
     public static final double kDistInnerOuter = 8;
 
+    public static final double kIrSensorVal = 20.0; //what the value of the ir sensor should read w/o a ball
+
     // public static final double kCamOffset = 0;
     //Joystick constant
     public static final double DEADZONE = 0.4;
@@ -69,4 +71,6 @@ public final class Constants {
 
     public static final double MANUAL_POWER = .2;
 
+
+    public static final double INTAKE_MOTORSPEED = 0.75; //Temp value please test it out and do stuff yes
 }

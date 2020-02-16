@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveShooterPassive extends Command {
-  public MoveShooterPassive() {
-    super("MoveShooterPassive");
+public class MoveShooter extends Command {
+  public MoveShooter() {
+    super("MoveShooter");
     requires(Robot.shooter);
 
     // Use requires() here to declare subsystem dependencies
@@ -29,7 +29,7 @@ public class MoveShooterPassive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_PASSIVE);
+    Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()

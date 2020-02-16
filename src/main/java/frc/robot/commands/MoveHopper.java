@@ -10,6 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hopper;
+import frc.robot.util.IrSensor;
+import frc.robot.util.Util;
 
 public class MoveHopper extends Command {
   public MoveHopper() {
@@ -33,7 +36,12 @@ public class MoveHopper extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if (Robot.irSensor.getValue() < Constants.kIrSensorVal) {
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
   // Called once after isFinished returns true
