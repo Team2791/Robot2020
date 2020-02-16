@@ -6,6 +6,7 @@ import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
 
 public class CheckWheelSpeed extends Command{
+    private double wheelSpeed;
     public CheckWheelSpeed(){
         super("CheckWheelSpeed");
         requires(Robot.shooter);
@@ -20,17 +21,18 @@ public class CheckWheelSpeed extends Command{
     @Override
     
     protected void execute() {
-        
+        wheelSpeed = Robot.shooter.getShooterVelocity();
     }
     
     @Override
 
     protected boolean isFinished(){
         //change .01 to another number to change error parameters
-        if(Robot.shooter.getShooterVelocity() >= Constants.SHOOTER_OUTPUT - .01 && Robot.shooter.getShooterVelocity() <= Constants.SHOOTER_OUTPUT + .01){
+        if(wheelSpeed >= Constants.SHOOTER_OUTPUT - .01 && wheelSpeed <= Constants.SHOOTER_OUTPUT + .01){
             return true;
         }
         else{
+            Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
             return false;
         }
     }
