@@ -76,5 +76,11 @@ public class RobotMap {
     public static final int HOPPER_TALON = 24;
     //Drivetrain
   public static final int DRIVETRAIN_NEO = 22;
-  
+
+  //Climber
+  public static final int WINCH_NEO=60;
+  public static final int SELFCLIMB_NEO=61;
+
+ public static final int kClimbSolenoid=1;
+  public static final int kClimbGyro=1;
 }

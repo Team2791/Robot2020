@@ -44,4 +44,11 @@ public final class Constants {
 
 	public static final double MANUAL_POWER = .2;
 
+     //climber
+     public static final double kCLimberCreep = 0.25;
+
+
+     //Global
+     public static final boolean kToExtendArm = true;
+ 
 }

@@ -8,6 +8,8 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.subsystems.Climber;
 
 
                                                                                                    
@@ -22,7 +24,7 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
-
+    public static Subsystem climber;
     @Override
     public void robotInit() {
         hopper = new Hopper();

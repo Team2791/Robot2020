@@ -12,6 +12,7 @@ import frc.robot.Autons.stopDrivetrainShooter;
 import frc.robot.Autons.stopElevatorShooter;
 import frc.robot.Autons.stopHopperElevator;
 import frc.robot.commands.*;
+import frc.robot.commands.Climb.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
@@ -89,6 +90,11 @@ public class OI {
         driverLS.whenPressed(new runElevatorShooter());
         driverLS.whenReleased(new stopElevatorShooter());
         operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+        operatorX.whenPressed(new ReleasePin());
+        operatorY.whenPressed(new WinchClimb());
+        operatorY.whenReleased(new StopWinchClimb());
+
+
         // //true does right hp far rocket path, false does right hp bay 1 ship path
         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
