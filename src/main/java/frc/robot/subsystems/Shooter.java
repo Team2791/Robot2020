@@ -7,56 +7,108 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
-import frc.robot.RobotMap;
-import frc.robot.commands.MoveShooter;
-import frc.robot.commands.MoveShooterPassive;
-import frc.robot.util.Util;
 
+import frc.robot.Robot;
+import frc.robot.RobotMap;
+// import frc.robot.commands.MoveShooterPassive;
 /**
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-    private CANSparkMax shooterLeft, shooterRight;
-    private MoveShooterPassive defaultCommand;
+
+    private CANSparkMax shooter_leader;
+    private CANSparkMax shooter_follower;
+    private Solenoid hood_1;
+    // private MoveShooterPassive defaultCommand;
+
+
 
     public Shooter(){
-        shooterLeft = new CANSparkMax(RobotMap.kShooterLeft, MotorType.kBrushless);
-        shooterLeft.setOpenLoopRampRate(Constants.kNeoRampTime);
-        shooterRight = new CANSparkMax(RobotMap.kShooterRight, MotorType.kBrushless);
-        shooterRight.setOpenLoopRampRate(Constants.kNeoRampTime);
-
-        shooterLeft.set(0);
-        shooterRight.set(0);
-
-        setBrakeMode(false);
+        shooter_leader = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
+        shooter_follower = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
+        shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
+        hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_1);
     }
-
+    public double idealVelocity(double angle, double dist, double height){
+        double gravityInches = Constants.kGravity*12;
+        angle = Math.toRadians(angle);
+        double velocity = Math.sqrt( (gravityInches*Math.pow(dist,2)) / (2*Math.pow(Math.cos(angle),2) * (dist*Math.tan(angle)-height))); //speed in inches/second
+        return velocity;
+    }
+    public double applyDrag(double velocity){
+        velocity*=Constants.kDrag;
+        return velocity;
+    }
+    public double applyMagnus(double velocity){
+        velocity/=Constants.kMagnus;
+        return velocity;
+    }
+    public double velocityToRPM(double velocity){
+        double shooterRotationsPerSecond = velocity/(.5*Constants.ShooterDiameter); //rotation per second
+        double shooterRPM = shooterRotationsPerSecond*60;
+        double motorRPM = shooterRPM/Constants.ShooterGearing;
+        return motorRPM;
+    }
     public void setShooter(final double output){
-        
+        shooter_leader.set(output);
+        shooter_follower.follow(shooter_leader, true);
+    }
+    public double getShooterVelocity(){
+        return shooter_leader.getEncoder().getVelocity();
     }
 
+    public boolean isShooterVelocityCorrect(){
+        if(getShooterVelocity() != Constants.SHOOTER_VELOCITY){
+            return false;
+        }
+        return true; 
+    }
+    public double getShooter(){
+        return shooter_leader.getEncoder().getCountsPerRevolution();
+    }
+    public void setHood1(boolean extended) {
+        hood_1.set(extended);
+    }
+
+    public boolean getHood1(){
+        return hood_1.get();
+    }
     @Override
     protected void initDefaultCommand() {
+        // defaultCommand = new MoveShooterPassive();
+        // // TODO Auto-generated method stub
+        // defaultCommand.start();
 
     }
-
-    public void setBrakeMode(boolean isbrake) {
-        IdleMode mode = isbrake ? IdleMode.kBrake : IdleMode.kCoast;
-        shooterLeft.setIdleMode(mode);
-        shooterRight.setIdleMode(mode);
+    public boolean checkWheelSpeed_Wall(){
+        if(Robot.shooter.getShooterVelocity() >= Constants.SHOOTER_OUTPUT_WALL - .01 && Robot.shooter.getShooterVelocity() <= Constants.SHOOTER_OUTPUT_WALL + .01) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean checkWheelSpeed_Long() {
+        if(Robot.shooter.getShooterVelocity() >= Constants.SHOOTER_OUTPUT_LONG - .01 && Robot.shooter.getShooterVelocity() <= Constants.SHOOTER_OUTPUT_LONG + .01){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void debug() {
-        // SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
-        // SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
+        SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
+        SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
+        SmartDashboard.putBoolean("Hood Position", getHood1());
     }
 }

@@ -17,34 +17,44 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
+
 /**
  * Add your docs here.
  */
 public class Hopper extends Subsystem {
-    public CANSparkMax vertHopper;
-    public CANSparkMax horiHopper;
+
+    public CANSparkMax hopper_horizontal;
+    public CANSparkMax hopper_vertical;
+    public Solenoid hopper_stopper; 
+    public IrSensor irSensor = new IrSensor(RobotMap.kPDP);
 
     
     public Hopper(){
-        vertHopper = new CANSparkMax(RobotMap.kVertHopper, MotorType.kBrushless);
-        vertHopper.setOpenLoopRampRate(Constants.kNeoRampTime);
-        horiHopper = new CANSparkMax(RobotMap.kHoriHopper, MotorType.kBrushless);
-        horiHopper.setOpenLoopRampRate(Constants.kNeoRampTime);
-
-        vertHopper.set(0);
-        horiHopper.set(0);
+        hopper_horizontal = new CANSparkMax(RobotMap.HORIZONTAL_HOPPER, MotorType.kBrushless);
+        hopper_vertical = new CANSparkMax(RobotMap.VERTICAL_HOPPER, MotorType.kBrushless); 
+        hopper_stopper = new Solenoid(RobotMap.kPCM, RobotMap.HOPPER_SOLENOID);
     }
 
     public void setHopper(final double output){
-        // hopper_talon.set(ControlMode.PercentOutput, output);
+        hopper_horizontal.set(output);
+        hopper_vertical.set(output);
     }
     // public double getHopperVoltage() {
-    //     // return hopper_talon.getMotorOutputVoltage();
-    //     }
+    //     return hopper_neo.ge
+    // }
+    public boolean isRetracted() {
+        return !hopper_stopper.get();
+    }
+    public void setRetracted(boolean retract) {
+        hopper_stopper.set(retract);
+    }
+    public boolean getRetracted() {
+        return hopper_stopper.get();
+    }
 
     public void debug(){
-        // SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
-
+        //SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
+        SmartDashboard.putNumber("IR Value", irSensor.getValue());
     }
     @Override
     protected void initDefaultCommand() {
