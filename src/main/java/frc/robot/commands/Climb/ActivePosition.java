@@ -48,7 +48,7 @@ public class ActivePosition extends Command {
 
       turn=0;
     }
-      else if(angle>270&&angle>90&&angle<360){
+      else if(angle>270&&angle<360){
 
         turn=Constants.kSelfClimbGoRight;
       }

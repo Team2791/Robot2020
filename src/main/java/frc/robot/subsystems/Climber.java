@@ -19,11 +19,9 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.GyroBase;
 import frc.robot.commands.*;
 
-
 public class Climber extends Subsystem { 
     private CANSparkMax winch_Neo;
     private CANSparkMax selfClimb_Neo;
-
 
     public static double bottom_penetrometer;
     public static double top_penetrometer;
@@ -31,7 +29,6 @@ public class Climber extends Subsystem {
 
 
     private Solenoid Extender;
-    private boolean isextended;
     private GyroBase climbGyro;
     public double angle;
     
@@ -39,10 +36,9 @@ public class Climber extends Subsystem {
         winch_Neo = new CANSparkMax(RobotMap.WINCH_NEO, MotorType.kBrushless);
         Extender = new Solenoid(RobotMap.kPCM, RobotMap.kClimbSolenoid);
         selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
+        climbGyro = new GyroBase();
      }
     
-        
-
     public void initDefaultCommand() {
      //   setDefaultCommand(new DefaultExtension());
         }
@@ -64,9 +60,7 @@ public class Climber extends Subsystem {
     }
 
     public double getGyroAngle() {
-        return climbGyro.getAngle();
-             
-
+        return climbGyro.getAngle();        
     }
     
     public void debug(){
@@ -74,6 +68,7 @@ public class Climber extends Subsystem {
         SmartDashboard.putNumber("Gyro angle", climbGyro.getAngle());
      }
 
+     
     
   
 

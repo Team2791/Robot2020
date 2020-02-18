@@ -8,7 +8,6 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.subsystems.Climber;
 
 
