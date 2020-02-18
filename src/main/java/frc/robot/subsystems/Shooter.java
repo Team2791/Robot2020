@@ -7,6 +7,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
+
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 // import frc.robot.commands.MoveShooterPassive;
@@ -21,6 +23,7 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
+
     private CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
     private Solenoid hood_1;

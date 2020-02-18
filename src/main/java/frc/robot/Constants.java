@@ -8,6 +8,7 @@ public final class Constants {
     // Drivetrain constants
     public static final double kFastDrive = 1.0;
     public static final double kSlowDrive = 0.5;
+
     public static final double kCreep = 0.2;
     public static final double kSlowish = 0.5; //Testing should be 0.5
     public static final double kLineFollowStraight = 0.19; //0.27;
@@ -22,6 +23,7 @@ public final class Constants {
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
     
+
     public static final double ShooterkP = 6e-4;
     public static final double ShooterkI = 0;
     public static final double ShooterkD = 1e-5;
@@ -54,22 +56,21 @@ public final class Constants {
     public static final double DEADZONE = 0.4;
 
 
-	public static final double ELEVATOR_OUTPUT = 1; //was at 1
+	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-	public static final double HOPPER_OUTPUT = -.17; //35% is sweet spot      slowed down to 17%
+	public static final double HOPPER_OUTPUT = -.20; // 20% is sweet spot
 
 
-    public static final double SHOOTER_OUTPUT_WALL = 0.1; //89% for near trench      40% for wall shot       100% too short for long shot
+	public static final double SHOOTER_OUTPUT = -.8;
 
 
-    public static final double SHOOTER_OUTPUT_LONG = 1; 
+	public static final double DRIVETRAIN_OUTPUT = -1.0;
 
-
-	public static final double DRIVETRAIN_OUTPUT = -.5;
 
 
 	public static final double SHOOTER_OUTPUT_PASSIVE = -.1;
+
 
 
     public static final double MANUAL_POWER = .2;

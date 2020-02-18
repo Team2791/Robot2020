@@ -7,20 +7,22 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Solenoid;
-
 import frc.robot.RobotMap;
-import frc.robot.util.IrSensor;
+
 
 /**
  * Add your docs here.
  */
 public class Hopper extends Subsystem {
+
     public CANSparkMax hopper_horizontal;
     public CANSparkMax hopper_vertical;
     public Solenoid hopper_stopper; 
