@@ -24,7 +24,7 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
-    public static Subsystem climber;
+    public static Climber climber;
     @Override
     public void robotInit() {
         hopper = new Hopper();
@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
          oi = new OI(); 
         robotmap = new RobotMap();
+        climber = new Climber();
     }
     
     @Override
