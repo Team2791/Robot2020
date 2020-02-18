@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hopper;
@@ -27,25 +28,23 @@ public class Robot extends TimedRobot {
     public static RobotMap robotmap;
     public static Intake intake;
     public static ControlPan controlPan;
+    // public static CameraServer Cam;
 
-   //public static final CameraServer CamServer = CameraServer.getInstance();
 
 
     @Override
     public void robotInit() {
-        hopper = new Hopper();
-        shooter = new Shooter();
+        // hopper = new Hopper();
+        // shooter = new Shooter();
         drivetrain = new Drivetrain();
-        intake = new Intake();
-        controlPan = new ControlPan();
-
+        // intake = new Intake();
+        // controlPan = new ControlPan();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
-
+        // Cam = CameraServer.getInstance();
         compressor = new Compressor(RobotMap.kPCM);
-        compressor.start(); 
-        compressor.enabled();
+        compressor.start();
     }
     
     @Override
@@ -53,9 +52,11 @@ public class Robot extends TimedRobot {
         // //EACH debug only runs once per 10 loops
         // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
         drivetrain.debug();
-        hopper.debug();
+        compressor.start();
+        SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
+        // hopper.debug();
 
-        // CamServer.startAutomaticCapture(0);
+        // Cam.startAutomaticCapture(0);
     }
 
     @Override
@@ -78,6 +79,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         // autoCommand.cancel();
+        compressor.start(); 
         System.out.println("This is init");
         
 

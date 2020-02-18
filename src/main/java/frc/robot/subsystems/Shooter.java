@@ -7,6 +7,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -35,23 +36,23 @@ public class Shooter extends Subsystem {
 
         shooterLeft.set(0);
         shooterRight.set(0);
+
+        setBrakeMode(false);
     }
 
     public void setShooter(final double output){
         
     }
-    // public double getShooterVelocity(){
-    //     return shooter_neo.getEncoder().getVelocity();
-    // }
-    // public double getShooter(){
-    //     return shooter_neo.getEncoder().getCountsPerRevolution();
-    // }
+
     @Override
     protected void initDefaultCommand() {
-        // defaultCommand = new MoveShooterPassive();
-        // // TODO Auto-generated method stub
-        // defaultCommand.start();
 
+    }
+
+    public void setBrakeMode(boolean isbrake) {
+        IdleMode mode = isbrake ? IdleMode.kBrake : IdleMode.kCoast;
+        shooterLeft.setIdleMode(mode);
+        shooterRight.setIdleMode(mode);
     }
 
     public void debug() {
