@@ -22,16 +22,30 @@ public class RobotMap {
     public static final int kPDP = 0;
 
     //Drivetrain
-    public static final int kLeftLeader = 1;
-    public static final int kRightLeader = 3;
-    public static final int[] kLeftFollowers = {24};
-    public static final int[] kRightFollowers = {23};
+    public static final int kLeftLeader = 20;
+    public static final int kRightLeader = 22;
+    public static final int leftFollower = 21;
+    public static final int rightFollower = 23;
+    public static final int[] kLeftFollowers = {21};// check if these are the right ids
+    public static final int[] kRightFollowers = {23}; // check if these are the right ids
   //  public static final int[] kLineSensors = {7, 6, 5, 4};
     public static final int[] kLineSensors = {4,5,6,7};
     public static final int kLEDBlueSolenoid = 7;
     public static final int kLEDGreenSolenoid = 6;
 
 
+    public static final int kShooterLeft = 31;
+    public static final int kShooterRight = 32;
+
+    public static final int kIntake = 40;
+
+    public static final int kVertHopper = 41;
+    public static final int kHoriHopper = 42;
+
+    public static final int kControlPan = 50;
+
+    public static final int kWinch = 60;
+    public static final int kActivePos = 61;
     //Lifters
     public static final int kFrontLiftTalon = 23;
     public static final int kBackLiftTalon = 22;

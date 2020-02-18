@@ -8,8 +8,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
@@ -18,22 +21,29 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Hopper extends Subsystem {
-    public TalonSRX hopper_talon;
+    public CANSparkMax vertHopper;
+    public CANSparkMax horiHopper;
 
     
     public Hopper(){
-        hopper_talon = new TalonSRX(RobotMap.HOPPER_TALON);
+        vertHopper = new CANSparkMax(RobotMap.kVertHopper, MotorType.kBrushless);
+        vertHopper.setOpenLoopRampRate(Constants.kNeoRampTime);
+        horiHopper = new CANSparkMax(RobotMap.kHoriHopper, MotorType.kBrushless);
+        horiHopper.setOpenLoopRampRate(Constants.kNeoRampTime);
+
+        vertHopper.set(0);
+        horiHopper.set(0);
     }
 
     public void setHopper(final double output){
-        hopper_talon.set(ControlMode.PercentOutput, output);
+        // hopper_talon.set(ControlMode.PercentOutput, output);
     }
-    public double getHopperVoltage() {
-        return hopper_talon.getMotorOutputVoltage();
-        }
+    // public double getHopperVoltage() {
+    //     // return hopper_talon.getMotorOutputVoltage();
+    //     }
 
     public void debug(){
-        SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
+        // SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
 
     }
     @Override
