@@ -23,39 +23,21 @@ import frc.robot.util.Util;
 /**
  * Add your docs here.
  */
-public class Shooter extends Subsystem {
-    private CANSparkMax shooterLeft, shooterRight;
+public class ControlPan extends Subsystem {
+    private CANSparkMax ControlPan_motor;
     private MoveShooterPassive defaultCommand;
 
-    public Shooter(){
-        shooterLeft = new CANSparkMax(RobotMap.kShooterLeft, MotorType.kBrushless);
-        shooterLeft.setOpenLoopRampRate(Constants.kNeoRampTime);
-        shooterRight = new CANSparkMax(RobotMap.kShooterRight, MotorType.kBrushless);
-        shooterRight.setOpenLoopRampRate(Constants.kNeoRampTime);
-
-        shooterLeft.set(0);
-        shooterRight.set(0);
+    public ControlPan(){
+        ControlPan_motor = new CANSparkMax(RobotMap.kControlPan, MotorType.kBrushless);
+        ControlPan_motor.setOpenLoopRampRate(Constants.kNeoRampTime);
+        ControlPan_motor.set(0);
     }
 
-    public void setShooter(final double output){
-        
-    }
-    // public double getShooterVelocity(){
-    //     return shooter_neo.getEncoder().getVelocity();
-    // }
-    // public double getShooter(){
-    //     return shooter_neo.getEncoder().getCountsPerRevolution();
-    // }
     @Override
     protected void initDefaultCommand() {
-        // defaultCommand = new MoveShooterPassive();
-        // // TODO Auto-generated method stub
-        // defaultCommand.start();
 
     }
 
     public void debug() {
-        // SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
-        // SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
     }
 }

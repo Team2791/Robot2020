@@ -34,6 +34,18 @@ public class RobotMap {
     public static final int kLEDGreenSolenoid = 6;
 
 
+    public static final int kShooterLeft = 31;
+    public static final int kShooterRight = 32;
+
+    public static final int kIntake = 40;
+
+    public static final int kVertHopper = 41;
+    public static final int kHoriHopper = 42;
+
+    public static final int kControlPan = 50;
+
+    public static final int kWinch = 60;
+    public static final int kActivePos = 61;
     //Lifters
     public static final int kFrontLiftTalon = 23;
     public static final int kBackLiftTalon = 22;

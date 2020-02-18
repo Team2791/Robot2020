@@ -3,14 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.Autons.RunElevatorWithJoystick;
-import frc.robot.Autons.RunHopperWithJoystick;
-import frc.robot.Autons.runDrivetrainShooter;
-// import frc.robot.Autons.runElevatorShooter;
-import frc.robot.Autons.runHopperElevator;
-import frc.robot.Autons.stopDrivetrainShooter;
-import frc.robot.Autons.stopElevatorShooter;
-import frc.robot.Autons.stopHopperElevator;
+
 import frc.robot.commands.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
@@ -86,13 +79,11 @@ public class OI {
         driverB.whenReleased(new StopDrivetrain());
         driverY.whenPressed(new MoveDrivetrain());
         driverY.whenReleased(new StopDrivetrain());
-        driverLB.whenPressed(new runHopperElevator());
-        driverLB.whenReleased(new stopHopperElevator());
-        driverRB.whenPressed(new runDrivetrainShooter());
-        driverRB.whenReleased(new stopDrivetrainShooter());
+        // driverLB.whenPressed(new runHopperElevator());
+        // driverLB.whenReleased(new stopHopperElevator());
         // driverLS.whenPressed(new runElevatorShooter());
-        driverLS.whenReleased(new stopElevatorShooter());
-        operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+        // driverLS.whenReleased(new stopElevatorShooter());
+        // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
         // //true does right hp far rocket path, false does right hp bay 1 ship path
         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());

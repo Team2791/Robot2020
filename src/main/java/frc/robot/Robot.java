@@ -7,8 +7,10 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Compressor;
 
+import edu.wpi.first.cameraserver.CameraServer;
 
 
                                                                                                    
@@ -23,24 +25,37 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
+    public static Intake intake;
+    public static ControlPan controlPan;
+
+   //public static final CameraServer CamServer = CameraServer.getInstance();
+
 
     @Override
     public void robotInit() {
         hopper = new Hopper();
-        elevator = new Elevator();
         shooter = new Shooter();
         drivetrain = new Drivetrain();
+        intake = new Intake();
+        controlPan = new ControlPan();
+
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
-         oi = new OI(); 
+        oi = new OI(); 
         robotmap = new RobotMap();
+
+        compressor = new Compressor(RobotMap.kPCM);
+        compressor.start(); 
+        compressor.enabled();
     }
     
     @Override
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
+        // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
         drivetrain.debug();
         hopper.debug();
 
+        // CamServer.startAutomaticCapture(0);
     }
 
     @Override
