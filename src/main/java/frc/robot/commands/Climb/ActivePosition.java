@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj.GyroBase;
-
+import frc.robot.Constants;
 
 public class ActivePosition extends Command {
   private GyroBase climbGyro;
@@ -50,11 +50,11 @@ public class ActivePosition extends Command {
     }
       else if(angle>270&&angle>90&&angle<360){
 
-        turn=0.1;
+        turn=Constants.kSelfClimbGoRight;
       }
 
       else if(angle<90&&angle>0){ 
-        turn=-0.1;
+        turn=Constants.kSelfClimbGoLeft;
       }
 
 

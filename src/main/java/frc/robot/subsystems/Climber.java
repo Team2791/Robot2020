@@ -9,19 +9,16 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer.Range;
+
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.AnalogAccelerometer;
-import edu.wpi.first.wpilibj.Solenoid;
+
 import edu.wpi.first.wpilibj.GyroBase;
 import frc.robot.commands.*;
-import frc.robot.commands.Climb.ActivePosition;
-import frc.robot.commands.Climb.DefaultExtension;
+
 
 public class Climber extends Subsystem { 
     private CANSparkMax winch_Neo;
@@ -62,14 +59,12 @@ public class Climber extends Subsystem {
         winch_Neo.set(outputWinch);
     }
 
-    public void setSelfClimbOutput(double outputWinch){
-        winch_Neo.set(outputWinch);
+    public void setSelfClimbOutput(double outputSelf){
+        selfClimb_Neo.set(outputSelf);
     }
 
     public double getGyroAngle() {
-
-          angle=climbGyro.getAngle();
-            return climbGyro.getAngle();
+        return climbGyro.getAngle();
              
 
     }
@@ -85,5 +80,4 @@ public class Climber extends Subsystem {
 }
 
 
-//lfdhsouhoeskj;fhdskjfhdsaijfhfassij;fhsd;iufs
  
