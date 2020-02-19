@@ -22,6 +22,8 @@ package frc.robot.util.Camera_Switch;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
+import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.Victor;
 
 public class CameraSwitch implements RelayPortDevice{
 
@@ -32,14 +34,17 @@ public class CameraSwitch implements RelayPortDevice{
 
 
 
-   public Relay camrelay1;
+   public static Relay camrelay1;
    public Relay camrelay2;
+   public DigitalOutput DO;
+
+public Victor pwm;
 
     public CameraSwitch(int port1, int port2){
-
+      
        camrelay1 = new Relay(port1);
        camrelay2 = new Relay(port2);
-
+ 
     }//Constructor for a CameraSwitch on a single relay port
 
     public void select(int camSelected){
@@ -49,23 +54,25 @@ public class CameraSwitch implements RelayPortDevice{
 
      switch (camSelected) {
         case kcamera1 :
-        camrelay1.set(Value.kReverse);   
+          //  camrelay1.set(Value.kReverse);   
             // camrelay.set(Value.kForward);
-           break;
+           
+            break;
         case kcamera2 :
-            camrelay1.set(Value.kForward);
-           break;
+           // camrelay1.set(Value.kForward);
+         
+            break;
         case kcamera3 :
-        camrelay2.set(Value.kReverse);
+            camrelay2.set(Value.kReverse);
             // camrelay.set(Value.kOn);
         case kcamera4 :
-        camrelay2.set(Value.kForward);
+            camrelay2.set(Value.kForward);
             // camrelay.set(Value.kOff);
             break;
         default:
             camrelay1.set(Value.kReverse);
             System.err.print("Camera not properly selected, setting to case 1,Camera1");
-           break;
+            break;
      }//This switch statement is what actually writes to the relay port
 
     }//Use this method to select the desired camera to connect to the RoboRIO

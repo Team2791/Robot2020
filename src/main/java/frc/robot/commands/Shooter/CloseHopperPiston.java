@@ -7,10 +7,10 @@ import frc.robot.commands.MoveHopper;
 // import frc.robot.subsystems.Shooter;
 
 //in theory this just chanes whether the hopper piston is retracted or not and then stops
-public class RetractHopperPiston extends Command{
+public class CloseHopperPiston extends Command{
     private boolean retracted;
-    public RetractHopperPiston(){
-        super("RetractHopperPiston");
+    public CloseHopperPiston(){
+        super("CloseHopperPiston");
         requires(Robot.hopper);
     }
 
@@ -21,7 +21,7 @@ public class RetractHopperPiston extends Command{
 
     @Override
     protected void execute() {
-        Robot.hopper.setRetracted(true);
+        Robot.hopper.setRetracted(false);
         
     }
     

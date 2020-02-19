@@ -79,7 +79,7 @@ public class RobotMap {
     public static final int kCargoLimitSwitch = 0;
   
   // Shoooter
-    public static final int SHOOTER_NEO = 2;
+    public static final int SHOOTER_NEO = 2; //what is this for???
   
     // Elevator
     public static final int ELEVATOR_TALON = 23;

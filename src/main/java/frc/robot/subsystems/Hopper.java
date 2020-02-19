@@ -38,9 +38,9 @@ public class Hopper extends Subsystem {
 
     }
 
-    public void setHopper(final double output){
+    public void setHopper(final double output, final double vOutput){
         hopper_horizontal.set(output);
-        hopper_vertical.set(-output);
+        hopper_vertical.set(-vOutput);
     }
     // public double getHopperVoltage() {
     //     return hopper_neo.ge
@@ -78,9 +78,9 @@ public class Hopper extends Subsystem {
 
     public void poopBall(){
         if(Constants.BALL_VALUE < getIRSensor()){
-            setHopper(Constants.HOPPER_OUTPUT);
+            setHopper(Constants.HOPPER_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
         } else{
-            setHopper(0);
+            setHopper(0, 0);
         }
     }
 

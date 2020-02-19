@@ -6,10 +6,10 @@ import frc.robot.commands.MoveHopper;
 import frc.robot.commands.StopHopper;
 import frc.robot.commands.Shooter.CheckHoodWall;
 import frc.robot.commands.Shooter.CheckMotorWall;
+import frc.robot.commands.Shooter.CloseHopperPiston;
 import frc.robot.commands.Shooter.OpenHopperPiston;
 //import frc.robot.commands.Shooter.CheckWheelSpeed;
 //import frc.robot.commands.Shooter.RetractHood;
-import frc.robot.commands.Shooter.RetractHopperPiston;
 import frc.robot.commands.Shooter.StopShooter;
 import frc.robot.subsystems.Shooter;
 
@@ -18,6 +18,6 @@ public class StopShooterGroupLong extends CommandGroup{
     public StopShooterGroupLong(){
         addParallel(new StopShooter());
         addParallel(new StopHopper());
-        addParallel(new RetractHopperPiston());
+        addParallel(new CloseHopperPiston());
     }
 }

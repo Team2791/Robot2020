@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.RobotMap;
-// import frc.robot.util.Camera_Switch.*;
+
+import frc.robot.util.Camera_Switch.*;
 
 public class Drivetrain extends Subsystem {
 
@@ -24,15 +25,11 @@ public class Drivetrain extends Subsystem {
     private static final AlternateEncoderType kAltEncType = AlternateEncoderType.kQuadrature;
     private CANEncoder m_leftAlternateEncoder;
     private CANEncoder m_rightAlternateEncoder;
-    // private CameraSwitch cam_switch;
     
     
 
 
     public Drivetrain() {
-        
-        // Init Camera Switch
-        // cam_switch = new CameraSwitch(0, 1);
 
         // Init Left Leader
         leftLeader  = new CANSparkMax(RobotMap.kLeftLeader, MotorType.kBrushless);
@@ -68,10 +65,6 @@ public class Drivetrain extends Subsystem {
 
     public void initDefaultCommand() {}
 
-
-    // public void setCameraNum(int camNum) {
-    //     cam_switch.select(camNum);
-    // }
 
 
     public void setMotors(double left, double right) {

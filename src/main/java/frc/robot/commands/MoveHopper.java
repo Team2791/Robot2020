@@ -27,7 +27,7 @@ public class MoveHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.setHopper(Constants.HOPPER_OUTPUT);
+    Robot.hopper.setHopper(Constants.HOPPER_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ public class MoveHopper extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hopper.setHopper(0);
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same

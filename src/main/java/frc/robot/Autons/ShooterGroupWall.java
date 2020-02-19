@@ -8,7 +8,6 @@ import frc.robot.commands.Shooter.CheckMotorWall;
 import frc.robot.commands.Shooter.OpenHopperPiston;
 //import frc.robot.commands.Shooter.CheckWheelSpeed;
 //import frc.robot.commands.Shooter.RetractHood;
-import frc.robot.commands.Shooter.RetractHopperPiston;
 import frc.robot.subsystems.Shooter;
 
 public class ShooterGroupWall extends CommandGroup{

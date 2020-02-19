@@ -59,7 +59,13 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-	public static final double HOPPER_OUTPUT = .20; // 20% is sweet spot
+    public static final double HOPPER_HORIZONTAL_OUTPUT = .25; // 20% is sweet spot
+
+
+    public static final double HOPPER_VERTICAL_OUTPUT = .35;
+    
+
+    public static final double REVERSE_HOPPER = -.20;
 
 
 	public static final double SHOOTER_OUTPUT = -.8;
@@ -82,14 +88,14 @@ public final class Constants {
     public static final double SHOOTER_VELOCITY = 100; //Temporary value
 
 
-	public static final double SHOOTER_OUTPUT_LONG = 1;
+	public static final double SHOOTER_OUTPUT_LONG = -1;
 
 
-	public static final double SHOOTER_OUTPUT_WALL = .47;
+	public static final double SHOOTER_OUTPUT_WALL = -.4; //changed from .47 //definitely make negative though
 
 
 	public static final double TURN_FACTOR = 0.2;
 
 
-	public static final int BALL_VALUE = 1100;
+	public static final int BALL_VALUE = 2050;
 }
