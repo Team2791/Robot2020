@@ -59,7 +59,7 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-	public static final double HOPPER_OUTPUT = -.20; // 20% is sweet spot
+	public static final double HOPPER_OUTPUT = .20; // 20% is sweet spot
 
 
 	public static final double SHOOTER_OUTPUT = -.8;
@@ -76,8 +76,20 @@ public final class Constants {
     public static final double MANUAL_POWER = .2;
 
 
-    public static final double INTAKE_MOTORSPEED = 0.75; //Temp value please test it out and do stuff yes
+    public static final double INTAKE_MOTORSPEED = 0.50; //Temp value please test it out and do stuff yes
 
     
     public static final double SHOOTER_VELOCITY = 100; //Temporary value
+
+
+	public static final double SHOOTER_OUTPUT_LONG = 1;
+
+
+	public static final double SHOOTER_OUTPUT_WALL = .47;
+
+
+	public static final double TURN_FACTOR = 0.2;
+
+
+	public static final int BALL_VALUE = 1100;
 }

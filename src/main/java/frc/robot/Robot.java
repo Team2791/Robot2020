@@ -4,10 +4,6 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Hopper;
-import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Compressor;
 
@@ -26,23 +22,21 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
-    public static Intake intake;
-    public static ControlPan controlPan;
-    // public static CameraServer Cam;
-
-
+    public static Manipulator manipulator;
+    // public static PanelMech panelMech;
+    public static CameraServer Cam;
 
     @Override
     public void robotInit() {
-        // hopper = new Hopper();
-        // shooter = new Shooter();
+        hopper = new Hopper();
+        shooter = new Shooter();
         drivetrain = new Drivetrain();
-        // intake = new Intake();
+        manipulator = new Manipulator();
         // controlPan = new ControlPan();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
-        // Cam = CameraServer.getInstance();
+        Cam = CameraServer.getInstance();
         compressor = new Compressor(RobotMap.kPCM);
         compressor.start();
     }
@@ -54,7 +48,7 @@ public class Robot extends TimedRobot {
         drivetrain.debug();
         compressor.start();
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
-        // hopper.debug();
+        hopper.debug();
 
         // Cam.startAutomaticCapture(0);
     }

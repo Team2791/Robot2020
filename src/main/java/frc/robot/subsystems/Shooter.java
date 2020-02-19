@@ -36,7 +36,7 @@ public class Shooter extends Subsystem {
         shooter_follower = new CANSparkMax(RobotMap.SHOOTER_NEO, MotorType.kBrushless);
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
-        hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_1);
+        hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_SOLENOID);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;
