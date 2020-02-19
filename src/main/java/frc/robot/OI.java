@@ -80,6 +80,7 @@ public class OI {
         // driverB.whenPressed(new MoveElevator());
         // driverB.whenReleased(new StopElevator());
         driverA.whenPressed(new ExtendPanelMech());
+        driverB.whenPressed(new SetPanelMech());
         driverA.whenReleased(new DefaultPanelMech());
 
       //  driverX.whenPressed(new MoveHopper());

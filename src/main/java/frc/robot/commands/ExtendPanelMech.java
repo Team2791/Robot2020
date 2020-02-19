@@ -6,11 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ExtendPanelMech extends Command {
   public ExtendPanelMech() {
+    super("ExtendPanelMech");
+
+    requires(Robot.panelMech);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,6 +26,8 @@ public class ExtendPanelMech extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.panelMech.extendPanelMech(true);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -5,25 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Climb;
-
-import edu.wpi.first.wpilibj.command.Command;
+package frc.robot.commands;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class DefaultExtension extends Command {
   public DefaultExtension() {
     super("DefaultExtension");
-    requires(Robot.climber);
-   
-    
+
+    requires(Robot.panelMech);
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
-  
+  // Called just before this Command runs the first time
+  @Override
+  protected void initialize() {
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.climber.setPinExtender(true);
+    Robot.panelMech.extendPanelMech(false);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -31,6 +35,15 @@ public class DefaultExtension extends Command {
   protected boolean isFinished() {
     return false;
   }
-}
 
-  
+  // Called once after isFinished returns true
+  @Override
+  protected void end() {
+  }
+
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  @Override
+  protected void interrupted() {
+  }
+}

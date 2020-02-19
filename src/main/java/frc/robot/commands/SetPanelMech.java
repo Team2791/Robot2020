@@ -28,8 +28,8 @@ public class SetPanelMech extends Command {
     //Called repeatedly when this Command is scheduled to run 
     @Override
     protected void execute() {
-        Robot.manipulator.setRetracted(true);
-        Robot.manipulator.setManipulator(0);
+        Robot.panelMech.extendPanelMech(true);
+        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
     }
 
     //Make this return true when this Command no longer needs to run execute()
@@ -41,7 +41,7 @@ public class SetPanelMech extends Command {
     //Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.manipulator.setManipulator(0); 
+    
     }
 
     //Called when another command which requires one or more of the same 
