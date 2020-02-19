@@ -10,7 +10,6 @@ package frc.robot.commands.Climb;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
 public class DefaultExtension extends Command {
   public DefaultExtension() {
     super("DefaultExtension");

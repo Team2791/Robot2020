@@ -81,6 +81,10 @@ public class RobotMap {
   public static final int WINCH_NEO=60;
   public static final int SELFCLIMB_NEO=61;
 
- public static final int kClimbSolenoid=1;
-  public static final int kClimbGyro=1;
+ public static final int CLIMB_SOLENOID=0;  
+  public static final int CLIMB_GYRO=1;
+
+  //PanelMech
+  public static final int PANEL_NEO=50;
+  public static final int PANEL_SOLENOID=2;
 }

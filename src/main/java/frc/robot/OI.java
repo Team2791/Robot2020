@@ -75,11 +75,14 @@ public class OI {
         //THESE TWO LINES ARE FOR TESTING
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
-        driverA.whenPressed(new MoveShooter());
-        driverA.whenReleased(new StopShooter());
-        driverB.whenPressed(new MoveElevator());
-        driverB.whenReleased(new StopElevator());
-        driverX.whenPressed(new MoveHopper());
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
+        // driverB.whenPressed(new MoveElevator());
+        // driverB.whenReleased(new StopElevator());
+        driverA.whenPressed(new ExtendPanelMech());
+        driverA.whenReleased(new DefaultPanelMech());
+
+      //  driverX.whenPressed(new MoveHopper());
         driverX.whenReleased(new StopHopper());
         driverY.whenPressed(new MoveDrivetrain());
         driverY.whenReleased(new StopDrivetrain());
@@ -93,6 +96,11 @@ public class OI {
         operatorX.whenPressed(new ReleasePin());
         operatorY.whenPressed(new WinchClimb());
         operatorY.whenReleased(new StopWinchClimb());
+        operatorA.whenPressed(new ActivePosition()); 
+
+
+
+        
 
 
         // //true does right hp far rocket path, false does right hp bay 1 ship path

@@ -9,7 +9,7 @@ import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.subsystems.Climber;
-
+import frc.robot.subsystems.*;
 
                                                                                                    
 public class Robot extends TimedRobot {
@@ -24,6 +24,7 @@ public class Robot extends TimedRobot {
     public static Hopper hopper;
     public static RobotMap robotmap;
     public static Climber climber;
+    public static PanelMech panelMech;
     @Override
     public void robotInit() {
         hopper = new Hopper();
@@ -31,7 +32,7 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
-         oi = new OI(); 
+        oi = new OI(); 
         robotmap = new RobotMap();
         climber = new Climber();
     }

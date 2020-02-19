@@ -9,7 +9,6 @@ package frc.robot.commands.Climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj.GyroBase;
 import frc.robot.Constants;
 
@@ -47,7 +46,7 @@ public class ActivePosition extends Command {
       else if(angle/360==0){  
 
       turn=0;
-    }
+    }   
       else if(angle>270&&angle<360){
 
         turn=Constants.kSelfClimbGoRight;
@@ -57,7 +56,7 @@ public class ActivePosition extends Command {
         turn=Constants.kSelfClimbGoLeft;
       }
 
-
+   
       Robot.climber.setSelfClimbOutput(turn);
    }
     

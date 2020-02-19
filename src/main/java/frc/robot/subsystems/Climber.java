@@ -25,7 +25,7 @@ public class Climber extends Subsystem {
 
     public static double bottom_penetrometer;
     public static double top_penetrometer;
-    public static double winchSpeed = Constants.kCLimberCreep; 
+    public static double winchSpeed = Constants.CLIMBER_CREEP; 
 
 
     private Solenoid Extender;
@@ -34,10 +34,10 @@ public class Climber extends Subsystem {
     
     public Climber(){
         winch_Neo = new CANSparkMax(RobotMap.WINCH_NEO, MotorType.kBrushless);
-        Extender = new Solenoid(RobotMap.kPCM, RobotMap.kClimbSolenoid);
+        Extender = new Solenoid(RobotMap.kPCM, RobotMap.CLIMB_SOLENOID);
         selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
-        climbGyro = new GyroBase();
-     }
+    
+    }
     
     public void initDefaultCommand() {
      //   setDefaultCommand(new DefaultExtension());
@@ -53,6 +53,10 @@ public class Climber extends Subsystem {
     }
     public void setWinchOutput(double outputWinch){
         winch_Neo.set(outputWinch);
+    }
+
+    public void calibrateGyro(){
+        climbGyro.calibrate();
     }
 
     public void setSelfClimbOutput(double outputSelf){
