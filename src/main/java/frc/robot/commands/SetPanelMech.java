@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 
 public class SetPanelMech extends Command {
-    int x=1;
   public SetPanelMech() {
     super("SetPanelMech");
 
@@ -25,16 +24,16 @@ public class SetPanelMech extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    x++;
-    if(x==3){
-        x=1;
+    Constants.PanelNum++;
+    if(Constants.PanelNum==3){
+        Constants.PanelNum=1;
     }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      if(x==1){
+      if(Constants.PanelNum==1){
     Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
       }
       else{

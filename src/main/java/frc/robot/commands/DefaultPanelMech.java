@@ -27,7 +27,7 @@ public class DefaultPanelMech extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.panelMech.extendPanelMech(true);
+    Robot.panelMech.extendPanelMech(false);
 
   }
 

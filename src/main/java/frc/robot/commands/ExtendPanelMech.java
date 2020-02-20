@@ -40,6 +40,7 @@ public class ExtendPanelMech extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.panelMech.extendPanelMech(false);
   }
 
   // Called when another command which requires one or more of the same
