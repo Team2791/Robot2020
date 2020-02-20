@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
     // public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
+    public static PanelMech panelMech; 
 
     @Override
     public void robotInit() {

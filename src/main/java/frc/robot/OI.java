@@ -94,6 +94,9 @@ public class OI {
         driverX.whenReleased(new StopHopper());
         driverB.whenPressed(new OpenHopperPiston());
         driverB.whenReleased(new CloseHopperPiston());
+        operatorA.toggleWhenPressed(new ExtendPanelMech());
+        operatorB.whileHeld(new SetPanelMech());
+
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
         // driverLB.whenPressed(new ShooterGroupLong());
