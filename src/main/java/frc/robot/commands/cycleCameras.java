@@ -1,0 +1,60 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+// package frc.robot.commands;
+// import frc.robot.Constants;
+// import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.util.Camera_Switch.CameraSwitch; 
+// import frc.robot.Robot;
+
+// public class cycleCameras extends Command {
+//   public cycleCameras() {
+//   }
+
+//   // Called just before this Command runs the first time
+//   @Override
+//   protected void initialize() {
+//     Constants.camnum++;
+//     if(Constants.camnum==3){
+//       Constants.camnum=0;
+//     }
+//   }
+
+//   // Called repeatedly when this Command is scheduled to run
+//   @Override
+//   protected void execute() {
+//     if(Constants.camnum==0){
+//       Robot.Cam_switch.select(CameraSwitch.kcamera1);
+
+//     }
+//     else if(Constants.camnum==1){
+//       Robot.Cam_switch.select(CameraSwitch.kcamera2);
+
+//     }
+//     else{
+//       Robot.Cam_switch.select(CameraSwitch.kcamera3);
+
+//     }
+//   }
+
+//   // Make this return true when this Command no longer needs to run execute()
+//   @Override
+//   protected boolean isFinished() {
+//     return false;
+//   }
+
+//   // Called once after isFinished returns true
+//   @Override
+//   protected void end() {
+//   }
+
+//   // Called when another command which requires one or more of the same
+//   // subsystems is scheduled to run
+//   @Override
+//   protected void interrupted() {
+//   }
+// }

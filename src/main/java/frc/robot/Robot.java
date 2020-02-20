@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
         // Robot.drivetrain.setLeftTalon(.7);
         // Robot.drivetrain.setRightNeo(1);
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
-         Cam_switch.select(CameraSwitch.kcamera1);
+         //Cam_switch.select(CameraSwitch.kcamera1);
         Scheduler.getInstance().run();
     }
     @Override

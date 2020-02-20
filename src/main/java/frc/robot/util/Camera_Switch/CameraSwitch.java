@@ -55,22 +55,26 @@ public Victor pwm;
      switch (camSelected) {
         case kcamera1 :
           camrelay1.set(Value.kReverse);   
+          camrelay2.set(Value.kOff);
             //camrelay.set(Value.kForward);
            
             break;
         case kcamera2 :
            camrelay1.set(Value.kForward);
+           camrelay2.set(Value.kOff);
          
             break;
         case kcamera3 :
+            camrelay1.set(Value.kOff);
             camrelay2.set(Value.kReverse);
             // camrelay.set(Value.kOn);
         case kcamera4 :
+            camrelay1.set(Value.kOff);
             camrelay2.set(Value.kForward);
             // camrelay.set(Value.kOff);
             break;
         default:
-            camrelay1.set(Value.kReverse);
+           // camrelay1.set(Value.kReverse);
             System.err.print("Camera not properly selected, setting to case 1,Camera1");
             break;
      }//This switch statement is what actually writes to the relay port

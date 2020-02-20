@@ -1,16 +1,16 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands;
-import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Constants;
-import frc.robot.util.Camera_Switch.CameraSwitch; 
 
-public class SetPanelMech extends Command {
-  public SetPanelMech() {
-    super("SetPanelMech");
-
-    requires(Robot.panelMech);
-
+public class IntakeOn extends Command {
+  public IntakeOn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -18,29 +18,12 @@ public class SetPanelMech extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Constants.PanelNum++;
-    if(Constants.PanelNum==3){
-        Constants.PanelNum=0;
-    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      if(Constants.PanelNum==1){
-        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
-      }
-      else if(Constants.PanelNum==0){
-        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_CREEP);
-      }
-      else{
-        Robot.panelMech.setPanelMech(0);
-            }
-
-
   }
-
-
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -51,7 +34,6 @@ public class SetPanelMech extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.panelMech.setPanelMech(0);
   }
 
   // Called when another command which requires one or more of the same

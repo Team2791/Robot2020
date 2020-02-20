@@ -104,4 +104,7 @@ public final class Constants {
      public static final double PANEL_MECH_FAST = 0.5;
      public static int PanelNum=2;
      public static int SpinNum=0;
+
+     //cameras
+     public static int camnum=0;
 }
