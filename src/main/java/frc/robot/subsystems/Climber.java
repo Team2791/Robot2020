@@ -29,7 +29,7 @@ public class Climber extends Subsystem {
 
 
     private Solenoid Extender;
-    private GyroBase climbGyro;
+    //private GyroBase climbGyro;
     public double angle;
     
     public Climber(){
@@ -55,21 +55,21 @@ public class Climber extends Subsystem {
         winch_Neo.set(outputWinch);
     }
 
-    public void calibrateGyro(){
-        climbGyro.calibrate();
-    }
+    // public void calibrateGyro(){
+    //     climbGyro.calibrate();
+    // }
 
-    public void setSelfClimbOutput(double outputSelf){
-        selfClimb_Neo.set(outputSelf);
-    }
+    // public void setSelfClimbOutput(double outputSelf){
+    //     selfClimb_Neo.set(outputSelf);
+    // }
 
-    public double getGyroAngle() {
-        return climbGyro.getAngle();        
-    }
+    // public double getGyroAngle() {
+    //     return climbGyro.getAngle();        
+    // }
     
     public void debug(){
         SmartDashboard.putBoolean("Pin Extender Status - ", getPinExtender());
-        SmartDashboard.putNumber("Gyro angle", climbGyro.getAngle());
+       // SmartDashboard.putNumber("Gyro angle", climbGyro.getAngle());
      }
 
      
