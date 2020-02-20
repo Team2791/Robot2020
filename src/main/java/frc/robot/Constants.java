@@ -46,8 +46,8 @@ public final class Constants {
 
      //climber
      public static final double CLIMBER_CREEP = 0.25;
-     public static final double kSelfClimbGoRight = 0.1;
-     public static final double kSelfClimbGoLeft= -0.1;
+    // public static final double kSelfClimbGoRight = 0.1;
+    // public static final double kSelfClimbGoLeft= -0.1;
 
      //Global
      public static final boolean kToExtendArm = true;

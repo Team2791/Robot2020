@@ -29,15 +29,47 @@ public class Climber extends Subsystem {
 
 
     private Solenoid Extender;
-    //private GyroBase climbGyro;
+    private GyroBase climbGyro;
     public double angle;
     
     public Climber(){
         winch_Neo = new CANSparkMax(RobotMap.WINCH_NEO, MotorType.kBrushless);
         Extender = new Solenoid(RobotMap.kPCM, RobotMap.CLIMB_SOLENOID);
-        selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
-    
     }
+       // selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
+        // climbGyro = new GyroBase(){
+        
+            // @Override
+            // public void close() throws Exception {
+            //     // TODO Auto-generated method stub
+                
+    //         }
+        
+    //         @Override
+    //         public void reset() {
+    //             // TODO Auto-generated method stub
+                
+    //         }
+        
+    //         @Override
+    //         public double getRate() {
+    //             // TODO Auto-generated method stub
+    //             return 0;
+    //         }
+        
+    //         @Override
+    //         public double getAngle() {
+    //             // TODO Auto-generated method stub
+    //             return 0;
+    //         }
+        
+    //         @Override
+    //         public void calibrate() {
+    //             // TODO Auto-generated method stub
+                
+    //         }
+    //     };
+    // }
     
     public void initDefaultCommand() {
      //   setDefaultCommand(new DefaultExtension());
@@ -69,7 +101,7 @@ public class Climber extends Subsystem {
     
     public void debug(){
         SmartDashboard.putBoolean("Pin Extender Status - ", getPinExtender());
-       // SmartDashboard.putNumber("Gyro angle", climbGyro.getAngle());
+  //      SmartDashboard.putNumber("Gyro angle", climbGyro.getAngle());
      }
 
      
