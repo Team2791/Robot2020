@@ -82,7 +82,7 @@ public class RobotMap {
   public static final int SELFCLIMB_NEO=61;
 
  public static final int CLIMB_SOLENOID=0;  
-  public static final int CLIMB_GYRO=1;
+//  public static final int CLIMB_GYRO=1;
 
   //PanelMech
   public static final int PANEL_NEO=50;

@@ -97,7 +97,7 @@ public class OI {
         operatorX.whenPressed(new ReleasePin());
         operatorY.whenPressed(new WinchClimb());
         operatorY.whenReleased(new StopWinchClimb());
-        operatorA.whenPressed(new ActivePosition()); 
+     //   operatorA.whenPressed(new ActivePosition()); 
 
 
 
