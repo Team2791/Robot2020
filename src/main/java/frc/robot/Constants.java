@@ -102,5 +102,6 @@ public final class Constants {
      //Panel Mech
      public static final double PANEL_MECH_CREEP = 0.1;
      public static final double PANEL_MECH_FAST = 0.5;
-     public static int PanelNum=1;
+     public static int PanelNum=2;
+     public static int SpinNum=0;
 }

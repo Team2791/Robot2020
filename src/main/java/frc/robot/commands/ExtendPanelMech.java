@@ -1,20 +1,15 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
+
 
 
 public class ExtendPanelMech extends Command {
   public ExtendPanelMech() {
     super("ExtendPanelMech");
 
-    //requires(Robot.panelMech);
+    requires(Robot.panelMech);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -22,14 +17,23 @@ public class ExtendPanelMech extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Constants.SpinNum++;
+    if(Constants.SpinNum==2){
+      Constants.SpinNum=0;
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Constants.SpinNum==0){
     Robot.panelMech.extendPanelMech(true);
 
   }
+  else{
+    Robot.panelMech.extendPanelMech(false);
+  }
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 import frc.robot.Robot;
 
@@ -15,7 +8,7 @@ public class SetPanelMech extends Command {
   public SetPanelMech() {
     super("SetPanelMech");
 
-    //requires(Robot.panelMech);
+    requires(Robot.panelMech);
 
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -26,7 +19,7 @@ public class SetPanelMech extends Command {
   protected void initialize() {
     Constants.PanelNum++;
     if(Constants.PanelNum==3){
-        Constants.PanelNum=1;
+        Constants.PanelNum=0;
     }
   }
 
@@ -36,8 +29,11 @@ public class SetPanelMech extends Command {
       if(Constants.PanelNum==1){
         Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
       }
-      else{
+      else if(Constants.PanelNum==0){
         Robot.panelMech.setPanelMech(Constants.PANEL_MECH_CREEP);
+      }
+      else{
+        Robot.panelMech.setPanelMech(0);
       }
 
 

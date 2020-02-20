@@ -8,7 +8,7 @@ public class StopPanelMech extends Command {
   public StopPanelMech() {
     super("StopPanelMech");
 
-    //requires(Robot.panelMech);
+    requires(Robot.panelMech);
 
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

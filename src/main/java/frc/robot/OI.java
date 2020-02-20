@@ -97,10 +97,8 @@ public class OI {
         driverX.whenReleased(new StopHopper());
         driverB.whenPressed(new OpenHopperPiston());
         driverB.whenReleased(new CloseHopperPiston());
-        operatorA.whenPressed(new ExtendPanelMech());
-        operatorA.whenReleased(new DefaultPanelMech());
-        operatorB.whenPressed(new SetPanelMech());
-        operatorB.whenReleased(new StopPanelMech());
+        operatorA.whileHeld(new ExtendPanelMech());
+        operatorB.whileHeld(new SetPanelMech());
 
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
@@ -108,10 +106,10 @@ public class OI {
         // driverLB.whenReleased(new StopShooterGroupLong());
         driverDPadLeft.whenPressed(new setCameraTwo());
         driverDPadLeft.whenReleased(new setCameraOne());
-        // driverDPadDown.whenPressed(new ReverseHopper()); 
-        // driverDPadDown.whenReleased(new StopHopper());
-        // driverDPadRight.whenPressed(new MoveShooterWall());
-        // driverDPadRight.whenReleased(new StopShooter());
+        driverDPadDown.whenPressed(new ReverseHopper()); 
+        driverDPadDown.whenReleased(new StopHopper());
+        driverDPadRight.whenPressed(new MoveShooterWall());
+        driverDPadRight.whenReleased(new StopShooter());
         // driverLB.whenPressed(new runHopperElevator());
         // driverLB.whenReleased(new stopHopperElevator());
         // driverLS.whenPressed(new runElevatorShooter());

@@ -18,12 +18,14 @@ import frc.robot.Constants;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Timer;
+
 // import frc.robot.commands.MoveShooterPassive;
 /**
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-
+    private Timer currentMonitorTimer;
     private CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
     private Solenoid hood_1;
@@ -32,6 +34,12 @@ public class Shooter extends Subsystem {
 
 
     public Shooter(){
+     SmartDashboard.putNumber("Shooter kP", 0.000050);
+    SmartDashboard.putNumber("Shooter kF", 0.000165);
+    SmartDashboard.putNumber("Shooter max output", 0);
+    SmartDashboard.putNumber("Shooter setpoint (RPM)", 0);
+    SmartDashboard.putNumber("Shooter accelerator RPM", 0);
+        currentMonitorTimer = new Timer();
         shooter_leader = new CANSparkMax(RobotMap.kShooterLeft, MotorType.kBrushless);
         shooter_follower = new CANSparkMax(RobotMap.kShooterRight, MotorType.kBrushless);
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);

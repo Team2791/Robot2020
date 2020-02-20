@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         manipulator = new Manipulator();
-        // controlPan = new ControlPan();
+        panelMech = new PanelMech();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
