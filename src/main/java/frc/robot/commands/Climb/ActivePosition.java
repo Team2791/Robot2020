@@ -39,14 +39,12 @@ public class ActivePosition extends Command {
      angle=climbGyro.getAngle();
      
      
-      if(angle==0){
+      if((angle>0&&angle<10)||(angle>352&&angle<368)){ //this is accounting for a 8 degree margin needed for balance
       turn=0;
       
      }
-      else if(angle/360==0){  
-
-      turn=0;
-    }   
+     
+    
       else if(angle>270&&angle<360){
 
         turn=Constants.kSelfClimbGoRight;

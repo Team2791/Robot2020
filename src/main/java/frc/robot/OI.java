@@ -94,6 +94,8 @@ public class OI {
         driverLS.whenPressed(new runElevatorShooter());
         driverLS.whenReleased(new stopElevatorShooter());
         operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+
+        
         operatorX.whenPressed(new ReleasePin());
         operatorY.whenPressed(new WinchClimb());
         operatorY.whenReleased(new StopWinchClimb());
