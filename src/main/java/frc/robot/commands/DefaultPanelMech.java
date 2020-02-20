@@ -14,7 +14,7 @@ public class DefaultPanelMech extends Command {
   public DefaultPanelMech() {
     super("DefaultPanelMech");
 
-    requires(Robot.panelMech);
+    //requires(Robot.panelMech);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

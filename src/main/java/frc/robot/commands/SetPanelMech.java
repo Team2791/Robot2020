@@ -15,7 +15,7 @@ public class SetPanelMech extends Command {
   public SetPanelMech() {
     super("SetPanelMech");
 
-    requires(Robot.panelMech);
+    //requires(Robot.panelMech);
 
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -34,10 +34,10 @@ public class SetPanelMech extends Command {
   @Override
   protected void execute() {
       if(Constants.PanelNum==1){
-    Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
+        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
       }
       else{
-      Robot.panelMech.setPanelMech(Constants.PANEL_MECH_CREEP);
+        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_CREEP);
       }
 
 
@@ -54,6 +54,7 @@ public class SetPanelMech extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.panelMech.setPanelMech(0);
   }
 
   // Called when another command which requires one or more of the same

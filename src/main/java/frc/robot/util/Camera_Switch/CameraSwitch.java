@@ -54,12 +54,12 @@ public Victor pwm;
 
      switch (camSelected) {
         case kcamera1 :
-          //  camrelay1.set(Value.kReverse);   
-            // camrelay.set(Value.kForward);
+          camrelay1.set(Value.kReverse);   
+            //camrelay.set(Value.kForward);
            
             break;
         case kcamera2 :
-           // camrelay1.set(Value.kForward);
+           camrelay1.set(Value.kForward);
          
             break;
         case kcamera3 :

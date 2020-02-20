@@ -26,22 +26,32 @@ import frc.robot.util.Util;
  */
 public class PanelMech extends Subsystem {
     private CANSparkMax panelMech_motor;
-    private Solenoid panelMech_soleinoid;
+    private Solenoid panelMech_solenoid;
     //private MoveShooterPassive defaultCommand;
 
     public PanelMech(){
         panelMech_motor = new CANSparkMax(RobotMap.PANEL_NEO, MotorType.kBrushless);
         panelMech_motor.setOpenLoopRampRate(Constants.kNeoRampTime);
         panelMech_motor.set(0);
-        panelMech_soleinoid= new Solenoid(RobotMap.kPCM, RobotMap.PANEL_SOLENOID);
+        panelMech_solenoid= new Solenoid(RobotMap.kPCM, RobotMap.PANEL_SOLENOID);
     }
+    
     public void setPanelMech(final double velocity) {
         panelMech_motor.set(velocity);
+    
     }
+    
     public void extendPanelMech(boolean extend) {
-        panelMech_soleinoid.set(extend);
+        panelMech_solenoid.set(extend);
+    
     }
+    
     @Override
+    
+    // public boolean getRetracted(){
+    //     return panelMech_solenoid.get();
+    // }
+    
     protected void initDefaultCommand() {
 
     }
