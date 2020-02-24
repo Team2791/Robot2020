@@ -4,6 +4,7 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
+//IMPORTED FROM CLIMBER-MAAZ BRANCH!!!
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
@@ -30,11 +31,17 @@ public class PanelMech extends Subsystem {
     //private MoveShooterPassive defaultCommand;
 
     public PanelMech(){
-        panelMech_motor = new CANSparkMax(RobotMap.MECHNECK, MotorType.kBrushless);
+        panelMech_motor = new CANSparkMax(RobotMap.PANEL_NEO, MotorType.kBrushless);
         panelMech_motor.setOpenLoopRampRate(Constants.kNeoRampTime);
         panelMech_motor.set(0);
+        panelMech_soleinoid= new Solenoid(RobotMap.kPCM, RobotMap.PANEL_SOLENOID);
     }
-
+    public void setPanelMech(final double velocity) {
+        panelMech_motor.set(velocity);
+    }
+    public void extendPanelMech(boolean extend) {
+        panelMech_soleinoid.set(extend);
+    }
     @Override
     protected void initDefaultCommand() {
 
