@@ -22,7 +22,7 @@ public class MoveManipulator extends Command {
     @Override
     protected void execute() {
         Robot.manipulator.setRetracted(true);
-        Robot.manipulator.setManipulator(0);
+        Robot.manipulator.setManipulator(Constants.INTAKE_MOTORSPEED);
     }
 
     //Make this return true when this Command no longer needs to run execute()

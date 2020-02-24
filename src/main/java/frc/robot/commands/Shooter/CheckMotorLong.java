@@ -29,19 +29,20 @@ public class CheckMotorLong extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.shooter.checkWheelSpeed_Long() != true) {
         Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_LONG);
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.shooter.checkWheelSpeed_Long() == true) {
-        return true; 
-    }
-    return false; 
+    return true;
   }
+  //   if(Robot.shooter.checkWheelSpeed_Long() == true) {
+  //       return true; 
+  //   }
+
+  //   return false; 
+  // }
 
   // Called once after isFinished returns true
   @Override

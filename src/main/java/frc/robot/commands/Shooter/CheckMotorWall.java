@@ -29,18 +29,19 @@ public class CheckMotorWall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.shooter.checkWheelSpeed_Wall() != true) {
+
         Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_WALL); //Utilize PIDs for this (and Longshot as well)
-    }
+ 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.shooter.checkWheelSpeed_Wall()) {
-        return true; 
-    }
-    return false; 
+  //   if(Robot.shooter.checkWheelSpeed_Wall()) {
+  //       return true; 
+  //   }
+  //   return false; 
+  return true;
   }
 
   // Called once after isFinished returns true

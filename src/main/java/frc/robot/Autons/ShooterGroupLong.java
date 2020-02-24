@@ -2,7 +2,7 @@ package frc.robot.Autons;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.commands.MoveHopper;
+import frc.robot.commands.MoveHopperLong;
 import frc.robot.commands.Shooter.CheckHoodLong;
 import frc.robot.commands.Shooter.CheckHoodWall;
 import frc.robot.commands.Shooter.CheckMotorLong;
@@ -17,7 +17,7 @@ public class ShooterGroupLong extends CommandGroup{
     public ShooterGroupLong(){
         addSequential(new CheckHoodLong());
         addSequential(new CheckMotorLong());
-        addSequential(new OpenHopperPiston());
-        addSequential(new MoveHopper());
+        //addSequential(new OpenHopperPiston());
+        //addSequential(new MoveHopperLong());
     }
 }
