@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveHopper extends Command {
-  public MoveHopper() {
-    super("MoveHopper");
+public class MoveHopperWall extends Command {
+  public MoveHopperWall() {
+    super("MoveHopperWall");
     requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,7 +27,7 @@ public class MoveHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.setHopper(Constants.HOPPER_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+    Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -3,11 +3,19 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
+
+import frc.robot.Autons.ShooterGroupLong;
+import frc.robot.Autons.ShooterGroupWall;
+import frc.robot.Autons.Stop;
+import frc.robot.commands.Shooter.*;
+
 import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;
-import frc.robot.commands.Shooter.CheckHoodLong;
+import frc.robot.commands.Shooter.WallShotHood;
 import frc.robot.commands.Shooter.CloseHopperPiston;
+import frc.robot.commands.Shooter.LongShotHood;
+
+
 import frc.robot.commands.Shooter.OpenHopperPiston;
 import frc.robot.commands.Shooter.RetractHood;
 import frc.robot.commands.Shooter.ExtendHood;
@@ -21,10 +29,10 @@ import frc.robot.commands.Shooter.CheckHoodWall;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
-import frc.robot.Autons.ShooterGroupLong;
-import frc.robot.Autons.StopShooterGroupLong;
-import frc.robot.Autons.ShooterGroupWall;
-import frc.robot.Autons.StopShooterGroupWall;
+// import frc.robot.Autons.ShooterGroupLong;
+// import frc.robot.Autons.StopShooterGroupLong;
+// import frc.robot.Autons.ShooterGroupWall;
+// import frc.robot.Autons.StopShooterGroupWall;
 //import frc.robot.subsystems.Camera; 
 
 // import frc.robot.commands.Lifter.ExtendBothLifters;
@@ -70,7 +78,7 @@ public class OI {
     private Button driverX;
     private Button driverRS, driverLS;
     private Button driverRX;
-    protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft;
+    protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft, operatorDPadRight;
     private Button operatorA, operatorB, operatorX, operatorY;
 
     public OI() {
@@ -93,38 +101,58 @@ public class OI {
         // driverA.whenReleased(new StopShooter());
         // driverB.whenPressed(new MoveElevator());
         // driverB.whenReleased(new StopElevator());
-        // driverX.whenPressed(new MoveHopper());
+ 
         // driverX.whenReleased(new StopHopper());
         // driverB.whenPressed(new DrivetrainBackwards());
         // driverB.whenReleased(new StopDrivetrain());
         // driverY.whenPressed(new MoveDrivetrain());
         // driverY.whenReleased(new StopDrivetrain());
         driverA.whenPressed(new MoveManipulator());
-        driverY.whenPressed(new StopManipulator());
-        driverX.whenPressed(new IrHopper());
-        driverX.whenReleased(new StopHopper());
+        driverA.whenReleased(new StopManipulator());
+
+
         driverB.whenPressed(new OpenHopperPiston());
         driverB.whenReleased(new CloseHopperPiston());
-        operatorA.whileHeld(new ExtendPanelMech());
-        operatorB.whileHeld(new SetPanelMech());
+
+        driverX.whileHeld(new ExtendPanelMech());
+        driverY.whileHeld(new SetPanelMech());
+
 
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
-        // driverLB.whenPressed(new ShooterGroupLong());
+
+
         // driverLB.whenReleased(new StopShooterGroupLong());
-        //driverDPadLeft.whileHeld(new cycleCameras());
-        operatorRT.whileHeld(new setCameraTwo());
-        operatorLT.whileHeld(new setCameraOne());
-        operatorRB.whileHeld(new setCameraThree());
-        operatorDPadDown.whenPressed(new RetractHood());
-        operatorDPadLeft.whenPressed(new ExtendHood());
-        driverDPadDown.whileHeld(new IntakeOn());
-        driverDPadDown.whenReleased(new IntakeOff());  
-        driverDPadDown.whenReleased(new StopHopper());
-        operatorX.whenPressed(new MoveShooterWall());
-        operatorY.whenPressed(new MoveShooterLong());
-        driverDPadRight.whenPressed(new StopShooter());
-        // driverLB.whenPressed(new runHopperElevator());
+ // driverLB.whenPressed(new runHopperElevator());
+
+        operatorDPadLeft.whenPressed(new ShooterGroupLong());
+        operatorDPadLeft.whenReleased(new Stop());
+
+        
+        operatorDPadRight.whenPressed(new ShooterGroupWall());
+        operatorDPadRight.whenReleased(new Stop());
+
+        operatorA.whenPressed(new MoveHopperLong());
+        operatorA.whenReleased(new StopHopper());
+
+        operatorB.whenPressed(new LongShotHood());
+        operatorB.whenReleased(new WallShotHood());
+
+        operatorY.whenPressed(new ReverseHopper());
+        operatorY.whenReleased(new StopHopper());
+
+        operatorX.whenPressed(new IrHopper());
+        operatorX.whenReleased(new StopHopper());
+
+        operatorRB.whenPressed(new WallShot());
+        operatorRB.whenReleased(new StopShooter());
+
+        operatorLB.whenPressed(new LongShot());
+        operatorLB.whenReleased(new StopShooter());
+
+
+
+
         // driverLB.whenReleased(new stopHopperElevator());
         // driverLS.whenPressed(new runElevatorShooter());
         // driverLS.whenReleased(new stopElevatorShooter());

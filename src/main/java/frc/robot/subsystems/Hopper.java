@@ -78,7 +78,7 @@ public class Hopper extends Subsystem {
 
     public void poopBall(){
         if(Constants.BALL_VALUE < getIRSensor()){
-            setHopper(Constants.HOPPER_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+            setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
         } else{
             setHopper(0, 0);
         }

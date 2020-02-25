@@ -1,3 +1,12 @@
+
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+//IMPORTED FROM CLIMBER-MAAZ BRANCH!!!
+
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
@@ -27,9 +36,11 @@ public class PanelMech extends Subsystem {
         panelMech_motor = new CANSparkMax(RobotMap.PANEL_NEO, MotorType.kBrushless);
         panelMech_motor.setOpenLoopRampRate(Constants.kNeoRampTime);
         panelMech_motor.set(0);
+
         panelMech_solenoid= new Solenoid(RobotMap.kPCM, RobotMap.PANEL_SOLENOID);
     }
     
+
     protected void initDefaultCommand() {
 
     }

@@ -74,6 +74,17 @@ public class Shooter extends Subsystem {
         return shooter_leader.getEncoder().getVelocity();
     }
 
+    public double getShooterVoltage(){
+        return shooter_leader.getBusVoltage();
+    }
+
+    public double getShooterConversionFactor(){
+        return shooter_leader.getEncoder().getVelocityConversionFactor();
+    }
+    public double getShooterVelocity2(){
+        double velocity = getShooterVoltage() * getShooterConversionFactor();
+        return velocity;
+    }
     public boolean isShooterVelocityCorrect(){
         if(getShooterVelocity() != Constants.SHOOTER_VELOCITY){
             return false;
@@ -118,5 +129,8 @@ public class Shooter extends Subsystem {
         SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
         SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
         SmartDashboard.putBoolean("Hood Position", getHood1());
+        SmartDashboard.putNumber("Voltage", getShooterVoltage());
+        SmartDashboard.putNumber("Calculated Velcoity", getShooterVelocity2());
+
     }
 }

@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class CheckHoodLong extends Command {
-  public CheckHoodLong() {
-    super("CheckHoodLong");
+public class LongShotHood extends Command {
+  public LongShotHood() {
+    super("LongShotHood");
     requires(Robot.shooter);
 
     // Use requires() here to declare subsystem dependencies
@@ -29,19 +29,19 @@ public class CheckHoodLong extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.shooter.getHood1() != false) {
-        Robot.shooter.setHood1(false);
-    }
+        Robot.shooter.setHood1(true);
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.shooter.getHood1() == false) {
-        return true; 
-    }
-    return false; 
-  }
+    return true;
+  //   if(Robot.shooter.getHood1() == false) {
+  //       return true; 
+  //   }
+  //   return false; 
+   }
 
   // Called once after isFinished returns true
   @Override
