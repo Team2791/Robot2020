@@ -5,16 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveElevator extends Command {
-  public MoveElevator() {
-    super("MoveElevator");
-    requires(Robot.elevator);
+public class WallShot extends Command {
+  public WallShot() {
+    super("WallShot");
+    requires(Robot.shooter);
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -22,24 +23,31 @@ public class MoveElevator extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.setElevator(Constants.ELEVATOR_OUTPUT);
+
+        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_WALL); //Utilize PIDs for this (and Longshot as well)
+ 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+  //   if(Robot.shooter.checkWheelSpeed_Wall()) {
+  //       return true; 
+  //   }
+  //   return false; 
+  return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.setElevator(0);
+    // Robot.shooter.setShooter(0);
   }
 
   // Called when another command which requires one or more of the same

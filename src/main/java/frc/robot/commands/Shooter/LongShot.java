@@ -5,20 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.Autons;
+package frc.robot.commands.Shooter;
 
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
-import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.util.Util;
 
-public class RunHopperWithJoystick extends Command {
-  Button hopper_button;
-  public RunHopperWithJoystick(Button hopper_button) {
+public class LongShot extends Command {
+  public LongShot() {
+    super("LongShot");
     requires(Robot.shooter);
-    this.hopper_button = hopper_button;
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,33 +23,31 @@ public class RunHopperWithJoystick extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double output = Util.deadzone(Constants.DEADZONE, OI.operatorStick.getRawAxis(1), 1.0) * Constants.MANUAL_POWER * -1;
-    if(Robot.oi.operatorLS.get()) {
-      Robot.hopper.setHopper(output); //THIS SHOULD BE SET MANUAL POWER
-      
+        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_LONG);
   }
-  
-  
-  
-  else{
-
-  }
-}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !hopper_button.get();
-    }
+    return true;
+  }
+  //   if(Robot.shooter.checkWheelSpeed_Long() == true) {
+  //       return true; 
+  //   }
+
+  //   return false; 
+  // }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    // Robot.shooter.setShooter(0);
   }
 
   // Called when another command which requires one or more of the same

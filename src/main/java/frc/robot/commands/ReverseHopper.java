@@ -8,12 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
-//import frc.robot.subsystems.Camera;
-import frc.robot.util.Camera_Switch.CameraSwitch; 
 
-public class setCameraTwo extends Command {
-  public setCameraTwo() {
+public class ReverseHopper extends Command {
+  public ReverseHopper() {
+    super("ReverseHopper");
+    requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,7 +27,7 @@ public class setCameraTwo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Cam_switch.select(CameraSwitch.kcamera2);
+    Robot.hopper.setHopper(Constants.REVERSE_HOPPER, Constants.REVERSE_HOPPER);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,6 +39,7 @@ public class setCameraTwo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same

@@ -5,16 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveHopper extends Command {
-  public MoveHopper() {
-    super("MoveHopper");
-    requires(Robot.hopper);
+public class WallShotHood extends Command {
+  public WallShotHood() {
+    super("WallShotHood");
+    requires(Robot.shooter);
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -22,24 +23,28 @@ public class MoveHopper extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.setHopper(Constants.HOPPER_OUTPUT);
+        Robot.shooter.setHood1(false);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if(Robot.shooter.getHood1()) {
+        return true; 
+    }
+    return false; 
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hopper.setHopper(0);
+    // Robot.shooter.setHood1(0);
   }
 
   // Called when another command which requires one or more of the same

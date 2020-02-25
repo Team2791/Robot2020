@@ -11,11 +11,10 @@
 // import frc.robot.Constants;
 // import frc.robot.Robot;
 
-// public class MoveShooterPassive extends Command {
-//   public MoveShooterPassive() {
-//     super("MoveShooterPassive");
-//     requires(Robot.shooter);
-
+// public class SwitchCameras extends Command {
+//   public SwitchCameras() {
+//     super("SwitchCameras");
+//     requires(Robot.drivetrain);
 //     // Use requires() here to declare subsystem dependencies
 //     // eg. requires(chassis);
 //   }
@@ -23,13 +22,12 @@
 //   // Called just before this Command runs the first time
 //   @Override
 //   protected void initialize() {
-
 //   }
 
 //   // Called repeatedly when this Command is scheduled to run
 //   @Override
 //   protected void execute() {
-//     Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_PASSIVE);
+    
 //   }
 
 //   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +39,7 @@
 //   // Called once after isFinished returns true
 //   @Override
 //   protected void end() {
-//     Robot.shooter.setShooter(0);
+//     Robot.drivetrain.setMotors(0,0);
 //   }
 
 //   // Called when another command which requires one or more of the same

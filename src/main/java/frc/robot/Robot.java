@@ -2,18 +2,25 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Hopper;
-import frc.robot.subsystems.Shooter;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.*;
+import frc.robot.util.Camera_Switch.CameraSwitch;
 import edu.wpi.first.wpilibj.Compressor;
+
+
+import edu.wpi.first.cameraserver.CameraServer;
+
+=======
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.*;
 
+
                                                                                                    
 public class Robot extends TimedRobot {
-    long loopCounter = 0;
+
+	long loopCounter = 0;
 
     public static OI oi;
     public static Drivetrain drivetrain;
@@ -23,36 +30,55 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
-    public static Climber climber;
+
+    public static Manipulator manipulator;
     public static PanelMech panelMech;
+    public static CameraServer Cam;
+    public static CameraSwitch Cam_switch; 
+
+=======
+    public static Climber climber;
+
     @Override
     public void robotInit() {
         hopper = new Hopper();
-        elevator = new Elevator();
         shooter = new Shooter();
         drivetrain = new Drivetrain();
+        manipulator = new Manipulator();
+        panelMech = new PanelMech();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
+
+        Cam_switch = new CameraSwitch(0,1); 
+        Cam = CameraServer.getInstance();
+        compressor = new Compressor(RobotMap.kPCM);
+        compressor.start();
+        Cam.startAutomaticCapture(0);
+=======
         climber = new Climber();
     }
     
     @Override
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
+        // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
         drivetrain.debug();
+        compressor.start();
+        SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
         hopper.debug();
 
+    
     }
 
     @Override
     public void disabledInit() {
-        drivetrain.setMotors(0);
+        drivetrain.setMotors(0,0);
     }
 
     @Override
     public void disabledPeriodic() {
-         drivetrain.setMotors(0);
+         drivetrain.setMotors(0,0);
         // Robot.drivetrain.resetGyro();
         // autoCommand.start();
     }
@@ -65,6 +91,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         // autoCommand.cancel();
+        compressor.start(); 
         System.out.println("This is init");
         
 
@@ -76,7 +103,7 @@ public class Robot extends TimedRobot {
         //   Robot.hopper.setHopper(-1);
         // Robot.shooter.setShooter(-1);
         //  Robot.drivetrain.setMotors(-1);
-
+                
         //  Robot.drivetrain.setMotors(-.0000001);
         // Robot.drivetrain.setRightTalon(-1);
         // Robot.drivetrain.setLeftNeo(-1);

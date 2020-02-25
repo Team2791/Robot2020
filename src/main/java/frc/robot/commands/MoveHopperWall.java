@@ -5,20 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.Autons;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
-import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.util.Util;
 
-public class RunElevatorWithJoystick extends Command {
-  Button elevator_button;
-  public RunElevatorWithJoystick(Button elevator_button) {
-    requires(Robot.elevator);
-    this.elevator_button = elevator_button;
+public class MoveHopperWall extends Command {
+  public MoveHopperWall() {
+    super("MoveHopperWall");
+    requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -31,28 +27,19 @@ public class RunElevatorWithJoystick extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double output = Util.deadzone(Constants.DEADZONE, OI.operatorStick.getRawAxis(1), 1.0) * Constants.MANUAL_POWER * -1;
-    if(Robot.oi.operatorLS.get()) {
-      Robot.elevator.setElevator(output); //THIS SHOULD BE SET MANUAL POWER
-      
+    Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
-  
-  
-  
-  else{
-
-  }
-}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !elevator_button.get();
-    }
+    return false;
+  }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same
