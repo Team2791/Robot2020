@@ -95,5 +95,7 @@ public static final int HORIZONTAL_HOPPER = 42;
 public static final int MANIPULATOR_SOLENOID = 6;
 public static final int MANIPULATOR_NEO = 40;
 public static final int MECHNECK = 50; 
-  
+//PanelMech
+public static final int PANEL_NEO=50;
+public static final int PANEL_SOLENOID=2;
 }

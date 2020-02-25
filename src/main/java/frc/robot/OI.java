@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 import frc.robot.Autons.ShooterGroupLong;
 import frc.robot.Autons.ShooterGroupWall;
 import frc.robot.Autons.Stop;
@@ -14,7 +15,16 @@ import frc.robot.commands.Shooter.WallShotHood;
 import frc.robot.commands.Shooter.CloseHopperPiston;
 import frc.robot.commands.Shooter.LongShotHood;
 
+
 import frc.robot.commands.Shooter.OpenHopperPiston;
+import frc.robot.commands.Shooter.RetractHood;
+import frc.robot.commands.Shooter.ExtendHood;
+import frc.robot.commands.Shooter.MoveShooterWall;
+import frc.robot.commands.Shooter.MoveShooterLong;
+import frc.robot.commands.setCameraOne;
+import frc.robot.commands.setCameraTwo;
+import frc.robot.commands.setCameraThree;
+import frc.robot.commands.Shooter.CheckHoodWall;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
@@ -30,29 +40,29 @@ import frc.robot.util.Util;
 // import frc.robot.commands.CargoManipulator.ScoreInRocketCalculated;
 // import frc.robot.commands.CargoManipulator.ScoreInRocketDropper;
 // import frc.robot.commands.auto.AutoSetLifterPots;
-                    //               _____
-                    //              |     |
-                    //              | | | |
-                    //              |_____|
-                    //        ____ ___|_|___ ____
-                    //       ()___)         ()___)
-                    //       // /|           |\ \\
-                    //      // / |           | \ \\
-                    //     (___) |___________| (___)
-                    //     (___)   (_______)   (___)
-                    //     (___)     (___)     (___)
-                    //     (___)      |_|      (___)
-                    //     (___)  ___/___\___   | |
-                    //      | |  |           |  | |
-                    //      | |  |___________| /___\
-                    //     /___\  |||     ||| //   \\
-                    //    //   \\ |||     ||| \\   //
-                    //    \\   // |||     |||  \\ //
-                    //     \\ // ()__)   (__()
-                    //           ///       \\\
-                    //          ///         \\\
-                    //        _///___     ___\\\_
-                    //       |_______|   |_______|
+//               _____
+//              |     |
+//              | | | |
+//              |_____|
+//        ____ ___|_|___ ____
+//       ()___)         ()___)
+//       // /|           |\ \\
+//      // / |           | \ \\
+//     (___) |___________| (___)
+//     (___)   (_______)   (___)
+//     (___)     (___)     (___)
+//     (___)      |_|      (___)
+//     (___)  ___/___\___   | |
+//      | |  |           |  | |
+//      | |  |___________| /___\
+//     /___\  |||     ||| //   \\
+//    //   \\ |||     ||| \\   //
+//    \\   // |||     |||  \\ //
+//     \\ // ()__)   (__()
+//           ///       \\\
+//          ///         \\\
+//        _///___     ___\\\_
+//       |_______|   |_______|
 
 public class OI {
     public static Joystick driverStick;
@@ -70,19 +80,22 @@ public class OI {
     private Button driverRX;
     protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft, operatorDPadRight;
     private Button operatorA, operatorB, operatorX, operatorY;
+
     public OI() {
         driverStick = new Joystick(0);
         operatorStick = new Joystick(1);
         initButtons();
         initUsed();
 
-       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
-        
-       //LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
+        driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE
+                                                                        // THE SAME
 
-        //THESE TWO LINES ARE FOR TESTING
-        //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
-        //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
+        // LEAVE OUT driverStart.whileHeld(new ExtendBothLifters(.8,false,driverStick));
+
+        // THESE TWO LINES ARE FOR TESTING
+        // LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
+        // LEAVE OUT driverB.whenPressed(new
+        // ExtendBothLifters(.8,false,driverStick,false));
 
         // driverA.whenPressed(new MoveShooter());
         // driverA.whenReleased(new StopShooter());
@@ -100,12 +113,18 @@ public class OI {
 
         driverB.whenPressed(new OpenHopperPiston());
         driverB.whenReleased(new CloseHopperPiston());
-        
+
+        driverX.whileHeld(new ExtendPanelMech());
+        driverY.whileHeld(new SetPanelMech());
+
+
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
 
 
         // driverLB.whenReleased(new StopShooterGroupLong());
+ // driverLB.whenPressed(new runHopperElevator());
+
         operatorDPadLeft.whenPressed(new ShooterGroupLong());
         operatorDPadLeft.whenReleased(new Stop());
 
@@ -130,6 +149,7 @@ public class OI {
 
         operatorLB.whenPressed(new LongShot());
         operatorLB.whenReleased(new StopShooter());
+
 
 
 

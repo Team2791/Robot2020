@@ -103,5 +103,16 @@ public final class Constants {
 	public static final double TURN_FACTOR = 0.2;
 
 
-	public static final int BALL_VALUE = 2300;
+
+    public static final int BALL_VALUE = 2050;
+    
+     //Panel Mech
+     public static final double PANEL_MECH_CREEP = 0.1;
+     public static final double PANEL_MECH_FAST = 0.5;
+     public static int PanelNum=2;
+     public static int SpinNum=0;
+
+     //cameras
+     public static int camnum=0;
+
 }
