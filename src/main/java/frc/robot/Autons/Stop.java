@@ -11,9 +11,9 @@ import frc.robot.commands.Shooter.OpenHopperPiston;
 import frc.robot.commands.Shooter.StopShooter;
 import frc.robot.subsystems.Shooter;
 
-public class WallShotStop extends CommandGroup{
+public class Stop extends CommandGroup {
 
-    public WallShotStop(){
+    public Stop() {
         addSequential(new StopShooter());
         addSequential(new CloseHopperPiston());
         addSequential(new StopHopper());

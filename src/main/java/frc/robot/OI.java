@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.Autons.ShooterGroupLong;
 import frc.robot.Autons.ShooterGroupWall;
-import frc.robot.Autons.WallShot;
-import frc.robot.Autons.WallShotStop;
+import frc.robot.Autons.Stop;
+import frc.robot.commands.Shooter.*;
+
 import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;
+import frc.robot.commands.Shooter.WallShotHood;
 import frc.robot.commands.Shooter.CloseHopperPiston;
-import frc.robot.commands.Shooter.MoveShooterLong;
-import frc.robot.commands.Shooter.MoveShooterWall;
-import frc.robot.commands.Shooter.CheckHoodWall;
-import frc.robot.commands.Shooter.CheckHoodLong;
+import frc.robot.commands.Shooter.LongShotHood;
+
 import frc.robot.commands.Shooter.OpenHopperPiston;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
@@ -68,7 +68,7 @@ public class OI {
     private Button driverX;
     private Button driverRS, driverLS;
     private Button driverRX;
-    protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft;
+    protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft, operatorDPadRight;
     private Button operatorA, operatorB, operatorX, operatorY;
     public OI() {
         driverStick = new Joystick(0);
@@ -88,37 +88,51 @@ public class OI {
         // driverA.whenReleased(new StopShooter());
         // driverB.whenPressed(new MoveElevator());
         // driverB.whenReleased(new StopElevator());
-        operatorA.whenPressed(new MoveHopperLong());
-        operatorA.whenReleased(new StopHopper());
-        operatorB.whenPressed(new CheckHoodLong());
-        operatorB.whenReleased(new CheckHoodWall());
+ 
         // driverX.whenReleased(new StopHopper());
         // driverB.whenPressed(new DrivetrainBackwards());
         // driverB.whenReleased(new StopDrivetrain());
         // driverY.whenPressed(new MoveDrivetrain());
         // driverY.whenReleased(new StopDrivetrain());
         driverA.whenPressed(new MoveManipulator());
-        driverY.whenPressed(new StopManipulator());
-        driverX.whenPressed(new IrHopper());
-        driverX.whenReleased(new StopHopper());
+        driverA.whenReleased(new StopManipulator());
+
+
         driverB.whenPressed(new OpenHopperPiston());
         driverB.whenReleased(new CloseHopperPiston());
         
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
-         operatorX.whenPressed(new StopShooter());
-         operatorX.whenPressed(new CheckHoodWall());
-        operatorRB.whenPressed(new ShooterGroupWall());
-        operatorRB.whenReleased(new StopShooter());
+
+
         // driverLB.whenReleased(new StopShooterGroupLong());
-        driverDPadLeft.whenPressed(new ShooterGroupLong());
-        driverDPadLeft.whenReleased(new StopShooter());
-        driverDPadDown.whenPressed(new ReverseHopper()); 
-        driverDPadDown.whenReleased(new StopHopper());
-        driverDPadRight.whenPressed(new ShooterGroupWall());
-        driverDPadRight.whenReleased(new StopShooter());
-        operatorY.whileHeld(new WallShot());
-        operatorB.whenPressed(new WallShotStop());
+        operatorDPadLeft.whenPressed(new ShooterGroupLong());
+        operatorDPadLeft.whenReleased(new Stop());
+
+        
+        operatorDPadRight.whenPressed(new ShooterGroupWall());
+        operatorDPadRight.whenReleased(new Stop());
+
+        operatorA.whenPressed(new MoveHopperLong());
+        operatorA.whenReleased(new StopHopper());
+
+        operatorB.whenPressed(new LongShotHood());
+        operatorB.whenReleased(new WallShotHood());
+
+        operatorY.whenPressed(new ReverseHopper());
+        operatorY.whenReleased(new StopHopper());
+
+        operatorX.whenPressed(new IrHopper());
+        operatorX.whenReleased(new StopHopper());
+
+        operatorRB.whenPressed(new WallShot());
+        operatorRB.whenReleased(new StopShooter());
+
+        operatorLB.whenPressed(new LongShot());
+        operatorLB.whenReleased(new StopShooter());
+
+
+
         // driverLB.whenReleased(new stopHopperElevator());
         // driverLS.whenPressed(new runElevatorShooter());
         // driverLS.whenReleased(new stopElevatorShooter());
