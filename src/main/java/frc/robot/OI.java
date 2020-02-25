@@ -15,6 +15,8 @@ import frc.robot.commands.Shooter.CloseHopperPiston;
 import frc.robot.commands.Shooter.LongShotHood;
 
 import frc.robot.commands.Shooter.OpenHopperPiston;
+
+import frc.robot.commands.Climb.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
@@ -88,57 +90,87 @@ public class OI {
         // driverA.whenReleased(new StopShooter());
         // driverB.whenPressed(new MoveElevator());
         // driverB.whenReleased(new StopElevator());
+
  
         // driverX.whenReleased(new StopHopper());
         // driverB.whenPressed(new DrivetrainBackwards());
         // driverB.whenReleased(new StopDrivetrain());
         // driverY.whenPressed(new MoveDrivetrain());
         // driverY.whenReleased(new StopDrivetrain());
-        driverA.whenPressed(new MoveManipulator());
-        driverA.whenReleased(new StopManipulator());
+//         driverA.whenPressed(new MoveManipulator());
+//         driverA.whenReleased(new StopManipulator());
 
 
-        driverB.whenPressed(new OpenHopperPiston());
-        driverB.whenReleased(new CloseHopperPiston());
+//         driverB.whenPressed(new OpenHopperPiston());
+//         driverB.whenReleased(new CloseHopperPiston());
         
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whenReleased(new StopShooterGroupWall());
 
 
-        // driverLB.whenReleased(new StopShooterGroupLong());
-        operatorDPadLeft.whenPressed(new ShooterGroupLong());
-        operatorDPadLeft.whenReleased(new Stop());
+//         // driverLB.whenReleased(new StopShooterGroupLong());
+//         operatorDPadLeft.whenPressed(new ShooterGroupLong());
+//         operatorDPadLeft.whenReleased(new Stop());
 
         
-        operatorDPadRight.whenPressed(new ShooterGroupWall());
-        operatorDPadRight.whenReleased(new Stop());
+//         operatorDPadRight.whenPressed(new ShooterGroupWall());
+//         operatorDPadRight.whenReleased(new Stop());
 
-        operatorA.whenPressed(new MoveHopperLong());
-        operatorA.whenReleased(new StopHopper());
+//         operatorA.whenPressed(new MoveHopperLong());
+//         operatorA.whenReleased(new StopHopper());
 
-        operatorB.whenPressed(new LongShotHood());
-        operatorB.whenReleased(new WallShotHood());
+//         operatorB.whenPressed(new LongShotHood());
+//         operatorB.whenReleased(new WallShotHood());
 
-        operatorY.whenPressed(new ReverseHopper());
-        operatorY.whenReleased(new StopHopper());
+//         operatorY.whenPressed(new ReverseHopper());
+//         operatorY.whenReleased(new StopHopper());
 
-        operatorX.whenPressed(new IrHopper());
-        operatorX.whenReleased(new StopHopper());
+//         operatorX.whenPressed(new IrHopper());
+//         operatorX.whenReleased(new StopHopper());
 
-        operatorRB.whenPressed(new WallShot());
-        operatorRB.whenReleased(new StopShooter());
+//         operatorRB.whenPressed(new WallShot());
+//         operatorRB.whenReleased(new StopShooter());
 
-        operatorLB.whenPressed(new LongShot());
-        operatorLB.whenReleased(new StopShooter());
+//         operatorLB.whenPressed(new LongShot());
+//         operatorLB.whenReleased(new StopShooter());
 
 
 
-        // driverLB.whenReleased(new stopHopperElevator());
-        // driverLS.whenPressed(new runElevatorShooter());
-        // driverLS.whenReleased(new stopElevatorShooter());
-        // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
-        // //true does right hp far rocket path, false does right hp bay 1 ship path
-        // // driverY.whenReleased(new StopCargoMotor());
+//         // driverLB.whenReleased(new stopHopperElevator());
+//         // driverLS.whenPressed(new runElevatorShooter());
+//         // driverLS.whenReleased(new stopElevatorShooter());
+//         // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+// =======
+//         driverA.whenPressed(new ExtendPanelMech());
+//         driverB.whenPressed(new SetPanelMech());
+//         driverA.whenReleased(new DefaultPanelMech());
+
+//       //  driverX.whenPressed(new MoveHopper());
+//         driverX.whenReleased(new StopHopper());
+//         driverY.whenPressed(new MoveDrivetrain());
+//         driverY.whenReleased(new StopDrivetrain());
+//         driverLB.whenPressed(new runHopperElevator());
+//         driverLB.whenReleased(new stopHopperElevator());
+//         driverRB.whenPressed(new runDrivetrainShooter());
+//         driverRB.whenReleased(new stopDrivetrainShooter());
+//         driverLS.whenPressed(new runElevatorShooter());
+//         driverLS.whenReleased(new stopElevatorShooter());
+//         operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
+
+        
+//         operatorX.whenPressed(new ReleasePin());
+//         operatorY.whenPressed(new WinchClimb());
+//         operatorY.whenReleased(new StopWinchClimb());
+//      //   operatorA.whenPressed(new ActivePosition()); 
+
+
+
+        
+
+
+// >>>>>>> Climber-Maaz
+//         // //true does right hp far rocket path, false does right hp bay 1 ship path
+//         // // driverY.whenReleased(new StopCargoMotor());
         // driverRB.whileHeld(new DriveWithJoystickLeftTalon());
         // driverLB.whileHeld(new DriveWithJoystickRightTalon());
         // // driverY.whileHeld(new DriveWithJoystickLeftTalon());
@@ -150,58 +182,58 @@ public class OI {
 
     }
 
-    private void initButtons(){
-        try{
-//DRIVER BUTTONS//
-            driverA = new JoystickButton(driverStick, 1);
-            driverB = new JoystickButton(driverStick, 2);
-            driverX = new JoystickButton(driverStick,3);
-            driverY = new JoystickButton(driverStick,4);
-            driverBack = new JoystickButton(driverStick, 7);
-            driverStart = new JoystickButton(driverStick, 8);
-            driverRB = new JoystickButton(driverStick, 6);
-            driverLB = new JoystickButton(driverStick, 5);
-            driverLS = new JoystickButton(driverStick,9);
-            // driverRS = new JoystickButton(driverStick,10);
-            driverRX = new AnalogButton(driverStick, 4);
-            driverDPadDown = new DPadButton(driverStick, DPadButton.kDPadDown);
-            driverDPadRight = new DPadButton(driverStick, DPadButton.kDPadRight);
-            // driverDPadUp = new DPadButton(driverStick, DPadButton.kDPadUp);
-            driverDPadLeft = new DPadButton(driverStick, DPadButton.kDPadLeft);
-            driveButton = new MultiButton(new Button[] {
-                new AnalogButton(driverStick, 3, 2, 0, 0.2),
-                driverRB,
-                driverLB
-            });
+//     private void initButtons(){
+//         try{
+// //DRIVER BUTTONS//
+//             driverA = new JoystickButton(driverStick, 1);
+//             driverB = new JoystickButton(driverStick, 2);
+//             driverX = new JoystickButton(driverStick,3);
+//             driverY = new JoystickButton(driverStick,4);
+//             driverBack = new JoystickButton(driverStick, 7);
+//             driverStart = new JoystickButton(driverStick, 8);
+//             driverRB = new JoystickButton(driverStick, 6);
+//             driverLB = new JoystickButton(driverStick, 5);
+//             driverLS = new JoystickButton(driverStick,9);
+//             // driverRS = new JoystickButton(driverStick,10);
+//             driverRX = new AnalogButton(driverStick, 4);
+//             driverDPadDown = new DPadButton(driverStick, DPadButton.kDPadDown);
+//             driverDPadRight = new DPadButton(driverStick, DPadButton.kDPadRight);
+//             // driverDPadUp = new DPadButton(driverStick, DPadButton.kDPadUp);
+//             driverDPadLeft = new DPadButton(driverStick, DPadButton.kDPadLeft);
+//             driveButton = new MultiButton(new Button[] {
+//                 new AnalogButton(driverStick, 3, 2, 0, 0.2),
+//                 driverRB,
+//                 driverLB
+//             });
 
-//OPERATOR BUTTONS//
-            operatorA = new JoystickButton(operatorStick, 1);
-            operatorB = new JoystickButton(operatorStick, 2);
-            operatorX = new JoystickButton(operatorStick, 3);
-            operatorY = new JoystickButton(operatorStick, 4);
-            operatorBack = new JoystickButton(operatorStick,7);
-            operatorStart = new JoystickButton(driverStick, 8);
-            operatorRB = new JoystickButton(operatorStick, 6);
-            operatorLB = new JoystickButton(operatorStick, 5);
-            operatorLT = new AnalogButton(operatorStick, 2);
-            operatorRT = new AnalogButton(operatorStick, 3);
-            operatorLS = new AnalogButton(operatorStick, 1);
-            operatorDPadDown = new DPadButton(operatorStick, DPadButton.kDPadDown);
-            operatorDPadLeft = new DPadButton(operatorStick, DPadButton.kDPadLeft);
-        }
+// //OPERATOR BUTTONS//
+//             operatorA = new JoystickButton(operatorStick, 1);
+//             operatorB = new JoystickButton(operatorStick, 2);
+//             operatorX = new JoystickButton(operatorStick, 3);
+//             operatorY = new JoystickButton(operatorStick, 4);
+//             operatorBack = new JoystickButton(operatorStick,7);
+//             operatorStart = new JoystickButton(driverStick, 8);
+//             operatorRB = new JoystickButton(operatorStick, 6);
+//             operatorLB = new JoystickButton(operatorStick, 5);
+//             operatorLT = new AnalogButton(operatorStick, 2);
+//             operatorRT = new AnalogButton(operatorStick, 3);
+//             operatorLS = new AnalogButton(operatorStick, 1);
+//             operatorDPadDown = new DPadButton(operatorStick, DPadButton.kDPadDown);
+//             operatorDPadLeft = new DPadButton(operatorStick, DPadButton.kDPadLeft);
+//         }
 
-        catch (Exception error){
-            System.out.println("Error Init With Buttons");
-            error.printStackTrace();
-        }
-    }
+//         catch (Exception error){
+//             System.out.println("Error Init With Buttons");
+//             error.printStackTrace();
+//         }
+//     }
     
-    private void initUsed(){
-        operatorLeftJoystickUsed = new Button() {
-			@Override
-			public boolean get() {
-				return Math.abs(Util.deadzone(Constants.DEADZONE, operatorStick.getRawAxis(1), 1.0)) > 0.08;
-			}
-		};
-    }
-}
+//     private void initUsed(){
+//         operatorLeftJoystickUsed = new Button() {
+// 			@Override
+// 			public boolean get() {
+// 				return Math.abs(Util.deadzone(Constants.DEADZONE, operatorStick.getRawAxis(1), 1.0)) > 0.08;
+// 			}
+// 		};
+//     }
+// }

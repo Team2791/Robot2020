@@ -109,4 +109,16 @@ public final class Constants {
 	public static final double PANEL_MECH_FAST = 0.45;
 
 
+     //climber
+     public static final double CLIMBER_CREEP = 0.25;
+    // public static final double kSelfClimbGoRight = 0.1;
+    // public static final double kSelfClimbGoLeft= -0.1;
+
+     //Global
+     public static final boolean kToExtendArm = true;
+
+     //Panel Mech
+     public static final double PANEL_MECH_CREEP = 0.1;
+     public static final double PANEL_MECH_FAST = 0.5;
+ 
 }

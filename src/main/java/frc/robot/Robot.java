@@ -9,7 +9,12 @@ import frc.robot.subsystems.*;
 import frc.robot.util.Camera_Switch.CameraSwitch;
 import edu.wpi.first.wpilibj.Compressor;
 
+
 import edu.wpi.first.cameraserver.CameraServer;
+
+=======
+import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.*;
 
 
                                                                                                    
@@ -25,10 +30,14 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
+
     public static Manipulator manipulator;
     public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
+
+=======
+    public static Climber climber;
 
     @Override
     public void robotInit() {
@@ -40,11 +49,14 @@ public class Robot extends TimedRobot {
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
+
         Cam_switch = new CameraSwitch(0,1); 
         Cam = CameraServer.getInstance();
         compressor = new Compressor(RobotMap.kPCM);
         compressor.start();
         Cam.startAutomaticCapture(0);
+=======
+        climber = new Climber();
     }
     
     @Override
