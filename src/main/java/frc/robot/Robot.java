@@ -26,7 +26,7 @@ public class Robot extends TimedRobot {
     public static Hopper hopper;
     public static RobotMap robotmap;
     public static Manipulator manipulator;
-    // public static PanelMech panelMech;
+    public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
 
@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         manipulator = new Manipulator();
-        // controlPan = new ControlPan();
+        panelMech = new PanelMech();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();

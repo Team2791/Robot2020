@@ -104,4 +104,9 @@ public final class Constants {
 
 
 	public static final int BALL_VALUE = 2300;
+
+
+	public static final double PANEL_MECH_FAST = 0.45;
+
+
 }
