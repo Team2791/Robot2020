@@ -3,12 +3,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Relay.Value;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.setCameraOne;
 import frc.robot.subsystems.*;
 import frc.robot.util.Camera_Switch.CameraSwitch;
-import edu.wpi.first.wpilibj.Compressor;
+import frc.robot.OI.*;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.cameraserver.CameraServer;
 
 
@@ -17,6 +22,7 @@ public class Robot extends TimedRobot {
 
 	long loopCounter = 0;
 
+    public static Joystick operatorStick;
     public static OI oi;
     public static Drivetrain drivetrain;
     public static PowerDistributionPanel pdp;
@@ -29,6 +35,7 @@ public class Robot extends TimedRobot {
     // public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
+    private Button operatorA, operatorB; 
 
     @Override
     public void robotInit() {
@@ -45,6 +52,9 @@ public class Robot extends TimedRobot {
         compressor = new Compressor(RobotMap.kPCM);
         compressor.start();
         Cam.startAutomaticCapture(0);
+        operatorStick = new Joystick(1);
+        operatorA = new JoystickButton(operatorStick, 1);
+        operatorB = new JoystickButton(operatorStick, 2);
     }
     
     @Override
@@ -53,20 +63,38 @@ public class Robot extends TimedRobot {
         // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
         drivetrain.debug();
         compressor.start();
+        Cam_switch.debug();
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
         hopper.debug();
-
-    
+        if(operatorA.get() == true) {
+            Cam_switch.select(CameraSwitch.kcamera1);
+        }
+        else if (operatorB.get() == true) {
+            Cam_switch.select(CameraSwitch.kcamera2);
+        }
+        else {
+            Cam_switch.select(CameraSwitch.kcamera3);
+        }
     }
 
     @Override
     public void disabledInit() {
         drivetrain.setMotors(0,0);
+        hopper.setHopper(0,0);
+        manipulator.setManipulator(0);
+        manipulator.setRetracted(true); 
+        shooter.setShooter(0);
+        //add emergency stops for panelMech
     }
 
     @Override
     public void disabledPeriodic() {
          drivetrain.setMotors(0,0);
+         hopper.setHopper(0,0);
+         manipulator.setManipulator(0);
+         manipulator.setRetracted(true); 
+         shooter.setShooter(0);
+         //add emergency stops for panelMech
         // Robot.drivetrain.resetGyro();
         // autoCommand.start();
     }

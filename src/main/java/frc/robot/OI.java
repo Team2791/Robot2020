@@ -88,10 +88,12 @@ public class OI {
         // driverA.whenReleased(new StopShooter());
         // driverB.whenPressed(new MoveElevator());
         // driverB.whenReleased(new StopElevator());
-        operatorA.whenPressed(new MoveHopperLong());
-        operatorA.whenReleased(new StopHopper());
-        operatorB.whenPressed(new CheckHoodLong());
-        operatorB.whenReleased(new CheckHoodWall());
+        //operatorA.whenPressed(new MoveHopperLong());
+        //operatorA.whenReleased(new StopHopper());
+        //operatorB.whenPressed(new CheckHoodLong());
+        //operatorB.whenReleased(new CheckHoodWall());
+        // operatorA.whenPressed(new setCameraOne()); 
+        // operatorB.whenPressed(new setCameraTwo());
         // driverX.whenReleased(new StopHopper());
         // driverB.whenPressed(new DrivetrainBackwards());
         // driverB.whenReleased(new StopDrivetrain());

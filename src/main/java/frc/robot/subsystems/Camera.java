@@ -1,33 +1,22 @@
-// package frc.robot.subsystems;
+package frc.robot.subsystems;
 
-// import com.revrobotics.CANSparkMax;
-// import com.revrobotics.CANSparkMax.IdleMode;
-// import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.util.Camera_Switch.*;
 
-// import com.revrobotics.CANEncoder;
-// import com.revrobotics.AlternateEncoderType;
+public class Camera extends Subsystem{
+    public CameraSwitch cam_switch; 
+    public Camera() {
 
-// import edu.wpi.first.wpilibj.command.Subsystem;
-// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+    //Initialize Cameron Switch
+    cam_switch = new CameraSwitch(0, 1);
+    }
+    public void initDefaultCommand() {
 
-// import frc.robot.Constants;
-// import frc.robot.RobotMap;
+    }
+    public void setCameraNum(int camNum) {
+        cam_switch.select(camNum);
+    }
 
-// import frc.robot.util.Camera_Switch.*;
+    public void debug (){}
 
-// public class Camera extends Subsystem{
-//     public CameraSwitch cam_switch; 
-//     public Camera() {
-
-//     //Initialize Cameron Switch
-//     cam_switch = new CameraSwitch(0, 1);
-//     }
-//     public void initDefaultCommand() {
-
-//     }
-//     public void setCameraNum(int camNum) {
-//         cam_switch.select(camNum);
-//     }
-//     public void debug (){}
-
-// } byeeeee
+}

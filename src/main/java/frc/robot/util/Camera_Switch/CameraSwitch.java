@@ -22,6 +22,7 @@ package frc.robot.util.Camera_Switch;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -39,7 +40,7 @@ public class CameraSwitch implements RelayPortDevice{
    public DigitalOutput DO;
 
 public Victor pwm;
-
+   private int cameraState;
     public CameraSwitch(int port1, int port2){
       
        camrelay1 = new Relay(port1);
@@ -51,23 +52,23 @@ public Victor pwm;
         /* enter the constant strings for the switch into this method to select cameras
      constants for cameras are- "kcamera(camera#)" (these can be changed in the switch statment)
      This switch has four possible ports. */
-
+      cameraState = camSelected; 
      switch (camSelected) {
         case kcamera1 :
-          //  camrelay1.set(Value.kReverse);   
-            // camrelay.set(Value.kForward);
-           
+          camrelay1.set(Value.kReverse);
+           camrelay2.set(Value.kOff);
             break;
         case kcamera2 :
-           // camrelay1.set(Value.kForward);
+        camrelay1.set(Value.kForward);
+        camrelay2.set(Value.kOff);
          
             break;
         case kcamera3 :
             camrelay2.set(Value.kReverse);
-            // camrelay.set(Value.kOn);
+             camrelay1.set(Value.kOff);
         case kcamera4 :
             camrelay2.set(Value.kForward);
-            // camrelay.set(Value.kOff);
+           camrelay1.set(Value.kOff);
             break;
         default:
             camrelay1.set(Value.kReverse);
@@ -97,6 +98,9 @@ public Victor pwm;
         System.err.println("setLocalRelay(Relay.Value klocalValue); method not utilized in CameraSwitch.java");
         
     }//DO NOT USE THIS METHOD
+    public void debug() {
+       SmartDashboard.putNumber("Camera Number: ", cameraState);
+    }
 
    }
 //end of file-----------------------------------------------------------------------

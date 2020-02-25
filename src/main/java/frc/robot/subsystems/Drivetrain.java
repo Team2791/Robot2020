@@ -113,6 +113,10 @@ public class Drivetrain extends Subsystem {
         }
 
     }
+    public void stopCompletely() {
+        leftLeader.set(0);
+        rightLeader.set(0);
+    }
 
 
     public void debug() {
