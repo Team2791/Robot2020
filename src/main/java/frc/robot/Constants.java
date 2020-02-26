@@ -64,10 +64,12 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .40; // 20% is sweet spot
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .40; 
 
 
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.30; 
+
+    public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = .2;
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = .55;
@@ -121,4 +123,10 @@ public final class Constants {
 
      //Panel Mech
      public static final double PANEL_MECH_CREEP = 0.1;
+
+
+	public static final double kSelfClimbGoRight = 0; //change
+
+
+	public static final double kSelfClimbGoLeft = 0; //change
 }
