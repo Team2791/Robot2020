@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.Compressor;
 
 import edu.wpi.first.cameraserver.CameraServer;
 
-=======
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.*;
 
@@ -36,7 +35,6 @@ public class Robot extends TimedRobot {
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
 
-=======
     public static Climber climber;
 
     @Override
@@ -55,7 +53,6 @@ public class Robot extends TimedRobot {
         compressor = new Compressor(RobotMap.kPCM);
         compressor.start();
         Cam.startAutomaticCapture(0);
-=======
         climber = new Climber();
     }
     

@@ -87,15 +87,13 @@ public class RobotMap {
     //Hopper
     // public static final int HOPPER_TALON = 40;
     //Drivetrain
-  public static final int DRIVETRAIN_NEO = 3;
 public static final int HOOD_SOLENOID = 3;
 public static final int HOPPER_SOLENOID = 1;
 public static final int VERTICAL_HOPPER = 41;
 public static final int HORIZONTAL_HOPPER = 42;
 public static final int MANIPULATOR_SOLENOID = 6;
 public static final int MANIPULATOR_NEO = 40;
-public static final int PANEL_NEO = 50;
-public static final int PANEL_SOLENOID = 2; 
+
   
   public static final int DRIVETRAIN_NEO = 22;
 
