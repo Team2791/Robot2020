@@ -14,7 +14,9 @@ import frc.robot.OI.*;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
+
 import edu.wpi.first.cameraserver.CameraServer;
+import frc.robot.subsystems.*;
 
 
                                                                                                    
@@ -31,11 +33,14 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Hopper hopper;
     public static RobotMap robotmap;
+
     public static Manipulator manipulator;
-    // public static PanelMech panelMech;
+    public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
     private Button operatorA, operatorB; 
+
+    public static Climber climber;
 
     @Override
     public void robotInit() {
@@ -43,10 +48,11 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         manipulator = new Manipulator();
-        // controlPan = new ControlPan();
+        //panelMech = new PanelMech();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
+
         Cam_switch = new CameraSwitch(0,1); 
         Cam = CameraServer.getInstance();
         compressor = new Compressor(RobotMap.kPCM);
@@ -55,13 +61,14 @@ public class Robot extends TimedRobot {
         operatorStick = new Joystick(1);
         operatorA = new JoystickButton(operatorStick, 1);
         operatorB = new JoystickButton(operatorStick, 2);
+        climber = new Climber();
     }
-    
-    @Override
+
+    // @Override
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
         // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
-        drivetrain.debug();
+        //drivetrain.debug();
         compressor.start();
         Cam_switch.debug();
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());

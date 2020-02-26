@@ -24,19 +24,20 @@ public final class Constants {
     public static final double kCamStraightSlow = 0.25;
     
 
-    public static final double ShooterkP = 6e-4;
+    public static final double ShooterkP = 5e-5;
     public static final double ShooterkI = 0;
-    public static final double ShooterkD = 1e-5;
+    public static final double ShooterkD = 0;
     public static final double ShooterkIz = 0;
-    public static final double ShooterkFF = 0;
+    public static final double ShooterkFF = 1e-4;
     public static final double ShooterMaxOutput = 1;
     public static final double ShooterMinOutput = -1;   //  max and min outputs that pidcontroller can send to the sparkmax
-    public static final double ShootermaxRPM = 4500;
     public static final double kGravity = 32.1741;  //acceleration due to gravity in ft/s/s
     public static final double ShooterDiameter = 6; //inches
     public static final double ShooterGearing = 2; //Shooter spins twice for every one time motor spins
     public static final double kDrag = 1;
     public static final double kMagnus = 1;
+
+
 
     public static final double DrivekP = 6e-4;
     public static final double DrivekI = 0;
@@ -46,6 +47,10 @@ public final class Constants {
     public static final double DriveMaxOutput = 1;
     public static final double DriveMinOutput = -1;
     public static final double DrivemaxRPM = 4500;
+
+    public static final double LimelightkP = 0.35;
+    public static final double LimelightkI = 0.0;
+    public static final double LimelightkD = 0.0;
 
     public static final double kDistInnerOuter = 8;
 
@@ -63,9 +68,6 @@ public final class Constants {
 
 
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.30; 
-
-
-    public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.20; 
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = .55;
@@ -104,4 +106,19 @@ public final class Constants {
 
 
 	public static final int BALL_VALUE = 2300;
+
+
+	public static final double PANEL_MECH_FAST = 0.45;
+
+
+     //climber
+     public static final double CLIMBER_CREEP = 0.25;
+    // public static final double kSelfClimbGoRight = 0.1;
+    // public static final double kSelfClimbGoLeft= -0.1;
+
+     //Global
+     public static final boolean kToExtendArm = true;
+
+     //Panel Mech
+     public static final double PANEL_MECH_CREEP = 0.1;
 }

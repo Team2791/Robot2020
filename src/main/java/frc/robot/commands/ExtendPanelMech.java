@@ -5,16 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Shooter;
-
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Constants;
+package frc.robot.commands;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveShooterWall extends Command {
-  public MoveShooterWall() {
-    super("MoveShooterWall");
-    requires(Robot.shooter);
+public class ExtendPanelMech extends Command {
+  public ExtendPanelMech() {
+    super("ExtendPanelMech");
+
+    requires(Robot.panelMech);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -27,8 +26,8 @@ public class MoveShooterWall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.panelMech.extendPanelMech(true);
 
-    Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_WALL);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -40,7 +39,6 @@ public class MoveShooterWall extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.setShooter(0);
   }
 
   // Called when another command which requires one or more of the same

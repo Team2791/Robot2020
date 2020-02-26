@@ -7,7 +7,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-
+import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -37,6 +37,10 @@ public class Shooter extends Subsystem {
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
         hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_SOLENOID);
+        
+        shooter_leader.getPIDController().setP(Constants.ShooterkP);
+        shooter_leader.getPIDController().setFF(Constants.ShooterkFF);
+        shooter_leader.getPIDController().setOutputRange(-1, 1);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;
@@ -60,6 +64,10 @@ public class Shooter extends Subsystem {
     }
     public void setShooter(final double output){
         shooter_leader.set(output);
+        shooter_follower.follow(shooter_leader, true);
+    }
+    public void setShooterPID(final double setpoint){
+        shooter_leader.getPIDController().setReference(setpoint, ControlType.kVelocity);
         shooter_follower.follow(shooter_leader, true);
     }
     public double getShooterVelocity(){

@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class CheckMotorLong extends Command {
-  public CheckMotorLong() {
-    super("CheckMotorLong");
+public class WallShot extends Command {
+  public WallShot() {
+    super("WallShot");
     requires(Robot.shooter);
 
     // Use requires() here to declare subsystem dependencies
@@ -29,20 +29,20 @@ public class CheckMotorLong extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_LONG);
+
+        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_WALL); //Utilize PIDs for this (and Longshot as well)
+ 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
-  }
-  //   if(Robot.shooter.checkWheelSpeed_Long() == true) {
+  //   if(Robot.shooter.checkWheelSpeed_Wall()) {
   //       return true; 
   //   }
-
   //   return false; 
-  // }
+  return true;
+  }
 
   // Called once after isFinished returns true
   @Override
