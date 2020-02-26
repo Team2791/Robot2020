@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
 
 import edu.wpi.first.cameraserver.CameraServer;
+
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.*;
 
 

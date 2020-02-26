@@ -110,7 +110,6 @@ public final class Constants {
 	public static final int BALL_VALUE = 2300;
 
 
-	public static final double PANEL_MECH_FAST = 0.45;
 
 
      //climber
@@ -129,4 +128,9 @@ public final class Constants {
 
 
 	public static final double kSelfClimbGoLeft = 0; //change
+     public static final double PANEL_MECH_FAST = 0.45;
+
+
+	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
+
 }

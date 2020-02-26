@@ -114,6 +114,12 @@ public class OI {
         operatorLB.whenPressed(new LongShot());
         operatorLB.whenReleased(new StopShooter());
 
+        operatorRB.whenPressed(new WallShot());
+        operatorRB.whenReleased(new StopShooter());
+
+        operatorLB.whenPressed(new LongShot());
+        operatorLB.whenReleased(new StopShooter());
+
 
 
         // driverLB.whenReleased(new stopHopperElevator());
