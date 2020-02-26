@@ -1,4 +1,4 @@
-package com.varel.gereon.components.IMU.Constants;
+package frc.robot.util.IMU.Constants;
 
 public enum LSM9DS1_Gyroscope_Scale {
     LSM9DS1_GYROSCOPE_245DPS,

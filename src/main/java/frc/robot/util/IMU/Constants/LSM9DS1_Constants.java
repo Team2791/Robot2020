@@ -1,4 +1,4 @@
-package com.varel.gereon.components.IMU.Constants;
+package frc.robot.util.IMU.Constants;
 
 public final class LSM9DS1_Constants {
 

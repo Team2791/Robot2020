@@ -1,5 +1,4 @@
-package frc.robot.util.LSM9DS1_Accelerometer_Range;
-
+package frc.robot.util.IMU.Constants;
 public enum LSM9DS1_Accelerometer_Range {
     LSM9DS1_ACCELEROMETER_2G,
     LSM9DS1_ACCELEROMETER_4G,
