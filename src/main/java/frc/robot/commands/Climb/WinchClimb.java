@@ -11,9 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class WinchClimb extends Command {
-  public WinchClimb() {
+  private boolean direction;
+  public WinchClimb(boolean down) {
+    super("WinchClimb");
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    direction = down;
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +27,12 @@ public class WinchClimb extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.setWinchOutput(1);
+    if (direction){
+      Robot.climber.setWinchOutput(-1);
+    }
+    else if (!direction){
+      Robot.climber.setWinchOutput(1);
+    } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +44,7 @@ public class WinchClimb extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climber.setWinchOutput(1);
+    Robot.climber.setWinchOutput(0);
 
   }
 

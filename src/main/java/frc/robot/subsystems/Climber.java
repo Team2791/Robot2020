@@ -13,11 +13,14 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Solenoid;
-
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.*;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class Climber extends Subsystem { 
     private CANSparkMax winch_Neo;
@@ -32,13 +35,25 @@ public class Climber extends Subsystem {
     public GyroBase climbGyro;
     public double angle;
     private Gyro gyro;
-    
+
+    public static Joystick driverStick; 
+    private Button driverA, driverB, driverY, driverX;
+
     public Climber(){
         winch_Neo = new CANSparkMax(RobotMap.WINCH_NEO, MotorType.kBrushless);
         Extender = new Solenoid(RobotMap.kPCM, RobotMap.CLIMB_SOLENOID);
         selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
-    
+        driverStick = new Joystick(0);
+        driverY = new JoystickButton(driverStick,4);
+        driverB = new JoystickButton(driverStick,2);
+        driverA = new JoystickButton(driverStick, 1);
+        driverX = new JoystickButton(driverStick, 3);
+
+       
+        winch_Neo.setIdleMode(IdleMode.kBrake);
+        
         climbGyro = new GyroBase(){
+    
         
             @Override
             public void close() throws Exception {
@@ -85,6 +100,14 @@ public class Climber extends Subsystem {
         public void setPinExtender(boolean extended){
             Extender.set(extended);
         }
+        public void setPinExtenderByButton(){
+            if(driverY.get()){
+                Extender.set(true);
+            }
+            else if(driverB.get()){
+                Extender.set(false);
+            }
+        }
 
         public boolean getPinExtender(){
             return Extender.get();
@@ -92,6 +115,18 @@ public class Climber extends Subsystem {
     
         public void setWinchOutput(double outputWinch){
             winch_Neo.set(outputWinch);
+        }
+
+        public void setWinchOutputByButton(){
+            if (driverA.get()){
+                winch_Neo.set(1);
+            }
+            else if (driverX.get()){
+                winch_Neo.set(-1);
+            }
+            else {
+                winch_Neo.set(0);
+            }
         }
 
         public void calibrateGyro(){

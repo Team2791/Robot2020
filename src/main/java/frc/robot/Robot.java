@@ -63,6 +63,7 @@ public class Robot extends TimedRobot {
         operatorStick = new Joystick(1);
         operatorA = new JoystickButton(operatorStick, 1);
         operatorB = new JoystickButton(operatorStick, 2);
+        
         climber = new Climber();
     }
 
@@ -75,6 +76,7 @@ public class Robot extends TimedRobot {
         Cam_switch.debug();
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
         hopper.debug();
+        climber.debug();
         if(operatorA.get() == true) {
             Cam_switch.select(CameraSwitch.kcamera1);
         }
@@ -84,6 +86,8 @@ public class Robot extends TimedRobot {
         else {
             Cam_switch.select(CameraSwitch.kcamera3);
         }
+        climber.setPinExtenderByButton();
+        climber.setWinchOutputByButton();
     }
 
     @Override

@@ -54,8 +54,8 @@ public class OI {
     public OI() {
         driverStick = new Joystick(0);
         operatorStick = new Joystick(1);
-        // initButtons();
-        // initUsed();
+        initButtons();
+        initUsed();
 
        driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
         
@@ -65,24 +65,32 @@ public class OI {
         //LEAVE OUT driverA.whenPressed(new AutoSetLifterPots());
         //LEAVE OUT driverB.whenPressed(new ExtendBothLifters(.8,false,driverStick,false));
 
-        driverA.whenPressed(new MoveShooter());
-        driverA.whenReleased(new StopShooter());
-        driverB.whenReleased(new StopElevator());
-        operatorA.whenPressed(new MoveHopperLong());
-        operatorA.whenReleased(new StopHopper());;
-        operatorA.whenPressed(new setCameraOne()); 
-        operatorB.whenPressed(new setCameraTwo());
-        driverX.whenReleased(new StopHopper());
-        driverB.whenPressed(new DrivetrainBackwards());
-        driverB.whenReleased(new StopDrivetrain());
-        driverY.whenPressed(new MoveDrivetrain());
-        driverY.whenReleased(new StopDrivetrain());
-        driverA.whenPressed(new MoveManipulator());
-        driverA.whenReleased(new StopManipulator());
+        // driverA.whenPressed(new MoveShooter());
+        // driverA.whenReleased(new StopShooter());
+    
+        // operatorA.whenPressed(new MoveHopperLong());
+        // operatorA.whenReleased(new StopHopper());;
+        // operatorA.whenPressed(new setCameraOne()); 
+        // operatorB.whenPressed(new setCameraTwo());
+        // // driverX.whenReleased(new StopHopper());
+        // driverB.whenPressed(new DrivetrainBackwards());
+        // driverB.whenReleased(new StopDrivetrain());
+        // driverY.whenPressed(new MoveDrivetrain());
+        // driverY.whenReleased(new StopDrivetrain());
+        // driverA.whenPressed(new MoveManipulator());
+        // driverA.whenReleased(new StopManipulator());
+      
+        // driverX.whenPressed(new WinchClimb(false));
+        // driverX.whenReleased(new StopWinchClimb());
+        // driverA.whenPressed(new WinchClimb(true));
+        // driverA.whenReleased(new StopWinchClimb());
+        // // driverY.whenPressed(new ReleasePin(true));
+        // driverB.whenPressed(new ReleasePin(false));
 
 
-        driverB.whenPressed(new OpenHopperPiston());
-        driverB.whenReleased(new CloseHopperPiston());
+
+        // driverB.whenPressed(new OpenHopperPiston());
+        // driverB.whenReleased(new CloseHopperPiston());
         
         driverRB.whenPressed(new ShooterGroupWall());
         driverRB.whenReleased(new Stop());
@@ -121,18 +129,18 @@ public class OI {
         operatorLB.whenReleased(new StopShooter());
 
 
-
+        driverDPadRight.whenPressed(new StopManipulator());
         // driverLB.whenReleased(new stopHopperElevator());
         // driverLS.whenPressed(new runElevatorShooter());
         // driverLS.whenReleased(new stopElevatorShooter());
         // operatorLeftJoystickUsed.whenPressed(new RunHopperWithJoystick(operatorLeftJoystickUsed));
 
 
-        
-        driverX.whenPressed(new ReleasePin());
-        driverY.whenPressed(new WinchClimb());
-        driverY.whenReleased(new StopWinchClimb());
-        driverA.whenPressed(new ActivePosition()); 
+            
+            // driverX.whenPressed(new ReleasePin());
+            // driverY.whenPressed(new WinchClimb());
+            // driverY.whenReleased(new StopWinchClimb());
+            // driverA.whenPressed(new ActivePosition()); 
 
 
         // //true does right hp far rocket path, false does right hp bay 1 ship path
@@ -186,6 +194,7 @@ public class OI {
             operatorLS = new AnalogButton(operatorStick, 1);
             operatorDPadDown = new DPadButton(operatorStick, DPadButton.kDPadDown);
             operatorDPadLeft = new DPadButton(operatorStick, DPadButton.kDPadLeft);
+            operatorDPadRight = new DPadButton(operatorStick, DPadButton.kDPadRight);
         }
 
         catch (Exception error){

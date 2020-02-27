@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.Climber;
 
 public class ReleasePin extends Command {
-  public ReleasePin() {
+  private boolean lock;
+  public ReleasePin(boolean extend) {
       super("ReleasePin");
-      requires(Robot.climber);
+      // requires(Robot.climber);
+      lock = extend;
   }
 
   
@@ -22,7 +24,7 @@ public class ReleasePin extends Command {
   }
 
   protected void execute() {
-    Robot.climber.setPinExtender(false);
+    Robot.climber.setPinExtender(lock);
   }
   
   protected boolean isFinished() {
@@ -31,7 +33,7 @@ public class ReleasePin extends Command {
 
   protected void end() {
   
-    Robot.climber.setPinExtender(true);
+    // Robot.climber.setPinExtender(true);
   }
 
   protected void interrupted() {
