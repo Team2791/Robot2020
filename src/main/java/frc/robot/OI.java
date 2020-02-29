@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Autons.ShooterGroupLong;
 import frc.robot.Autons.ShooterGroupWall;
@@ -39,7 +40,7 @@ public class OI {
     private Button driverStart, driverBack;
     private Button operatorStart;
     private Button driverA, driverB, driverY;
-    private Button driverDPadDown, driverDPadRight, driverDPadLeft;
+    private Button driverDPadDown, driverDPadRight, driverDPadLeft, driverDPadUp;
     private Button operatorRB, operatorLT, operatorLB, operatorRT;
     public Button operatorLS, operatorBack;
     private Button driverX;
@@ -96,16 +97,34 @@ public class OI {
         // operatorRB.whenReleased(new StopShooter());
 
         operatorLB.whenPressed(new LongShot());
-        operatorLB.whenReleased(new StopShooter());
+        // operatorLB.whenReleased(new StopShooter());
+        // operatorStart.whenPressed(new StopShooter());
+        new Trigger(){
+            @Override
+            public boolean get() {
+                // TODO Auto-generated method stub
+                return operatorStick.getRawAxis(3) > 0.25;
+            }
+        }.whenActive(new StopShooter());
 
-        driverDPadLeft.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
-        driverDPadLeft.whenReleased(new StopManipulator());
+        // driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
+        // driverA.whenReleased(new StopManipulator());
 
-        driverDPadRight.whenPressed(new ExtendPanelMech());
-        driverDPadRight.whenReleased(new DefaultPanelMech());
+        driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
+        driverDPadLeft.whenPressed(new MoveManipulator());
+        driverDPadLeft.whenReleased(new StopManipulator()
+        );
+
+        // driverDPadRight.whenPressed(new ExtendPanelMech());
+        // driverDPadRight.whenReleased(new DefaultPanelMech());
 
         //driverDPadDown.whenPressed(new SetPanelMech());
-
+        driverX.whenPressed(new ReleasePin(true, false));
+        driverA.whenPressed(new ReleasePin(false, false));
+        driverY.whileHeld(new WinchClimb(true));
+        driverY.whenReleased(new StopWinchClimb());
+        driverB.whileHeld(new WinchClimb(false));
+        driverB.whenReleased(new StopWinchClimb());
     }
 
     private void initButtons(){
@@ -124,7 +143,7 @@ public class OI {
             driverRX = new AnalogButton(driverStick, 4);
             driverDPadDown = new DPadButton(driverStick, DPadButton.kDPadDown);
             driverDPadRight = new DPadButton(driverStick, DPadButton.kDPadRight);
-            // driverDPadUp = new DPadButton(driverStick, DPadButton.kDPadUp);
+            driverDPadUp = new DPadButton(driverStick, DPadButton.kDPadUp);
             driverDPadLeft = new DPadButton(driverStick, DPadButton.kDPadLeft);
             driveButton = new MultiButton(new Button[] {
                 new AnalogButton(driverStick, 3, 2, 0, 0.2),

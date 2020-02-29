@@ -21,7 +21,7 @@ public class MoveManipulator extends Command {
     //Called repeatedly when this Command is scheduled to run 
     @Override
     protected void execute() {
-        Robot.manipulator.setRetracted(true);
+        Robot.manipulator.setExtended();
         Robot.manipulator.setManipulator(Constants.INTAKE_MOTORSPEED);
     }
 

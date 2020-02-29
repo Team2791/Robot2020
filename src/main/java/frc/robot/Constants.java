@@ -39,9 +39,9 @@ public final class Constants {
 
 
 
-    public static final double DrivekP = 6e-4;
+    public static final double DrivekP = 0.025;
     public static final double DrivekI = 0;
-    public static final double DrivekD = 1e-5;
+    public static final double DrivekD = 0;
     public static final double DriveIz = 0;
     public static final double DrivekFF = 0;
     public static final double DriveMaxOutput = 1;
@@ -64,13 +64,13 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .40; 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .60; 
 
 
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.30; 
 
 
-    public static final double HOPPER_VERTICAL_OUTPUT = .20;
+    public static final double HOPPER_VERTICAL_OUTPUT = .35;
     
 
     public static final double REVERSE_HOPPER = -.20;

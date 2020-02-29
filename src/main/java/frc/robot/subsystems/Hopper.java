@@ -27,14 +27,15 @@ public class Hopper extends Subsystem {
     public CANSparkMax hopper_horizontal;
     public CANSparkMax hopper_vertical;
     public Solenoid hopper_stopper; 
-    public IrSensor irSensor;
+    public IrSensor entrySensor, upperSensor;
 
     
     public Hopper(){
         hopper_horizontal = new CANSparkMax(RobotMap.HORIZONTAL_HOPPER, MotorType.kBrushless);
         hopper_vertical = new CANSparkMax(RobotMap.VERTICAL_HOPPER, MotorType.kBrushless); 
         hopper_stopper = new Solenoid(RobotMap.kPCM, RobotMap.HOPPER_SOLENOID);
-        irSensor = new IrSensor(RobotMap.kPDP);
+        entrySensor = new IrSensor(RobotMap.kPDP);
+        upperSensor = new IrSensor(2);
 
         hopper_horizontal.setSmartCurrentLimit(20);
         hopper_vertical.setSmartCurrentLimit(20);
@@ -50,15 +51,17 @@ public class Hopper extends Subsystem {
     public boolean isRetracted() {
         return !hopper_stopper.get();
     }
+
     public void setRetracted(boolean retract) {
         hopper_stopper.set(retract);
     }
+    
     public boolean getRetracted() {
         return hopper_stopper.get();
     }
-
+    
     public int getIRSensor() {
-        return irSensor.getValue();
+        return entrySensor.getValue();
     }
 
     public double getHorizontalCurrent() {
@@ -78,9 +81,21 @@ public class Hopper extends Subsystem {
         }
     }
 
+    public boolean isUpperSensorTripped() {
+        return 1750 <= upperSensor.getValue();
+    }
+
     public void poopBall(){
         if(Constants.BALL_VALUE < getIRSensor()){
-            setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+            if (isUpperSensorTripped()) {
+                setHopper(
+                Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
+                0);
+            } else {
+                setHopper(
+                    Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
+                    Constants.HOPPER_VERTICAL_OUTPUT);
+            }
         } else{
             setHopper(0, 0);
         }
@@ -88,12 +103,12 @@ public class Hopper extends Subsystem {
 
     public void debug(){
         //SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
-        SmartDashboard.putNumber("IR Value", irSensor.getValue());
+        SmartDashboard.putNumber("Entry IR Value", entrySensor.getValue());
         SmartDashboard.putBoolean("Got Balls?", isBall());
         SmartDashboard.putNumber("Horizontal Current", getHorizontalCurrent());
         SmartDashboard.putNumber("Vertical Current", getVerticalCurrent());
-
-
+        SmartDashboard.putBoolean("Hopper Stopper Out", isRetracted());
+        SmartDashboard.putNumber("Upper IR Value", upperSensor.getValue());
     }
     @Override
     protected void initDefaultCommand() {

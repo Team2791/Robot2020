@@ -30,7 +30,7 @@ public class WallShot extends Command {
   @Override
   protected void execute() {
 
-        Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_WALL); //Utilize PIDs for this (and Longshot as well)
+        Robot.shooter.setShooterPID(-1300); //Utilize PIDs for this (and Longshot as well)
  
   }
 

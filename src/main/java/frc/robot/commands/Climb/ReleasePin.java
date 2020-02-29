@@ -7,28 +7,43 @@
 
 package frc.robot.commands.Climb;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.Climber;
 
 public class ReleasePin extends Command {
-  private boolean lock;
-  public ReleasePin(boolean extend) {
+  private boolean lock, lowerIntake;
+  private Timer intakeRetractTimer;
+  public ReleasePin(boolean extend, boolean lowerIntake) {
       super("ReleasePin");
-      // requires(Robot.climber);
+      requires(Robot.climber);
+      requires(Robot.manipulator);
       lock = extend;
+      this.lowerIntake = lowerIntake;
+      intakeRetractTimer = new Timer();
   }
 
   
   protected void initialize() {
-  
+    intakeRetractTimer.start();
   }
 
   protected void execute() {
-    Robot.climber.setPinExtender(lock);
+    if (intakeRetractTimer.get() > 0.25) {
+      Robot.climber.setPinExtender(lock);
+    }
+
+    if (lowerIntake) {
+      if (intakeRetractTimer.get() < 2) {
+        Robot.manipulator.setExtended();
+      } else {
+        Robot.manipulator.setRetracted();
+      }
+    }
   }
   
   protected boolean isFinished() {
-    return false;
+    return intakeRetractTimer.get() > 0.1 && Robot.manipulator.getRetracted();
   }
 
   protected void end() {

@@ -21,7 +21,7 @@ public class StopManipulator extends Command {
     @Override
     protected void execute() {
         Robot.manipulator.setManipulator(0);
-        Robot.manipulator.setRetracted(false); 
+        Robot.manipulator.setRetracted(); 
     }
 
     //Make this return true when this Command no longer needs to run execute()

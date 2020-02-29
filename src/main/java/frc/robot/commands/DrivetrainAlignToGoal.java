@@ -5,49 +5,57 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Shooter;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.subsystems.Limelight.CamMode;
+import frc.robot.subsystems.Limelight.LedMode;
 
-public class LongShot extends Command {
-  public LongShot() {
-    super("LongShot");
-    requires(Robot.shooter);
+public class DrivetrainAlignToGoal extends Command {
 
+  PIDController pid;
+
+  public DrivetrainAlignToGoal() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.drivetrain);
+    requires(Robot.limelight);
+    pid = new PIDController(Constants.DrivekP, Constants.DrivekI, Constants.DrivekD);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
+    Robot.limelight.setCamMode(CamMode.VISION_CAM);
+    Robot.limelight.setLedMode(LedMode.PIPELINE);
+    pid.setSetpoint(0.0);
+    pid.setTolerance(0.3);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-        Robot.shooter.setShooterPID(-2791);
+    double output = pid.calculate(Robot.limelight.getHorizontalOffset());
+    Robot.drivetrain.setMotors(-output, output);
+    SmartDashboard.putBoolean("Drivetrain Align Complete", false);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return pid.atSetpoint();
   }
-  //   if(Robot.shooter.checkWheelSpeed_Long() == true) {
-  //       return true; 
-  //   }
-
-  //   return false; 
-  // }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    // Robot.shooter.setShooter(0);
+    // Robot.limelight.setCamMode(CamMode.DRIVER_CAM);
+    SmartDashboard.putBoolean("Drivetrain Align Complete", true);
+    Robot.drivetrain.setMotors(0, 0);
   }
 
   // Called when another command which requires one or more of the same

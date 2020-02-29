@@ -32,12 +32,16 @@ public class Manipulator extends Subsystem {
         //I think extender.get() returns false when it's extended
         return !extender.get();
     }
-    public void setRetracted(boolean retract) {
-        extender.set(retract);
+    public void setExtended() {
+        extender.set(true);
+    }
+    public void setRetracted() {
+        extender.set(false);
     }
     public boolean getRetracted() {
-        return extender.get();
+        return !extender.get();
     }
+    
     public void debug() {
         SmartDashboard.putBoolean("Manipulator Extender Solenoid", extender.get());
     }

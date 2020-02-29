@@ -54,7 +54,7 @@ public class Shooter extends Subsystem {
     }
     public double applyDrag(double velocity){
         velocity*=Constants.kDrag;
-        
+
         return velocity;
     }
     public double applyMagnus(double velocity){
@@ -138,6 +138,5 @@ public class Shooter extends Subsystem {
         SmartDashboard.putBoolean("Hood Position", getHood1());
         SmartDashboard.putNumber("Voltage", getShooterVoltage());
         SmartDashboard.putNumber("Calculated Velcoity", getShooterVelocity2());
-
     }
 }

@@ -44,53 +44,10 @@ public class Climber extends Subsystem {
         Extender = new Solenoid(RobotMap.kPCM, RobotMap.CLIMB_SOLENOID);
         // selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
         driverStick = new Joystick(0);
-        driverY = new JoystickButton(driverStick,4);
-        driverB = new JoystickButton(driverStick,2);
-        driverA = new JoystickButton(driverStick, 1);
-        driverX = new JoystickButton(driverStick, 3);
-
-       
         winch_Neo.setIdleMode(IdleMode.kBrake);
-        
-        climbGyro = new GyroBase(){
     
-        
-            @Override
-            public void close() throws Exception {
-                // TODO Auto-generated method stub
-                
-            }
-        
-            @Override
-            public void reset() {
-                // TODO Auto-generated method stub
-                
-            }
-        
-            @Override
-            public double getRate() {
-                // TODO Auto-generated method stub
-                return 0;
-            }
-        
-            @Override
-            public double getAngle() {
-                // TODO Auto-generated method stub
-                return 0;
-            }
-        
-            @Override
-            public void calibrate() {
-                // TODO Auto-generated method stub
-                
-            }
-        
-        
-    
-        
-    };
 
-}
+    }
 
     public void initDefaultCommand() {
         //   setDefaultCommand(new DefaultExtension());
@@ -101,12 +58,12 @@ public class Climber extends Subsystem {
             Extender.set(extended);
         }
         public void setPinExtenderByButton(){
-            if(driverY.get()){
-                Extender.set(true);
-            }
-            else if(driverB.get()){
-                Extender.set(false);
-            }
+            // if(driverY.get()){
+            //     Extender.set(true);
+            // }
+            // else if(driverB.get()){
+            //     Extender.set(false);
+            // }
         }
 
         public boolean getPinExtender(){
@@ -118,15 +75,15 @@ public class Climber extends Subsystem {
         }
 
         public void setWinchOutputByButton(){
-            if (driverA.get()){
-                winch_Neo.set(1);
-            }
-            else if (driverX.get()){
-                winch_Neo.set(-1);
-            }
-            else {
-                winch_Neo.set(0);
-            }
+            // if (driverA.get()){
+            //     winch_Neo.set(1);
+            // }
+            // else if (driverX.get()){
+            //     winch_Neo.set(-1);
+            // }
+            // else {
+            //     winch_Neo.set(0);
+            // }
         }
 
         public void calibrateGyro(){

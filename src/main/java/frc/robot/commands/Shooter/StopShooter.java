@@ -10,7 +10,7 @@ public class StopShooter extends Command{
     private boolean retracted;
     public StopShooter(){
         super("StopShooter");
-        requires(Robot.hopper);
+        requires(Robot.shooter);
     }
 
     @Override
@@ -20,16 +20,14 @@ public class StopShooter extends Command{
     @Override
     protected void execute() {
         Robot.shooter.setShooter(0);
-        
     }
     
     @Override
     protected boolean isFinished(){
-        return false; 
+        return true; 
     }
     @Override
     protected void end() {
-        Robot.shooter.setShooter(0);
     }
 
     @Override

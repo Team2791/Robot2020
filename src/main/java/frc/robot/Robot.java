@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.setCameraOne;
 import frc.robot.subsystems.*;
+import frc.robot.util.LedMode;
 import frc.robot.util.Camera_Switch.CameraSwitch;
 import frc.robot.OI.*;
 
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
     public static Shooter shooter;
     public static Elevator elevator;
     public static Hopper hopper;
+    public static Limelight limelight;
     public static RobotMap robotmap;
 
     public static Manipulator manipulator;
@@ -51,6 +53,8 @@ public class Robot extends TimedRobot {
         drivetrain = new Drivetrain();
         manipulator = new Manipulator();
         panelMech = new PanelMech();
+        limelight = new Limelight();
+        climber = new Climber();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
@@ -64,7 +68,8 @@ public class Robot extends TimedRobot {
         operatorA = new JoystickButton(operatorStick, 1);
         operatorB = new JoystickButton(operatorStick, 2);
         
-        climber = new Climber();
+        
+        SmartDashboard.putBoolean("Drivetrain Align Complete", false);
     }
 
     // @Override
@@ -86,8 +91,6 @@ public class Robot extends TimedRobot {
         // else {
         //     Cam_switch.select(CameraSwitch.kcamera3);
         // }
-        climber.setPinExtenderByButton();
-        climber.setWinchOutputByButton();
     }
 
     @Override
@@ -95,7 +98,7 @@ public class Robot extends TimedRobot {
         drivetrain.setMotors(0,0);
         hopper.setHopper(0,0);
         manipulator.setManipulator(0);
-        manipulator.setRetracted(true); 
+        manipulator.setRetracted(); 
         shooter.setShooter(0);
         //add emergency stops for panelMech
     }
@@ -105,7 +108,7 @@ public class Robot extends TimedRobot {
          drivetrain.setMotors(0,0);
          hopper.setHopper(0,0);
          manipulator.setManipulator(0);
-         manipulator.setRetracted(true); 
+         manipulator.setRetracted(); 
          shooter.setShooter(0);
          //add emergency stops for panelMech
         // Robot.drivetrain.resetGyro();
@@ -129,7 +132,8 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Shooter kD", Constants.ShooterkD);
         SmartDashboard.putNumber("Shooter setpoint", 0);
 
-        manipulator.setRetracted(false);
+        manipulator.setRetracted();
+        Robot.hopper.hopper_stopper.set(true);
     }
 
     @Override
@@ -159,7 +163,7 @@ public class Robot extends TimedRobot {
         // shooter.shooter_leader.getPIDController().setD(kd);
 
         double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
-        shooter.setShooterPID(setpoint);
+        // shooter.setShooterPID(setpoint);
     }
     @Override
     public void testPeriodic() {
