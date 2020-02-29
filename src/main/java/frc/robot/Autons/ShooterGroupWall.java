@@ -14,7 +14,7 @@ public class ShooterGroupWall extends CommandGroup{
 
     public ShooterGroupWall(){
         addSequential(new WallShotHood());
-        addSequential(new WallShot(), 5.0);
+        addSequential(new WallShot());
         addSequential(new OpenHopperPiston());
         addSequential(new MoveHopperWall());
     }

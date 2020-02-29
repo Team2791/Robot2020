@@ -24,7 +24,7 @@ import frc.robot.RobotMap;
  */
 public class Shooter extends Subsystem {
 
-    private CANSparkMax shooter_leader;
+    public CANSparkMax shooter_leader;
     private CANSparkMax shooter_follower;
     private Solenoid hood_1;
     // private MoveShooterPassive defaultCommand;
@@ -36,10 +36,12 @@ public class Shooter extends Subsystem {
         shooter_follower = new CANSparkMax(RobotMap.kShooterRight, MotorType.kBrushless);
         shooter_leader.setOpenLoopRampRate(Constants.kNeoRampTime);
         shooter_follower.setOpenLoopRampRate(Constants.kNeoRampTime);
+        shooter_follower.follow(shooter_leader, true);
         hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_SOLENOID);
         
         shooter_leader.getPIDController().setP(Constants.ShooterkP);
         shooter_leader.getPIDController().setFF(Constants.ShooterkFF);
+        shooter_leader.getPIDController().setD(Constants.ShooterkD);
         shooter_leader.getPIDController().setOutputRange(-1, 1);
     }
     public double idealVelocity(double angle, double dist, double height){
@@ -64,11 +66,13 @@ public class Shooter extends Subsystem {
     }
     public void setShooter(final double output){
         shooter_leader.set(output);
-        shooter_follower.follow(shooter_leader, true);
     }
     public void setShooterPID(final double setpoint){
-        shooter_leader.getPIDController().setReference(setpoint, ControlType.kVelocity);
-        shooter_follower.follow(shooter_leader, true);
+        if (setpoint == 0) {
+            setShooter(setpoint);
+        } else {
+            shooter_leader.getPIDController().setReference(setpoint, ControlType.kVelocity);
+        }
     }
     public double getShooterVelocity(){
         return shooter_leader.getEncoder().getVelocity();

@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
         shooter = new Shooter();
         drivetrain = new Drivetrain();
         manipulator = new Manipulator();
-        //panelMech = new PanelMech();
+        panelMech = new PanelMech();
         pdp = new PowerDistributionPanel(RobotMap.kPDP);
         oi = new OI(); 
         robotmap = new RobotMap();
@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         // //EACH debug only runs once per 10 loops
         // DriveWithJoystick joystick_command = new DriveWithJoystick(OI.driverStick, 0.1)
-        //drivetrain.debug();
+        drivetrain.debug();
         compressor.start();
         Cam_switch.debug();
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
@@ -124,6 +124,10 @@ public class Robot extends TimedRobot {
         System.out.println("This is init");
         
 
+        SmartDashboard.putNumber("Shooter kP", Constants.ShooterkP);
+        SmartDashboard.putNumber("Shooter kF", Constants.ShooterkFF);
+        SmartDashboard.putNumber("Shooter kD", Constants.ShooterkD);
+        SmartDashboard.putNumber("Shooter setpoint", 0);
     }
 
     @Override
@@ -140,6 +144,22 @@ public class Robot extends TimedRobot {
         // Robot.drivetrain.setRightNeo(1);
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
         Scheduler.getInstance().run();
+
+        SmartDashboard.putNumber("Shooter velocity", shooter.getShooterVelocity());
+
+
+        // double kp = SmartDashboard.getNumber("Shooter kP", 0);
+        // double kf = SmartDashboard.getNumber("Shooter kF", 0);
+        // double kd = SmartDashboard.getNumber("Shooter kD", 0);
+
+        // shooter.shooter_leader.getPIDController().setP(kp);
+        // shooter.shooter_leader.getPIDController().setFF(kf);
+        // shooter.shooter_leader.getPIDController().setD(kd);
+
+        // double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
+        // shooter.setShooterPID(setpoint);
+
+
     }
     @Override
     public void testPeriodic() {

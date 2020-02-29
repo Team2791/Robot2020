@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class Climber extends Subsystem { 
     private CANSparkMax winch_Neo;
-    private CANSparkMax selfClimb_Neo;
+    // private CANSparkMax selfClimb_Neo;
 
     public static double bottom_penetrometer;
     public static double top_penetrometer;
@@ -42,7 +42,7 @@ public class Climber extends Subsystem {
     public Climber(){
         winch_Neo = new CANSparkMax(RobotMap.WINCH_NEO, MotorType.kBrushless);
         Extender = new Solenoid(RobotMap.kPCM, RobotMap.CLIMB_SOLENOID);
-        selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
+        // selfClimb_Neo= new CANSparkMax(RobotMap.SELFCLIMB_NEO, MotorType.kBrushless);
         driverStick = new Joystick(0);
         driverY = new JoystickButton(driverStick,4);
         driverB = new JoystickButton(driverStick,2);
@@ -134,7 +134,7 @@ public class Climber extends Subsystem {
         }
 
         public void setSelfClimbOutput(double outputSelf){
-            selfClimb_Neo.set(outputSelf);
+            // selfClimb_Neo.set(outputSelf);
         }
 
         public double getGyroAngle() {

@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class IrHopper extends Command {
@@ -26,13 +27,14 @@ public class IrHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.poopBall();
+    Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
+
   protected boolean isFinished() {
-    return false;
+    return !Robot.hopper.isBall();
   }
 
   // Called once after isFinished returns true

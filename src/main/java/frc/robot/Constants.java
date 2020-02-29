@@ -24,11 +24,11 @@ public final class Constants {
     public static final double kCamStraightSlow = 0.25;
     
 
-    public static final double ShooterkP = 5e-5;
+    public static final double ShooterkP = 0.002525;
     public static final double ShooterkI = 0;
-    public static final double ShooterkD = 0;
+    public static final double ShooterkD = 0.22;
     public static final double ShooterkIz = 0;
-    public static final double ShooterkFF = 1e-4;
+    public static final double ShooterkFF = 0.0002;
     public static final double ShooterMaxOutput = 1;
     public static final double ShooterMinOutput = -1;   //  max and min outputs that pidcontroller can send to the sparkmax
     public static final double kGravity = 32.1741;  //acceleration due to gravity in ft/s/s
@@ -70,7 +70,7 @@ public final class Constants {
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.30; 
 
 
-    public static final double HOPPER_VERTICAL_OUTPUT = .55;
+    public static final double HOPPER_VERTICAL_OUTPUT = .20;
     
 
     public static final double REVERSE_HOPPER = -.20;
@@ -100,12 +100,12 @@ public final class Constants {
 
 
 	public static final double SHOOTER_OUTPUT_WALL = -.4; //changed from .47 //definitely make negative though
+    public static final double SHOOTER_OUTPUT_WALL_RPM = -3500;
+
+	public static final double TURN_FACTOR = 0.7;
 
 
-	public static final double TURN_FACTOR = 0.2;
-
-
-	public static final int BALL_VALUE = 2300;
+	public static final int BALL_VALUE = 2425;
 
 
 

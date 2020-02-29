@@ -36,6 +36,8 @@ public class Hopper extends Subsystem {
         hopper_stopper = new Solenoid(RobotMap.kPCM, RobotMap.HOPPER_SOLENOID);
         irSensor = new IrSensor(RobotMap.kPDP);
 
+        hopper_horizontal.setSmartCurrentLimit(20);
+        hopper_vertical.setSmartCurrentLimit(20);
     }
 
     public void setHopper(final double output, final double vOutput){
