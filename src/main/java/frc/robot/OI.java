@@ -9,6 +9,7 @@ import frc.robot.Autons.ShooterGroupWall;
 import frc.robot.Autons.Stop;
 import frc.robot.commands.Shooter.*;
 import frc.robot.commands.Climb.*;
+import frc.robot.commands.IntakeToHopper.*;
 
 import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;
@@ -61,11 +62,13 @@ public class OI {
 
         // driverLB.whenReleased(new StopShooterGroupLong());
         // operatorDPadLeft.whenPressed(new ShooterGroupLong());
-        operatorDPadLeft.whenPressed(new Stop());
+        // operatorDPadLeft.whenPressed(new Stop());
 
-        
-        operatorDPadRight.whenPressed(new ShooterGroupWall());
-        operatorDPadRight.whenReleased(new Stop());
+        // operatorDPadRight.whenPressed(new ShooterGroupWall());
+        // operatorDPadRight.whenReleased(new Stop());
+
+        operatorDPadLeft.whenPressed(new LongShotHood());
+        operatorDPadRight.whenPressed(new WallShotHood());
 
         operatorDPadDown.whenPressed(new ReverseHopper());
         operatorDPadDown.whenReleased(new StopHopper());

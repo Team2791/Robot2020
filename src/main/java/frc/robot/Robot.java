@@ -77,15 +77,15 @@ public class Robot extends TimedRobot {
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
         hopper.debug();
         climber.debug();
-        if(operatorA.get() == true) {
-            Cam_switch.select(CameraSwitch.kcamera1);
-        }
-        else if (operatorB.get() == true) {
-            Cam_switch.select(CameraSwitch.kcamera2);
-        }
-        else {
-            Cam_switch.select(CameraSwitch.kcamera3);
-        }
+        // if(operatorA.get() == true) {
+        //     Cam_switch.select(CameraSwitch.kcamera1);
+        // }
+        // else if (operatorB.get() == true) {
+        //     Cam_switch.select(CameraSwitch.kcamera2);
+        // }
+        // else {
+        //     Cam_switch.select(CameraSwitch.kcamera3);
+        // }
         climber.setPinExtenderByButton();
         climber.setWinchOutputByButton();
     }
@@ -128,6 +128,8 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Shooter kF", Constants.ShooterkFF);
         SmartDashboard.putNumber("Shooter kD", Constants.ShooterkD);
         SmartDashboard.putNumber("Shooter setpoint", 0);
+
+        manipulator.setRetracted(false);
     }
 
     @Override
@@ -156,10 +158,8 @@ public class Robot extends TimedRobot {
         // shooter.shooter_leader.getPIDController().setFF(kf);
         // shooter.shooter_leader.getPIDController().setD(kd);
 
-        // double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
-        // shooter.setShooterPID(setpoint);
-
-
+        double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
+        shooter.setShooterPID(setpoint);
     }
     @Override
     public void testPeriodic() {

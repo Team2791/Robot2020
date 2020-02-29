@@ -43,6 +43,8 @@ public class Shooter extends Subsystem {
         shooter_leader.getPIDController().setFF(Constants.ShooterkFF);
         shooter_leader.getPIDController().setD(Constants.ShooterkD);
         shooter_leader.getPIDController().setOutputRange(-1, 1);
+
+        shooter_leader.enableVoltageCompensation(12.4);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;
@@ -52,6 +54,7 @@ public class Shooter extends Subsystem {
     }
     public double applyDrag(double velocity){
         velocity*=Constants.kDrag;
+        
         return velocity;
     }
     public double applyMagnus(double velocity){

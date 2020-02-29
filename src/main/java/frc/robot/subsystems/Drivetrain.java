@@ -35,11 +35,13 @@ public class Drivetrain extends Subsystem {
         // Init Left Leader
         leftLeader  = new CANSparkMax(RobotMap.kLeftLeader, MotorType.kBrushless);
         leftLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
+        leftLeader.setSmartCurrentLimit(60);
 
 
         // Init Right Leader
         rightLeader  = new CANSparkMax(RobotMap.kRightLeader, MotorType.kBrushless);
         rightLeader.setOpenLoopRampRate(Constants.kNeoRampTime);
+        rightLeader.setSmartCurrentLimit(60);
 
         // encoders
         m_leftAlternateEncoder = leftLeader.getAlternateEncoder(kAltEncType, 1024);
