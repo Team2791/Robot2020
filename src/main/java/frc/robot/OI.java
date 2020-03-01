@@ -143,7 +143,8 @@ public class OI {
         driverDPadDown.whenPressed(new InstantCommand(() -> {
             Robot.climber.setRetracted();;
         }));
-        //driverDPadUp.whenPressed(new SetPanelMech());
+        
+        driverDPadUp.whileHeld(new SetPanelmech());
        
         driverX.whenPressed(new ReleasePin(true, true));
         //driverA.whenPressed(new ReleasePin(false, false));
