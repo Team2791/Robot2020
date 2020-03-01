@@ -85,9 +85,9 @@ public class OI {
             Robot.hopper.hopper_stopper.set(true);
         }));
 
-        operatorB.whenPressed(new InstantCommand(() -> {
-            Robot.hopper.hopper_stopper.set(false);
-        }));
+        operatorB.whileHeld(new OpenPistonsAndMoveHopper());
+        
+        operatorB.whenReleased(new StopHopper());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());

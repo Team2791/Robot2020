@@ -8,6 +8,7 @@ public class MoveManipulator extends Command {
     public MoveManipulator() {
     super("MoveManipulator");
     requires(Robot.manipulator);
+    requires(Robot.hopper);
         //Use requires() here to declare subsystem dependencies
         //eg. requires(chassis);
     }
@@ -23,12 +24,13 @@ public class MoveManipulator extends Command {
     protected void execute() {
         Robot.manipulator.setExtended();
         Robot.manipulator.setManipulator(Constants.INTAKE_MOTORSPEED);
+        Robot.hopper.poopBall();
     }
 
     //Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return true;
+        return !Robot.hopper.isBall();
     }
 
     //Called once after isFinished returns true

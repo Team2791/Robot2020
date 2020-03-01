@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveHopperWall extends Command {
-  public MoveHopperWall() {
-    super("MoveHopperWall");
+public class OpenPistonsAndMoveHopper extends Command {
+  public OpenPistonsAndMoveHopper() {
+    super("OpenPistonsAndMoveHopper");
     requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -22,6 +22,7 @@ public class MoveHopperWall extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+      Robot.hopper.setRetracted(false);
   }
 
   // Called repeatedly when this Command is scheduled to run

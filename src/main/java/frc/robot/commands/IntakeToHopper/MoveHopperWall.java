@@ -1,14 +1,19 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.commands.IntakeToHopper.MoveManipulator;
 
-public class IrHopper extends Command {
-  public IrHopper() {
-    super("IrHopper");
+public class MoveHopperWall extends Command {
+  public MoveHopperWall() {
+    super("MoveHopperWall");
     requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -22,22 +27,19 @@ public class IrHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
-      SmartDashboard.putBoolean("Ir Hopper Running", true);
+    Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-
   protected boolean isFinished() {
-    return !Robot.hopper.isBall();
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hopper.setHopper(0, 0);
-    SmartDashboard.putBoolean("Ir Hopper Running", false);
+    // Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same
@@ -45,5 +47,4 @@ public class IrHopper extends Command {
   @Override
   protected void interrupted() {
   }
-
 }

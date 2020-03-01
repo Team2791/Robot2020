@@ -7,8 +7,8 @@ import frc.robot.commands.StopHopper;
 
 public class ManipulatorToIrHopper extends CommandGroup{
     public ManipulatorToIrHopper(){
-        addParallel(new MoveManipulator());
-        addParallel(new IrHopper());
+        addSequential(new MoveManipulator());
+        addSequential(new IrHopper());
         addSequential(new StopHopper());
     }
 }
