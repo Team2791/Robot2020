@@ -19,6 +19,8 @@ import frc.robot.commands.Climb.*;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
+
+import frc.robot.util.Camera_Switch.CameraSwitch;
 // import frc.robot.Autons.ShooterGroupLong;
 // import frc.robot.Autons.StopShooterGroupLong;
 // import frc.robot.Autons.ShooterGroupWall;
@@ -94,9 +96,17 @@ public class OI {
         operatorX.whenReleased(new StopHopper());
 
         operatorRB.whenPressed(new WallShot());
+        operatorRB.whenPressed(new InstantCommand(() -> {
+            Robot.Cam_switch.select(CameraSwitch.kcamera1);;
+        }));
+        // operatorRB.whenPressed(new setCameraOne());
         // operatorRB.whenReleased(new StopShooter());
 
         operatorLB.whenPressed(new LongShot());
+        operatorLB.whenPressed(new InstantCommand(() -> {
+            Robot.Cam_switch.select(CameraSwitch.kcamera1);;
+        }));
+        // operatorLB.whenPressed(new setCameraOne());
         // operatorLB.whenReleased(new StopShooter());
         // operatorStart.whenPressed(new StopShooter());
         new Trigger(){
@@ -107,8 +117,14 @@ public class OI {
             }
         }.whenActive(new StopShooter());
 
-        // driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
-        // driverA.whenReleased(new StopManipulator());
+        driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
+        driverA.whenReleased(new StopManipulator());
+        driverA.whenPressed(new InstantCommand(() -> {
+            Robot.Cam_switch.select(CameraSwitch.kcamera2);;
+        }));
+    //     driverA.whileHeld(new ManipulatorToIrHopper());
+    //     driverA.whenReleased(new StopManipulator());
+    //    // driverA.whenReleased(new StopHopper());
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
         driverDPadLeft.whenPressed(new MoveManipulator());
@@ -119,8 +135,9 @@ public class OI {
         // driverDPadRight.whenReleased(new DefaultPanelMech());
 
         //driverDPadDown.whenPressed(new SetPanelMech());
-        driverX.whenPressed(new ReleasePin(true, false));
-        driverA.whenPressed(new ReleasePin(false, false));
+       
+        // driverX.whenPressed(new ReleasePin(true, false));
+        // driverA.whenPressed(new ReleasePin(false, false));
         driverY.whileHeld(new WinchClimb(true));
         driverY.whenReleased(new StopWinchClimb());
         driverB.whileHeld(new WinchClimb(false));

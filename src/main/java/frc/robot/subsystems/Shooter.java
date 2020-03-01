@@ -135,7 +135,7 @@ public class Shooter extends Subsystem {
     public void debug() {
         SmartDashboard.putNumber("Shooter Neo Velocity -", getShooterVelocity());
         SmartDashboard.putNumber("Shooter Neo CPR -", getShooter());
-        SmartDashboard.putBoolean("Hood Position", getHood1());
+        SmartDashboard.putBoolean("Hood Position Down", !getHood1());
         SmartDashboard.putNumber("Voltage", getShooterVoltage());
         SmartDashboard.putNumber("Calculated Velcoity", getShooterVelocity2());
     }

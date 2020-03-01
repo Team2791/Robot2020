@@ -8,8 +8,10 @@
 package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.commands.IntakeToHopper.MoveManipulator;
 
 public class IrHopper extends Command {
   public IrHopper() {
@@ -27,7 +29,8 @@ public class IrHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+      Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+      SmartDashboard.putBoolean("Ir Hopper Running", true);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,6 +44,7 @@ public class IrHopper extends Command {
   @Override
   protected void end() {
     Robot.hopper.setHopper(0, 0);
+    SmartDashboard.putBoolean("Ir Hopper Running", false);
   }
 
   // Called when another command which requires one or more of the same
@@ -48,4 +52,5 @@ public class IrHopper extends Command {
   @Override
   protected void interrupted() {
   }
+
 }

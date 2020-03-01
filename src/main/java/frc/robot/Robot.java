@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putBoolean("Compressor Status", compressor.enabled());
         hopper.debug();
         climber.debug();
+        shooter.debug();
         // if(operatorA.get() == true) {
         //     Cam_switch.select(CameraSwitch.kcamera1);
         // }
@@ -134,6 +135,7 @@ public class Robot extends TimedRobot {
 
         manipulator.setRetracted();
         Robot.hopper.hopper_stopper.set(true);
+        Robot.shooter.setHood1(false);
     }
 
     @Override
