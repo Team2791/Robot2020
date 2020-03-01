@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants;
@@ -36,6 +37,9 @@ public class Hopper extends Subsystem {
         hopper_stopper = new Solenoid(RobotMap.kPCM, RobotMap.HOPPER_SOLENOID);
         entrySensor = new IrSensor(RobotMap.kPDP);
         upperSensor = new IrSensor(2);
+        
+        hopper_horizontal.setIdleMode(IdleMode.kBrake);
+        hopper_vertical.setIdleMode(IdleMode.kBrake);
 
         hopper_horizontal.setSmartCurrentLimit(20);
         hopper_vertical.setSmartCurrentLimit(20);
@@ -86,10 +90,10 @@ public class Hopper extends Subsystem {
     }
 
     public boolean isUpperSensorTripped() {
-        return 1750 <= upperSensor.getValue();
+        return 745 <= upperSensor.getValue();
     }
 
-    public void poopBall(){
+    public void loadingWithIR(){
         if(Constants.BALL_VALUE < getIRSensor()){
             if (isUpperSensorTripped()) {
                 setHopper(
@@ -98,7 +102,7 @@ public class Hopper extends Subsystem {
             } else {
                 setHopper(
                     Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
-                    Constants.HOPPER_VERTICAL_OUTPUT);
+                    Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
             }
         } else{
             setHopper(0, 0);
