@@ -39,9 +39,9 @@ public class Shooter extends Subsystem {
         shooter_follower.follow(shooter_leader, true);
         hood_1 = new Solenoid(RobotMap.kPCM, RobotMap.HOOD_SOLENOID);
         
-        shooter_leader.getPIDController().setP(Constants.ShooterkP);
-        shooter_leader.getPIDController().setFF(Constants.ShooterkFF);
-        shooter_leader.getPIDController().setD(Constants.ShooterkD);
+        shooter_leader.getPIDController().setP(Constants.ShooterTrenchkP);
+        shooter_leader.getPIDController().setFF(Constants.ShooterTrenchkFF);
+        shooter_leader.getPIDController().setD(Constants.ShooterTrenchkD);
         shooter_leader.getPIDController().setOutputRange(-1, 1);
 
         shooter_leader.enableVoltageCompensation(12.4);

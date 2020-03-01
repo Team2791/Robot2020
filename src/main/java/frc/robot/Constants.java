@@ -24,11 +24,13 @@ public final class Constants {
     public static final double kCamStraightSlow = 0.25;
     
 
-    public static final double ShooterkP = 0.002525;
-    public static final double ShooterkI = 0;
-    public static final double ShooterkD = 0.22;
+    public static final double ShooterTrenchkP = 0.002525;
+    public static final double ShooterTrenchkD = 0.22;
+    public static final double ShooterTrenchkFF = 0.0002;
+    public static final double ShooterWallkP = 0.001500;
+    public static final double ShooterWallkD = 0.1;
+    public static final double ShooterWallkF = 0.000180;
     public static final double ShooterkIz = 0;
-    public static final double ShooterkFF = 0.0002;
     public static final double ShooterMaxOutput = 1;
     public static final double ShooterMinOutput = -1;   //  max and min outputs that pidcontroller can send to the sparkmax
     public static final double kGravity = 32.1741;  //acceleration due to gravity in ft/s/s
@@ -64,16 +66,19 @@ public final class Constants {
 	public static final double ELEVATOR_OUTPUT = -.05;
 
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .60; 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .62; 
 
 
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.30; 
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = .35;
+
+
+    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .07;
     
 
-    public static final double REVERSE_HOPPER = -.20;
+    public static final double REVERSE_HOPPER = -.40;
 
 
 	public static final double SHOOTER_OUTPUT = -.8;
@@ -90,7 +95,7 @@ public final class Constants {
     public static final double MANUAL_POWER = .2;
 
 
-    public static final double INTAKE_MOTORSPEED = 0.15; //Temp value please test it out and do stuff yes
+    public static final double INTAKE_MOTORSPEED = 0.135; //Temp value please test it out and do stuff yes
 
     
     public static final double SHOOTER_VELOCITY = 100; //Temporary value

@@ -73,8 +73,21 @@ public class OI {
         operatorDPadLeft.whenPressed(new LongShotHood());
         operatorDPadRight.whenPressed(new WallShotHood());
 
-        operatorDPadDown.whenPressed(new ReverseHopper());
-        operatorDPadDown.whenReleased(new StopHopper());
+        new Trigger(){
+            @Override
+            public boolean get() {
+                // TODO Auto-generated method stub
+                return operatorStick.getRawAxis(1) > 0.8;
+            }
+        }.whenActive(new ReverseHopper());
+ 
+        new Trigger(){
+            @Override
+            public boolean get() {
+                // TODO Auto-generated method stub
+                return operatorStick.getRawAxis(1) > 0.8;
+            }
+        }.whenInactive(new StopHopper());
         // operatorA.whenPressed(new MoveHopperLong());
         // operatorA.whenReleased(new StopHopper());
 
@@ -122,22 +135,23 @@ public class OI {
         driverA.whenPressed(new InstantCommand(() -> {
             Robot.Cam_switch.select(CameraSwitch.kcamera2);;
         }));
-    //     driverA.whileHeld(new ManipulatorToIrHopper());
-    //     driverA.whenReleased(new StopManipulator());
-    //    // driverA.whenReleased(new StopHopper());
+
+        // driverA.whileHeld(new ManipulatorToIrHopper());
+        // driverA.whenReleased(new StopManipulator());
+       // driverA.whenReleased(new StopHopper());
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
-        driverDPadLeft.whenPressed(new MoveManipulator());
-        driverDPadLeft.whenReleased(new StopManipulator()
-        );
+        // driverDPadLeft.whenPressed(new MoveManipulator());
+        // driverDPadLeft.whenReleased(new StopManipulator());
 
         // driverDPadRight.whenPressed(new ExtendPanelMech());
         // driverDPadRight.whenReleased(new DefaultPanelMech());
+        driverDPadDown.whenPressed(new ReleasePin(false, false));
 
         //driverDPadDown.whenPressed(new SetPanelMech());
        
-        // driverX.whenPressed(new ReleasePin(true, false));
-        // driverA.whenPressed(new ReleasePin(false, false));
+        driverX.whenPressed(new ReleasePin(true, true));
+        //driverA.whenPressed(new ReleasePin(false, false));
         driverY.whileHeld(new WinchClimb(true));
         driverY.whenReleased(new StopWinchClimb());
         driverB.whileHeld(new WinchClimb(false));

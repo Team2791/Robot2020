@@ -128,9 +128,9 @@ public class Robot extends TimedRobot {
         System.out.println("This is init");
         
 
-        SmartDashboard.putNumber("Shooter kP", Constants.ShooterkP);
-        SmartDashboard.putNumber("Shooter kF", Constants.ShooterkFF);
-        SmartDashboard.putNumber("Shooter kD", Constants.ShooterkD);
+        SmartDashboard.putNumber("Shooter kP", Constants.ShooterTrenchkP);
+        SmartDashboard.putNumber("Shooter kF", Constants.ShooterTrenchkFF);
+        SmartDashboard.putNumber("Shooter kD", Constants.ShooterTrenchkD);
         SmartDashboard.putNumber("Shooter setpoint", 0);
 
         manipulator.setRetracted();
@@ -153,8 +153,6 @@ public class Robot extends TimedRobot {
          // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
         Scheduler.getInstance().run();
 
-        SmartDashboard.putNumber("Shooter velocity", shooter.getShooterVelocity());
-
 
         // double kp = SmartDashboard.getNumber("Shooter kP", 0);
         // double kf = SmartDashboard.getNumber("Shooter kF", 0);
@@ -164,8 +162,11 @@ public class Robot extends TimedRobot {
         // shooter.shooter_leader.getPIDController().setFF(kf);
         // shooter.shooter_leader.getPIDController().setD(kd);
 
-        double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
-        // shooter.setShooterPID(setpoint);
+        // double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
+        // if (setpoint==0)
+        //     shooter.setShooter(0);
+        // else
+        //     shooter.setShooterPID(setpoint);
     }
     @Override
     public void testPeriodic() {

@@ -22,7 +22,8 @@ public class IrHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+      // Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+      Robot.hopper.loadingWithIR();
       SmartDashboard.putBoolean("Ir Hopper Running", true);
   }
 
@@ -30,6 +31,7 @@ public class IrHopper extends Command {
   @Override
 
   protected boolean isFinished() {
+    // return !Robot.hopper.isBall() || Robot.hopper.isUpperSensorTripped();
     return !Robot.hopper.isBall();
   }
 
