@@ -26,7 +26,7 @@ public class StopWinchClimb extends Command {
   @Override
   protected void execute() {
     Robot.climber.setWinchOutput(0);
-    Robot.climber.setPinExtender(false);
+    Robot.climber.setRetracted();
   }
 
   // Make this return true when this Command no longer needs to run execute()

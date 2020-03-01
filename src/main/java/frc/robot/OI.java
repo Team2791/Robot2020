@@ -99,7 +99,6 @@ public class OI {
         }));
 
         operatorB.whileHeld(new OpenPistonsAndMoveHopper());
-        
         operatorB.whenReleased(new StopHopper());
 
         operatorY.whileHeld(new MoveHopperWall());
@@ -112,16 +111,12 @@ public class OI {
         operatorRB.whenPressed(new InstantCommand(() -> {
             Robot.Cam_switch.select(CameraSwitch.kcamera1);;
         }));
-        // operatorRB.whenPressed(new setCameraOne());
-        // operatorRB.whenReleased(new StopShooter());
 
         operatorLB.whenPressed(new LongShot());
         operatorLB.whenPressed(new InstantCommand(() -> {
             Robot.Cam_switch.select(CameraSwitch.kcamera1);;
         }));
-        // operatorLB.whenPressed(new setCameraOne());
-        // operatorLB.whenReleased(new StopShooter());
-        // operatorStart.whenPressed(new StopShooter());
+
         new Trigger(){
             @Override
             public boolean get() {
@@ -141,14 +136,14 @@ public class OI {
        // driverA.whenReleased(new StopHopper());
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
-        // driverDPadLeft.whenPressed(new MoveManipulator());
-        // driverDPadLeft.whenReleased(new StopManipulator());
 
-        // driverDPadRight.whenPressed(new ExtendPanelMech());
-        // driverDPadRight.whenReleased(new DefaultPanelMech());
-        driverDPadDown.whenPressed(new ReleasePin(false, false));
+        driverDPadLeft.whenPressed(new ExtendPanelMech());
+        driverDPadLeft.whenReleased(new DefaultPanelMech());
 
-        //driverDPadDown.whenPressed(new SetPanelMech());
+        driverDPadDown.whenPressed(new InstantCommand(() -> {
+            Robot.climber.setRetracted();;
+        }));
+        //driverDPadUp.whenPressed(new SetPanelMech());
        
         driverX.whenPressed(new ReleasePin(true, true));
         //driverA.whenPressed(new ReleasePin(false, false));

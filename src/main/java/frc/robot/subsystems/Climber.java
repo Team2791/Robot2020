@@ -53,9 +53,16 @@ public class Climber extends Subsystem {
         //   setDefaultCommand(new DefaultExtension());
         }
 
-    
-        public void setPinExtender(boolean extended){
-            Extender.set(extended);
+        public void setPinExtender(boolean extend){
+            Extender.set(extend);
+        }
+        
+        public void setRetracted(){
+            Extender.set(false);
+        }
+
+        public void setExtended(){
+            Extender.set(true);
         }
         public void setPinExtenderByButton(){
             // if(driverY.get()){

@@ -31,8 +31,12 @@ public class PanelMech extends Subsystem {
     public void setPanelMech(final double velocity) {
         panelMech_motor.set(velocity);
     }
-    public void extendPanelMech(boolean extend) {
-        panelMech_soleinoid.set(extend);
+    public void extendPanelMech() {
+        panelMech_soleinoid.set(true);
+    }
+
+    public void retractPanelMech(){
+        panelMech_soleinoid.set(false);
     }
     @Override
     protected void initDefaultCommand() {

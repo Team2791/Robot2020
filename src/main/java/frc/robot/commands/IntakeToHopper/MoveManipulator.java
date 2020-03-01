@@ -24,13 +24,13 @@ public class MoveManipulator extends Command {
     protected void execute() {
         Robot.manipulator.setExtended();
         Robot.manipulator.setManipulator(Constants.INTAKE_MOTORSPEED);
-        Robot.hopper.poopBall();
+        
     }
 
     //Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return !Robot.hopper.isBall();
+        return true;
     }
 
     //Called once after isFinished returns true

@@ -57,11 +57,11 @@ public class Hopper extends Subsystem {
     }
 
     public void setExtended() {
-        hopper_stopper.set(false);
+        hopper_stopper.set(true);
     }
     
-    public void setRetracted(boolean retract) {
-        hopper_stopper.set(retract);
+    public void setRetracted() {
+        hopper_stopper.set(false);
     }
     
     public boolean getRetracted() {

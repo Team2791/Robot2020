@@ -32,7 +32,7 @@ public class WinchClimb extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.setPinExtender(true);
+    Robot.climber.setExtended();
     if (waitTimer.get() > 0.25) {
       if (direction){
         Robot.climber.setWinchOutput(-1);
