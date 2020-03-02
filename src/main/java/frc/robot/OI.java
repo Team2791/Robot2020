@@ -5,9 +5,12 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.Autons.ManipulatorToIrHopper;
 import frc.robot.Autons.ShooterGroupLong;
 import frc.robot.Autons.ShooterGroupWall;
 import frc.robot.Autons.StopShooterGroup;
+import frc.robot.Autons.TrenchHoodAndFire;
+import frc.robot.Autons.WallHoodAndFire;
 import frc.robot.commands.Shooter.*;
 import frc.robot.commands.Climb.*;
 import frc.robot.commands.IntakeToHopper.*;
@@ -92,8 +95,10 @@ public class OI {
             Robot.hopper.hopper_stopper.set(true);
         }));
 
-        operatorB.whileHeld(new OpenPistonsAndMoveHopper());
-        operatorB.whenReleased(new StopHopper());
+        // operatorB.whileHeld(new OpenPistonsAndMoveHopper());
+        // operatorB.whenReleased(new StopHopper());
+        operatorB.whileHeld(new WallHoodAndFire());
+        operatorB.whenReleased(new StopShooterGroup());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
@@ -122,37 +127,47 @@ public class OI {
         driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
         driverA.whenReleased(new StopManipulator());
         driverA.whenPressed(new InstantCommand(() -> {
+            Robot.hopper.setRetracted();;
+        }));
+        driverA.whenPressed(new InstantCommand(() -> {
             Robot.Cam_switch.select(CameraSwitch.kcamera2);;
         }));
 
-        // driverA.whileHeld(new ManipulatorToIrHopper());
-        // driverA.whenReleased(new StopManipulator());
-       // driverA.whenReleased(new StopHopper());
+    //     driverA.whileHeld(new ManipulatorToIrHopper());
+    //     driverA.whenPressed(new InstantCommand(() -> {
+    //             Robot.Cam_switch.select(CameraSwitch.kcamera2);;
+    //         }));
+    //     driverA.whenReleased(new StopManipulator());
+    //    driverA.whenReleased(new StopHopper());
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
 
-        driverDPadLeft.whenPressed(new ExtendPanelMech());
-        driverDPadLeft.whenPressed(new setCameraThree());
-        driverDPadLeft.whenReleased(new DefaultPanelMech());
+        // driverDPadLeft.whenPressed(new ExtendPanelMech());
+        // //driverDPadLeft.whenPressed(new setCameraThree());
+        // driverDPadLeft.whenReleased(new DefaultPanelMech());
 
-        driverDPadDown.whenPressed(new InstantCommand(() -> {
-            Robot.climber.setRetracted();;
-        }));
+        // driverDPadDown.whenPressed(new InstantCommand(() -> {
+        //     Robot.climber.setRetracted();;
+        // }));
         
         driverDPadUp.whileHeld(new SetPanelmech());
        
-        driverX.whenPressed(new ReleasePin(true, true));
-        //driverA.whenPressed(new ReleasePin(false, false));
-        driverY.whileHeld(new WinchClimb(true));
+        driverStart.whenPressed(new ReleasePin(true, true));
+        // driverA.whenPressed(new ReleasePin(false, false));
+        driverX.whileHeld(new WinchClimb(true));
+        driverX.whenReleased(new StopWinchClimb());
+        driverY.whileHeld(new WinchClimb(false));
         driverY.whenReleased(new StopWinchClimb());
-        driverB.whileHeld(new WinchClimb(false));
-        driverB.whenReleased(new StopWinchClimb());
 
-        //Atharv's temporary demands
+        driverB.whileHeld(new TrenchHoodAndFire());
+        driverB.whenReleased(new StopShooterGroup());
+
+        //Pit Controller commands to reset the climb
         pitA.whenPressed(new testManipulator());            //Extends Manipulator
         pitB.whenPressed(new testStopManipulator());        //Retracts Manipulator
         pitX.whenPressed(new testExtendClimber());          //Extends Climber
         pitY.whenPressed(new testRetractClimber());         //Retracts Climber
+        
     }
 
     private void initButtons(){

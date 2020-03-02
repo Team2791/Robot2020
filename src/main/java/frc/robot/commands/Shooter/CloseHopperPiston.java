@@ -21,7 +21,6 @@ public class CloseHopperPiston extends Command{
     @Override
     protected void execute() {
         Robot.hopper.setRetracted();
-        
     }
     
     @Override
