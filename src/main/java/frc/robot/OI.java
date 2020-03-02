@@ -11,6 +11,7 @@ import frc.robot.Autons.Stop;
 import frc.robot.commands.Shooter.*;
 import frc.robot.commands.Climb.*;
 import frc.robot.commands.IntakeToHopper.*;
+import frc.robot.commands.PanelMech.*;
 
 import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;

@@ -5,16 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class SwitchCameras extends Command {
-  public SwitchCameras() {
-    super("SwitchCameras");
-    requires(Robot.drivetrain);
+public class MoveHopperLong extends Command {
+  public MoveHopperLong() {
+    super("MoveHopperLong");
+    requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -27,7 +27,7 @@ public class SwitchCameras extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    Robot.hopper.setHopper(Constants.HOPPER_LONG_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ public class SwitchCameras extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.setMotors(0,0);
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same

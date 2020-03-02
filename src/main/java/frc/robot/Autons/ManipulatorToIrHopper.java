@@ -1,9 +1,7 @@
-package frc.robot.commands.IntakeToHopper;
+package frc.robot.Autons;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-// import frc.robot.Robot;
-// import frc.robot.commands.IntakeToHopper.*;
-import frc.robot.commands.StopHopper;
+import frc.robot.commands.IntakeToHopper.*;
 
 public class ManipulatorToIrHopper extends CommandGroup{
     public ManipulatorToIrHopper(){

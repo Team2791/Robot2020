@@ -5,13 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
+package frc.robot.commands.PanelMech;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class DefaultPanelMech extends Command {
-  public DefaultPanelMech() {
+public class ExtendPanelMech extends Command {
+  public ExtendPanelMech() {
+    super("ExtendPanelMech");
+
+    requires(Robot.panelMech);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,7 +26,8 @@ public class DefaultPanelMech extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.panelMech.retractPanelMech();
+    Robot.panelMech.extendPanelMech();
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
