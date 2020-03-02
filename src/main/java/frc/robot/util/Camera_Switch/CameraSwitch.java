@@ -39,7 +39,7 @@ public class CameraSwitch implements RelayPortDevice{
    public Relay camrelay2;
    public DigitalOutput DO;
 
-public Victor pwm;
+
    private int cameraState;
     public CameraSwitch(int port1, int port2){
       

@@ -9,6 +9,7 @@ package frc.robot.commands.PanelMech;
 
 import frc.robot.Robot;
 import frc.robot.util.Camera_Switch.CameraSwitch;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ExtendPanelMech extends Command {
@@ -23,12 +24,14 @@ public class ExtendPanelMech extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // Robot.Cam_switch.select(CameraSwitch.kcamera1);
+    Robot.Cam_switch.setDirection(Relay.Direction.kBoth);
+   
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.Cam_switch.select(CameraSwitch.kcamera1);
     Robot.panelMech.extendPanelMech();
 
   }
