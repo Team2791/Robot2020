@@ -7,6 +7,5 @@ public class ManipulatorToIrHopper extends CommandGroup{
     public ManipulatorToIrHopper(){
         addSequential(new MoveManipulator());
         addSequential(new IrHopper());
-        addSequential(new StopHopper());
     }
 }
