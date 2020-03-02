@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Autons.ShooterGroupLong;
 import frc.robot.Autons.ShooterGroupWall;
-import frc.robot.Autons.Stop;
+import frc.robot.Autons.StopShooterGroup;
 import frc.robot.commands.Shooter.*;
 import frc.robot.commands.Climb.*;
 import frc.robot.commands.IntakeToHopper.*;
@@ -61,15 +61,15 @@ public class OI {
         
         // driverRB.whenPressed(new ShooterGroupWall());
         // driverRB.whileHeld(new WallShot());
-        // driverRB.whenReleased(new Stop());
+        // driverRB.whenReleased(new StopShooterGroup());
 
 
         // driverLB.whenReleased(new StopShooterGroupLong());
         // operatorDPadLeft.whenPressed(new ShooterGroupLong());
-        // operatorDPadLeft.whenPressed(new Stop());
+        // operatorDPadLeft.whenPressed(new StopShooterGroup());
 
         // operatorDPadRight.whenPressed(new ShooterGroupWall());
-        // operatorDPadRight.whenReleased(new Stop());
+        // operatorDPadRight.whenReleased(new StopShooterGroup());
 
         operatorDPadLeft.whenPressed(new LongShotHood());
         operatorDPadRight.whenPressed(new WallShotHood());
@@ -139,6 +139,7 @@ public class OI {
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
 
         driverDPadLeft.whenPressed(new ExtendPanelMech());
+        driverDPadLeft.whenPressed(new setCameraThree());
         driverDPadLeft.whenReleased(new DefaultPanelMech());
 
         driverDPadDown.whenPressed(new InstantCommand(() -> {

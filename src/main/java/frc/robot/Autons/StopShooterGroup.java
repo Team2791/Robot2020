@@ -5,9 +5,9 @@ import frc.robot.commands.IntakeToHopper.StopHopper;
 import frc.robot.commands.Shooter.CloseHopperPiston;
 import frc.robot.commands.Shooter.StopShooter;
 
-public class Stop extends CommandGroup {
+public class StopShooterGroup extends CommandGroup {
 
-    public Stop() {
+    public StopShooterGroup() {
         addSequential(new StopShooter());
         addSequential(new CloseHopperPiston());
         addSequential(new StopHopper());

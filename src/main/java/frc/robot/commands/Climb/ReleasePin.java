@@ -43,7 +43,12 @@ public class ReleasePin extends Command {
   }
   
   protected boolean isFinished() {
-    return intakeRetractTimer.get() > 0.1 && Robot.manipulator.getRetracted();
+    if(lowerIntake){
+      return intakeRetractTimer.get() > 0.1 && Robot.manipulator.getRetracted();
+    }
+    else {
+      return true;
+    }
   }
 
   protected void end() {
