@@ -33,8 +33,9 @@ public class OpenPistonsAndMoveHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
-    
+    if(timeForHopper.get() > .25){
+      Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
