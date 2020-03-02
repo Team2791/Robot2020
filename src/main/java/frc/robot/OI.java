@@ -23,18 +23,7 @@ import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
 
 import frc.robot.util.Camera_Switch.CameraSwitch;
-// import frc.robot.Autons.ShooterGroupLong;
-// import frc.robot.Autons.StopShooterGroupLong;
-// import frc.robot.Autons.ShooterGroupWall;
-// import frc.robot.Autons.StopShooterGroupWall;
-//import frc.robot.subsystems.Camera; 
-
-// import frc.robot.commands.Lifter.ExtendBothLifters;
 import frc.robot.util.Util;
-// import frc.robot.commands.CargoManipulator.ScoreInRocketCalculated;
-// import frc.robot.commands.CargoManipulator.ScoreInRocketDropper;
-// import frc.robot.commands.auto.AutoSetLifterPots;
-//here lies robot RIP
 
 public class OI {
     public static Joystick driverStick;

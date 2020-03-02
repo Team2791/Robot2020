@@ -20,7 +20,6 @@ public class OpenHopperPiston extends Command{
     @Override
     protected void execute() {
         Robot.hopper.setExtended();
-        
     }
     
     @Override
