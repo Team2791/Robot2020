@@ -10,7 +10,7 @@ public class StopShooterGroup extends CommandGroup {
 
     public StopShooterGroup() {
         addSequential(new WallShotHood());
-        addSequential(new StopShooter());
+        // addSequential(new StopShooter());
         addSequential(new CloseHopperPiston());
         addSequential(new StopHopper());
     }

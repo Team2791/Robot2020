@@ -122,23 +122,40 @@ public class OI {
                 // TODO Auto-generated method stub
                 return operatorStick.getRawAxis(3) > 0.25;
             }
-        }.whenActive(new StopShooter());
+        }.whenActive(new WallHoodAndFire());
 
-        driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
-        driverA.whenReleased(new StopManipulator());
+        new Trigger(){
+            @Override
+            public boolean get() {
+                // TODO Auto-generated method stub
+                return operatorStick.getRawAxis(3) > 0.25;
+            }
+        }.whenInactive(new StopShooterGroup());
+
+        new Trigger(){
+            @Override
+            public boolean get() {
+                // TODO Auto-generated method stub
+                return operatorStick.getRawAxis(2) > 0.25;
+            }
+        }.whenActive(new StopShooter());
+        // driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
+        // driverA.whenReleased(new StopManipulator());
+        
+        // driverA.whenPressed(new InstantCommand(() -> {
+        //     Robot.Cam_switch.select(CameraSwitch.kcamera2);;
+        // }));
+
+        driverA.whileHeld(new ManipulatorToIrHopper());
+        driverA.whenPressed(new InstantCommand(() -> {
+                Robot.Cam_switch.select(CameraSwitch.kcamera2);;
+            }));
         driverA.whenPressed(new InstantCommand(() -> {
             Robot.hopper.setRetracted();;
         }));
-        driverA.whenPressed(new InstantCommand(() -> {
-            Robot.Cam_switch.select(CameraSwitch.kcamera2);;
-        }));
+        driverA.whenReleased(new StopManipulator());
+       driverA.whenReleased(new StopHopper());
 
-    //     driverA.whileHeld(new ManipulatorToIrHopper());
-    //     driverA.whenPressed(new InstantCommand(() -> {
-    //             Robot.Cam_switch.select(CameraSwitch.kcamera2);;
-    //         }));
-    //     driverA.whenReleased(new StopManipulator());
-    //    driverA.whenReleased(new StopHopper());
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
 
@@ -146,9 +163,9 @@ public class OI {
         // //driverDPadLeft.whenPressed(new setCameraThree());
         // driverDPadLeft.whenReleased(new DefaultPanelMech());
 
-        // driverDPadDown.whenPressed(new InstantCommand(() -> {
-        //     Robot.climber.setRetracted();;
-        // }));
+        driverDPadDown.whenPressed(new InstantCommand(() -> {
+            Robot.climber.setRetracted();;
+        }));
         
         driverDPadUp.whileHeld(new SetPanelmech());
        
