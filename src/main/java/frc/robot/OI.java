@@ -97,7 +97,7 @@ public class OI {
 
         // operatorB.whileHeld(new OpenPistonsAndMoveHopper());
         // operatorB.whenReleased(new StopHopper());
-        operatorB.whileHeld(new SetPanelmech());
+        operatorB.whenPressed(new SetPanelmech());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
