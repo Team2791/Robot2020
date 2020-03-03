@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.setCameraOne;
+import frc.robot.controller.DPadButton;
 import frc.robot.subsystems.*;
 import frc.robot.util.LedMode;
 import frc.robot.util.Camera_Switch.CameraSwitch;
@@ -42,7 +43,7 @@ public class Robot extends TimedRobot {
     public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
-    private Button pitA, pitB, pitX; 
+    private Button pitDPadDown, pitDPadRight, pitDPadLeft, pitDPadUp;
 
     public static Climber climber;
 
@@ -65,11 +66,11 @@ public class Robot extends TimedRobot {
         compressor.start();
         Cam.startAutomaticCapture(0);
         pitStick = new Joystick(3);
-        pitA = new JoystickButton(pitStick, 1);
-        pitB = new JoystickButton(pitStick, 2);
-        pitX = new JoystickButton(pitStick, 3);
-        
-        
+        pitDPadDown = new DPadButton(pitStick, DPadButton.kDPadDown);
+        pitDPadLeft = new DPadButton(pitStick, DPadButton.kDPadLeft);
+        pitDPadUp = new DPadButton(pitStick, DPadButton.kDPadUp);
+        pitDPadRight = new DPadButton(pitStick, DPadButton.kDPadRight);
+
         SmartDashboard.putBoolean("Drivetrain Align Complete", false);
     }
 
@@ -85,13 +86,13 @@ public class Robot extends TimedRobot {
         climber.debug();
         shooter.debug();
        
-        if(pitA.get() == true) {
+        if(pitDPadUp.get() == true) {
             Cam_switch.select(CameraSwitch.kcamera1);
         }
-        else if(pitB.get() == true) {
+        else if(pitDPadRight.get() == true) {
             Cam_switch.select(CameraSwitch.kcamera2);
         }
-        else if(pitX.get() == true){
+        else if(pitDPadDown.get() == true){
             Cam_switch.select(CameraSwitch.kcamera3);
         }
         else {
