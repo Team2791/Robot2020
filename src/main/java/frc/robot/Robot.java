@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
 
 	long loopCounter = 0;
 
-    public static Joystick operatorStick;
+    public static Joystick pitStick;
     public static OI oi;
     public static Drivetrain drivetrain;
     public static PowerDistributionPanel pdp;
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
     public static PanelMech panelMech;
     public static CameraServer Cam;
     public static CameraSwitch Cam_switch; 
-    private Button operatorA, operatorB; 
+    private Button pitA, pitB, pitX; 
 
     public static Climber climber;
 
@@ -64,9 +64,10 @@ public class Robot extends TimedRobot {
         compressor = new Compressor(RobotMap.kPCM);
         compressor.start();
         Cam.startAutomaticCapture(0);
-        operatorStick = new Joystick(1);
-        operatorA = new JoystickButton(operatorStick, 1);
-        operatorB = new JoystickButton(operatorStick, 2);
+        pitStick = new Joystick(3);
+        pitA = new JoystickButton(pitStick, 1);
+        pitB = new JoystickButton(pitStick, 2);
+        pitX = new JoystickButton(pitStick, 3);
         
         
         SmartDashboard.putBoolean("Drivetrain Align Complete", false);
@@ -83,15 +84,19 @@ public class Robot extends TimedRobot {
         hopper.debug();
         climber.debug();
         shooter.debug();
-        // if(operatorA.get() == true) {
-        //     Cam_switch.select(CameraSwitch.kcamera1);
-        // }
-        // else if (operatorB.get() == true) {
-        //     Cam_switch.select(CameraSwitch.kcamera2);
-        // }
-        // else {
-        //     Cam_switch.select(CameraSwitch.kcamera3);
-        // }
+       
+        if(pitA.get() == true) {
+            Cam_switch.select(CameraSwitch.kcamera1);
+        }
+        else if(pitB.get() == true) {
+            Cam_switch.select(CameraSwitch.kcamera2);
+        }
+        else if(pitX.get() == true){
+            Cam_switch.select(CameraSwitch.kcamera3);
+        }
+        else {
+            Cam_switch.select(CameraSwitch.kcamera4);
+        }
     }
 
     @Override

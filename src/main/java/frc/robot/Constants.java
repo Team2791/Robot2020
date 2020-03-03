@@ -72,7 +72,7 @@ public final class Constants {
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.86;   // 0.30;   0.70; 
 
 
-    public static final double HOPPER_VERTICAL_OUTPUT = 1.0;    // .35;    0.80;
+    public static final double HOPPER_VERTICAL_OUTPUT = 1.0;    // .35;    0.80;[\]
 
 
     public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .07;
