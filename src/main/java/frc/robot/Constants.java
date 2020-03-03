@@ -39,7 +39,8 @@ public final class Constants {
     public static final double kDrag = 1;
     public static final double kMagnus = 1;
 
-
+    public static final double jamCurrent = 20;
+    public static final double fixSpaceTime = 0.2;
 
     public static final double DrivekP = 0.025;
     public static final double DrivekI = 0;
@@ -63,8 +64,8 @@ public final class Constants {
     public static final double DEADZONE = 0.4;
 
 
-	public static final double ELEVATOR_OUTPUT = -.05;
-
+    public static final double ELEVATOR_OUTPUT = -.05;
+    
 
     public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .62; 
 

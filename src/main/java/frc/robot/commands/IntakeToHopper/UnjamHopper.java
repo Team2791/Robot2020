@@ -1,16 +1,19 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.commands.IntakeToHopper.MoveManipulator;
 
-public class IrHopper extends Command {
-  public int count;
-
-  public IrHopper() {
-    super("IrHopper");
+public class UnjamHopper extends Command {
+  public UnjamHopper() {
+    super("UnjamHopper");
     requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -19,31 +22,24 @@ public class IrHopper extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    count = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      // Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
-      Robot.hopper.loadingWithIR();
-      SmartDashboard.putBoolean("Ir Hopper Running", true);
+    Robot.hopper.setHopper(-Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, -Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-
   protected boolean isFinished() {
-    // return !Robot.hopper.isBall() || Robot.hopper.isUpperSensorTripped();
-    return !Robot.hopper.isBall();
+    return !Robot.hopper.checkJammed() || Robot.hopper.isBall();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    count++;
     Robot.hopper.setHopper(0, 0);
-    SmartDashboard.putBoolean("Ir Hopper Running", false);
   }
 
   // Called when another command which requires one or more of the same
@@ -51,5 +47,4 @@ public class IrHopper extends Command {
   @Override
   protected void interrupted() {
   }
-
 }
