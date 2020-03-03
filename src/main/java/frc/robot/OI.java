@@ -97,8 +97,7 @@ public class OI {
 
         // operatorB.whileHeld(new OpenPistonsAndMoveHopper());
         // operatorB.whenReleased(new StopHopper());
-        operatorB.whileHeld(new WallHoodAndFire());
-        operatorB.whenReleased(new StopShooterGroup());
+        operatorB.whenPressed(new SetPanelmech());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
@@ -167,7 +166,6 @@ public class OI {
             Robot.climber.setRetracted();;
         }));
         
-        driverDPadUp.whileHeld(new SetPanelmech());
        
         driverStart.whenPressed(new ReleasePin(true, true));
         // driverA.whenPressed(new ReleasePin(false, false));

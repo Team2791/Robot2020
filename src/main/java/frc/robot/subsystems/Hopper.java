@@ -80,6 +80,13 @@ public class Hopper extends Subsystem {
         return hopper_vertical.getOutputCurrent();
     }
 
+    public boolean checkJammed(){
+        if(getHorizontalCurrent()>Constants.jamCurrent)
+            return true;
+        else
+            return false;
+    }
+
     public boolean isBall(){
         if(Constants.BALL_VALUE < getIRSensor()){
             return true;
@@ -117,6 +124,7 @@ public class Hopper extends Subsystem {
         SmartDashboard.putNumber("Vertical Current", getVerticalCurrent());
         SmartDashboard.putBoolean("Hopper Stopper Out", isRetracted());
         SmartDashboard.putNumber("Upper IR Value", upperSensor.getValue());
+        SmartDashboard.putBoolean("Jammed", checkJammed());
     }
     @Override
     protected void initDefaultCommand() {
