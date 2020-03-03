@@ -18,6 +18,7 @@ import frc.robot.commands.PanelMech.*;
 
 import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;
+import frc.robot.commands.tempTest.*;
 import frc.robot.commands.Climb.*;
 // import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
@@ -25,22 +26,12 @@ import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
 
 import frc.robot.util.Camera_Switch.CameraSwitch;
-// import frc.robot.Autons.ShooterGroupLong;
-// import frc.robot.Autons.StopShooterGroupLong;
-// import frc.robot.Autons.ShooterGroupWall;
-// import frc.robot.Autons.StopShooterGroupWall;
-//import frc.robot.subsystems.Camera; 
-
-// import frc.robot.commands.Lifter.ExtendBothLifters;
 import frc.robot.util.Util;
-// import frc.robot.commands.CargoManipulator.ScoreInRocketCalculated;
-// import frc.robot.commands.CargoManipulator.ScoreInRocketDropper;
-// import frc.robot.commands.auto.AutoSetLifterPots;
-//here lies robot RIP
 
 public class OI {
     public static Joystick driverStick;
     public static Joystick operatorStick;
+    public static Joystick pitStick; 
     private Button driveButton;
     private Button driverLB, driverRB;
     private Button driverStart, driverBack;
@@ -54,9 +45,11 @@ public class OI {
     private Button driverRX;
     protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft, operatorDPadRight;
     private Button operatorA, operatorB, operatorX, operatorY;
+    private Button pitA, pitB, pitX, pitY; 
     public OI() {
         driverStick = new Joystick(0);
         operatorStick = new Joystick(1);
+        pitStick = new Joystick(3);
         initButtons();
         initUsed();
 
@@ -182,8 +175,16 @@ public class OI {
         driverX.whenReleased(new StopWinchClimb());
         driverY.whileHeld(new WinchClimb(false));
         driverY.whenReleased(new StopWinchClimb());
+
         driverB.whileHeld(new TrenchHoodAndFire());
         driverB.whenReleased(new StopShooterGroup());
+
+        //Pit Controller commands to reset the climb
+        pitA.whenPressed(new testManipulator());            //Extends Manipulator
+        pitB.whenPressed(new testStopManipulator());        //Retracts Manipulator
+        pitX.whenPressed(new testExtendClimber());          //Extends Climber
+        pitY.whenPressed(new testRetractClimber());         //Retracts Climber
+        
     }
 
     private void initButtons(){
@@ -231,6 +232,11 @@ public class OI {
             System.out.println("Error Init With Buttons");
             error.printStackTrace();
         }
+//TEMPORARY PIT CONTROLS//
+            pitA = new JoystickButton(pitStick, 1);
+            pitB = new JoystickButton(pitStick, 2); 
+            pitX = new JoystickButton(pitStick, 3); 
+            pitY = new JoystickButton(pitStick, 4); 
     }
     
     private void initUsed(){
