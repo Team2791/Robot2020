@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Autons.ManipulatorToIrHopper;
+import frc.robot.Autons.ManipulatorToLimitHopper;
 import frc.robot.Autons.StopShooterGroup;
 import frc.robot.Autons.TrenchHoodAndFire;
 import frc.robot.Autons.WallHoodAndFire;
@@ -77,6 +78,7 @@ public class OI {
 
         operatorB.whileHeld(new SetPanelMechSlow());
         operatorA.whileHeld(new SetPanelMechFast());
+    
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
@@ -118,7 +120,7 @@ public class OI {
             }
         }.whenActive(new StopShooter());
 
-        driverA.whileHeld(new ManipulatorToIrHopper());
+        driverA.whenPressed(new ManipulatorToLimitHopper());
         driverA.whenPressed(new InstantCommand(() -> {
                 Robot.Cam_switch.select(CameraSwitch.kcamera2);;
             }));
@@ -128,8 +130,8 @@ public class OI {
         }));
         driverA.whenReleased(new StopManipulator());
        driverA.whenReleased(new StopHopper());
-        //driverA.whileHeld(new IrHopper());
-
+        driverA.whileHeld(new LimitSwitch());
+        
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
 

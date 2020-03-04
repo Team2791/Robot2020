@@ -15,13 +15,13 @@ public class MoveManipulator extends Command {
     //Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    
+        Robot.manipulator.setExtended();
     }
 
     //Called repeatedly when this Command is scheduled to run 
     @Override
     protected void execute() {
-        Robot.manipulator.setExtended();
+        // Robot.manipulator.setExtended();
         Robot.manipulator.setManipulator(Constants.INTAKE_MOTORSPEED);
         
     }

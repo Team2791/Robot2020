@@ -145,12 +145,13 @@ public class Robot extends TimedRobot {
         Robot.shooter.setHood1(false);
     }
 
+
     @Override
     public void teleopPeriodic() {
        
         Scheduler.getInstance().run();
-
-
+        
+        
         // double kp = SmartDashboard.getNumber("Shooter kP", 0);
         // double kf = SmartDashboard.getNumber("Shooter kF", 0);
         // double kd = SmartDashboard.getNumber("Shooter kD", 0);
