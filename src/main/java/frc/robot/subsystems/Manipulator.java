@@ -44,5 +44,6 @@ public class Manipulator extends Subsystem {
     
     public void debug() {
         SmartDashboard.putBoolean("Manipulator Extender Solenoid", extender.get());
+        SmartDashboard.putNumber("Manipulator current", manipulator_neo.getOutputCurrent());
     }
 }  

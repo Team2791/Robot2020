@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Timer;
 
 public final class Constants {
     public static final boolean debugMode = false;
@@ -96,7 +97,7 @@ public final class Constants {
     public static final double MANUAL_POWER = .2;
 
 
-    public static final double INTAKE_MOTORSPEED = 0.135; //Temp value please test it out and do stuff yes
+    public static final double INTAKE_MOTORSPEED = 0.8; //Temp value please test it out and do stuff yes
 
     
     public static final double SHOOTER_VELOCITY = 100; //Temporary value
@@ -136,5 +137,8 @@ public final class Constants {
 
 
 	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
+
+
+	public static final double kHopperTimer = 0.2;
 
 }

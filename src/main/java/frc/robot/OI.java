@@ -6,8 +6,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Autons.ManipulatorToIrHopper;
-import frc.robot.Autons.ShooterGroupLong;
-import frc.robot.Autons.ShooterGroupWall;
 import frc.robot.Autons.StopShooterGroup;
 import frc.robot.Autons.TrenchHoodAndFire;
 import frc.robot.Autons.WallHoodAndFire;
@@ -20,7 +18,6 @@ import frc.robot.commands.*;
 import frc.robot.commands.Shooter.StopShooter;
 import frc.robot.commands.tempTest.*;
 import frc.robot.commands.Climb.*;
-// import frc.robot.commands.auto.SetLimit;
 import frc.robot.controller.AnalogButton;
 import frc.robot.controller.DPadButton;
 import frc.robot.controller.MultiButton;
@@ -53,19 +50,7 @@ public class OI {
         initButtons();
         initUsed();
 
-       driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
-        
-        // driverRB.whenPressed(new ShooterGroupWall());
-        // driverRB.whileHeld(new WallShot());
-        // driverRB.whenReleased(new StopShooterGroup());
-
-
-        // driverLB.whenReleased(new StopShooterGroupLong());
-        // operatorDPadLeft.whenPressed(new ShooterGroupLong());
-        // operatorDPadLeft.whenPressed(new StopShooterGroup());
-
-        // operatorDPadRight.whenPressed(new ShooterGroupWall());
-        // operatorDPadRight.whenReleased(new StopShooterGroup());
+        driveButton.whileHeld(new DriveWithJoystick(driverStick, 0.1)); // TODO CHANGE DEADZONE VALUE IT MIGHT NOT BE THE SAME 
 
         operatorDPadLeft.whenPressed(new LongShotHood());
         operatorDPadRight.whenPressed(new WallShotHood());
@@ -85,19 +70,13 @@ public class OI {
                 return operatorStick.getRawAxis(1) > 0.8;
             }
         }.whenInactive(new StopHopper());
-        // operatorA.whenPressed(new MoveHopperLong());
-        // operatorA.whenReleased(new StopHopper());
-
-        // operatorB.whenPressed(new LongShotHood());
-        // operatorB.whenReleased(new WallShotHood());
 
         operatorA.whenPressed(new InstantCommand(() -> {
             Robot.hopper.hopper_stopper.set(true);
         }));
 
-        // operatorB.whileHeld(new OpenPistonsAndMoveHopper());
-        // operatorB.whenReleased(new StopHopper());
-        operatorB.whenPressed(new SetPanelmech());
+        operatorB.whileHeld(new SetPanelMechSlow());
+        operatorA.whileHeld(new SetPanelMechFast());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
@@ -138,12 +117,6 @@ public class OI {
                 return operatorStick.getRawAxis(2) > 0.25;
             }
         }.whenActive(new StopShooter());
-        // driverA.whenPressed(new MoveManipulator()); //moves wheels as well so don't be surprised
-        // driverA.whenReleased(new StopManipulator());
-        
-        // driverA.whenPressed(new InstantCommand(() -> {
-        //     Robot.Cam_switch.select(CameraSwitch.kcamera2);;
-        // }));
 
         driverA.whileHeld(new ManipulatorToIrHopper());
         driverA.whenPressed(new InstantCommand(() -> {
@@ -151,26 +124,24 @@ public class OI {
             }));
         driverA.whenPressed(new InstantCommand(() -> {
             Robot.hopper.setRetracted();;
+            
         }));
         driverA.whenReleased(new StopManipulator());
        driverA.whenReleased(new StopHopper());
+        //driverA.whileHeld(new IrHopper());
 
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());
-
-        // driverDPadLeft.whenPressed(new ExtendPanelMech());
-        // //driverDPadLeft.whenPressed(new setCameraThree());
-        // driverDPadLeft.whenReleased(new DefaultPanelMech());
 
         driverDPadDown.whenPressed(new InstantCommand(() -> {
             Robot.climber.setRetracted();;
         }));
         
-       
         driverStart.whenPressed(new ReleasePin(true, true));
-        // driverA.whenPressed(new ReleasePin(false, false));
+
         driverX.whileHeld(new WinchClimb(true));
         driverX.whenReleased(new StopWinchClimb());
+
         driverY.whileHeld(new WinchClimb(false));
         driverY.whenReleased(new StopWinchClimb());
 

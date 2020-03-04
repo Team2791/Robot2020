@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class SetPanelmech extends Command {
+public class SetPanelMechFast extends Command {
     double count = 1;
-    public SetPanelmech() {
-        super("SetPanelmech");
+    public SetPanelMechFast() {
+        super("SetPanelMechFast");
         requires(Robot.panelMech);
         
     }
@@ -15,10 +15,7 @@ public class SetPanelmech extends Command {
     //Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        count++;
-        if(count > 2){
-            count = 0;
-        }
+        
     }
     
     
@@ -26,21 +23,13 @@ public class SetPanelmech extends Command {
     //Called repeatedly when this Command is scheduled to run 
     @Override
     protected void execute() {
-        if(count == 1){
-            Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
-        }
-        else if(count == 2){
-            Robot.panelMech.setPanelMech(Constants.PANEL_MECH_CREEP);
-        }
-        else{
-            Robot.panelMech.setPanelMech(0);
-        }
+        Robot.panelMech.setPanelMech(Constants.PANEL_MECH_FAST);
     }
 
     //Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     //Called once after isFinished returns true

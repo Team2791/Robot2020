@@ -19,7 +19,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.util.IrSensor;
-
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;;
 /**
  * Add your docs here.
  */
@@ -29,8 +30,9 @@ public class Hopper extends Subsystem {
     public CANSparkMax hopper_vertical;
     public Solenoid hopper_stopper; 
     public IrSensor entrySensor, upperSensor;
+    public DigitalInput limitSwitch = new DigitalInput(9);
+    public Counter counter= new Counter(limitSwitch);
 
-    
     public Hopper(){
         hopper_horizontal = new CANSparkMax(RobotMap.HORIZONTAL_HOPPER, MotorType.kBrushless);
         hopper_vertical = new CANSparkMax(RobotMap.VERTICAL_HOPPER, MotorType.kBrushless); 
@@ -43,6 +45,8 @@ public class Hopper extends Subsystem {
 
         hopper_horizontal.setSmartCurrentLimit(20);
         hopper_vertical.setSmartCurrentLimit(20);
+
+        counter.clearDownSource();
     }
 
     public void setHopper(final double output, final double vOutput){
@@ -95,7 +99,9 @@ public class Hopper extends Subsystem {
             return false;
         }
     }
-
+    public boolean isSwitchSet() {
+        return counter.get() > 0;
+    }
     public boolean isUpperSensorTripped() {
         return 745 <= upperSensor.getValue();
     }
@@ -116,6 +122,13 @@ public class Hopper extends Subsystem {
         }
     }
 
+    public boolean isHopperFull(){
+            if (counter.get()==5){
+                return true;
+            }
+            return false;
+    }
+
     public void debug(){
         //SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
         SmartDashboard.putNumber("Entry IR Value", entrySensor.getValue());
@@ -125,6 +138,8 @@ public class Hopper extends Subsystem {
         SmartDashboard.putBoolean("Hopper Stopper Out", isRetracted());
         SmartDashboard.putNumber("Upper IR Value", upperSensor.getValue());
         SmartDashboard.putBoolean("Jammed", checkJammed());
+        SmartDashboard.putNumber("Counter Value", counter.get());
+        SmartDashboard.putBoolean("Limit Switch", limitSwitch.get());
     }
     @Override
     protected void initDefaultCommand() {

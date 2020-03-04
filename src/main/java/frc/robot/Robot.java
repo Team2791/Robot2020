@@ -85,6 +85,7 @@ public class Robot extends TimedRobot {
         hopper.debug();
         climber.debug();
         shooter.debug();
+        manipulator.debug();
        
         if(pitDPadUp.get() == true) {
             Cam_switch.select(CameraSwitch.kcamera1);
@@ -118,7 +119,7 @@ public class Robot extends TimedRobot {
          manipulator.setRetracted(); 
          shooter.setShooter(0);
          //add emergency stops for panelMech
-        // Robot.drivetrain.resetGyro();
+       
         // autoCommand.start();
     }
 
@@ -146,17 +147,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
-        //   Robot.elevator.setElevator(-.1);
-        //   Robot.hopper.setHopper(-1);
-        // Robot.shooter.setShooter(-1);
-        //  Robot.drivetrain.setMotors(-1);
-                
-        //  Robot.drivetrain.setMotors(-.0000001);
-        // Robot.drivetrain.setRightTalon(-1);
-        // Robot.drivetrain.setLeftNeo(-1);
-        // Robot.drivetrain.setLeftTalon(.7);
-        // Robot.drivetrain.setRightNeo(1);
-         // 0.5 power is the sweet spot for wall, 0.8  for current at angle of 39 degrees
+       
         Scheduler.getInstance().run();
 
 
