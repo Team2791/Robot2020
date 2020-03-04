@@ -26,13 +26,14 @@ public class IrHopper extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.hopper.loadingWithIR();
+      //Robot.hopper.loadingWithIR();
       SmartDashboard.putBoolean("Ir Hopper Running", true);
       if(Robot.hopper.limitSwitch.get()){
         timer.start();
-        Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT, Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
+        Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
+         Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
       }
-      if (timer.get()>=Constants.kHopperTimer){
+      else if (timer.get()>=Constants.kHopperTimer){
           timer.stop();
           Robot.hopper.setHopper(0,0);
         }

@@ -8,7 +8,6 @@ public class MoveManipulator extends Command {
     public MoveManipulator() {
     super("MoveManipulator");
     requires(Robot.manipulator);
-    requires(Robot.hopper);
         //Use requires() here to declare subsystem dependencies
         //eg. requires(chassis);
     }
