@@ -114,7 +114,9 @@ public final class Constants {
 
 	public static final int BALL_VALUE = 2425;
 
+    public static int theIrony=0; // NOT A CONSTANT --> counting balls
 
+    public static double debounceDelay= 0; //def change to ur delay time
 
 
      //climber

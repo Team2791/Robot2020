@@ -37,8 +37,8 @@ public class Hopper extends Subsystem {
         hopper_horizontal = new CANSparkMax(RobotMap.HORIZONTAL_HOPPER, MotorType.kBrushless);
         hopper_vertical = new CANSparkMax(RobotMap.VERTICAL_HOPPER, MotorType.kBrushless); 
         hopper_stopper = new Solenoid(RobotMap.kPCM, RobotMap.HOPPER_SOLENOID);
-        entrySensor = new IrSensor(RobotMap.kPDP);
-        upperSensor = new IrSensor(2);
+        // entrySensor = new IrSensor(RobotMap.kPDP);
+        // upperSensor = new IrSensor(2);
         
         hopper_horizontal.setIdleMode(IdleMode.kBrake);
         hopper_vertical.setIdleMode(IdleMode.kBrake);
@@ -128,6 +128,8 @@ public class Hopper extends Subsystem {
             }
             return false;
     }
+
+    
 
     public void debug(){
         //SmartDashboard.putNumber("Hopper Voltage - ", getHopperVoltage());
