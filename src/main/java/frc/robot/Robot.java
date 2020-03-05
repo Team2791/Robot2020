@@ -96,7 +96,7 @@ public class Robot extends TimedRobot {
         else if(pitDPadDown.get() == true){
             Cam_switch.select(CameraSwitch.kcamera3);
         }
-        else {
+        else if(pitDPadLeft.get()) {
             Cam_switch.select(CameraSwitch.kcamera4);
         }
     }

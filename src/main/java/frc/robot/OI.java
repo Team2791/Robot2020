@@ -77,8 +77,14 @@ public class OI {
         }));
 
         operatorB.whileHeld(new SetPanelMechSlow());
+        operatorB.whenPressed(new ExtendPanelMech());
+        operatorB.whenReleased(new DefaultPanelMech());
+        operatorB.whenReleased(new StopPanelMech());
+
         operatorA.whileHeld(new SetPanelMechFast());
-    
+        operatorA.whenPressed(new ExtendPanelMech());
+        operatorA.whenReleased(new StopPanelMech());
+        operatorA.whenReleased(new DefaultPanelMech());
 
         operatorY.whileHeld(new MoveHopperWall());
         operatorY.whenReleased(new StopHopper());
@@ -87,15 +93,12 @@ public class OI {
         operatorX.whenReleased(new StopHopper());
 
         operatorRB.whenPressed(new WallShot());
-        operatorRB.whenPressed(new InstantCommand(() -> {
-            Robot.Cam_switch.select(CameraSwitch.kcamera1);;
-        }));
+        // // operatorRB.whenPressed(new InstantCommand(() -> {
+        //     Robot.Cam_switch.select(CameraSwitch.kcamera1);;
+        // }));
 
         operatorLB.whenPressed(new LongShot());
-        operatorLB.whenPressed(new InstantCommand(() -> {
-            Robot.Cam_switch.select(CameraSwitch.kcamera1);;
-        }));
-
+  
         new Trigger(){
             @Override
             public boolean get() {
@@ -120,7 +123,9 @@ public class OI {
             }
         }.whenActive(new StopShooter());
 
-        driverA.whenPressed(new ManipulatorToLimitHopper());
+        // driverA.whenPressed(new ManipulatorToLimitHopper());
+        driverA.whileHeld(new ManipulatorToIrHopper());
+        
         driverA.whenPressed(new InstantCommand(() -> {
                 Robot.Cam_switch.select(CameraSwitch.kcamera2);;
             }));
@@ -130,7 +135,6 @@ public class OI {
         }));
         driverA.whenReleased(new StopManipulator());
        driverA.whenReleased(new StopHopper());
-        driverA.whileHeld(new LimitSwitch());
         
 
         driverDPadRight.whileHeld(new DrivetrainAlignToGoal());

@@ -19,7 +19,7 @@ public class IrHopper extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    count = 0;
+    // count = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,7 +41,7 @@ public class IrHopper extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    count++;
+    // count++;
     Robot.hopper.setHopper(0, 0);
     SmartDashboard.putBoolean("Ir Hopper Running", false);
   }
