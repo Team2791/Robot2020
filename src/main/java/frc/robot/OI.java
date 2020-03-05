@@ -44,10 +44,15 @@ public class OI {
     protected Button operatorLeftJoystickUsed, operatorRightJoystickUsed, operatorDPadDown, operatorDPadLeft, operatorDPadRight;
     private Button operatorA, operatorB, operatorX, operatorY;
     private Button pitA, pitB, pitX, pitY; 
+
+
     public OI() {
+
+
         driverStick = new Joystick(0);
         operatorStick = new Joystick(1);
         pitStick = new Joystick(3);
+
         initButtons();
         initUsed();
 
@@ -74,7 +79,7 @@ public class OI {
 
         operatorA.whenPressed(new InstantCommand(() -> {
             Robot.hopper.hopper_stopper.set(true);
-        }));
+        })) ;
 
         operatorB.whileHeld(new SetPanelMechSlow());
         operatorB.whenPressed(new ExtendPanelMech());
@@ -86,7 +91,7 @@ public class OI {
         operatorA.whenReleased(new StopPanelMech());
         operatorA.whenReleased(new DefaultPanelMech());
 
-        operatorY.whileHeld(new MoveHopperWall());
+        operatorY.whileHeld(new MoveHopperWall());//moves hopper at constant speeds
         operatorY.whenReleased(new StopHopper());
 
         operatorX.whileHeld(new IrHopper());

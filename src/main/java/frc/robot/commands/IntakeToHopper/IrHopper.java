@@ -2,10 +2,8 @@ package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.commands.IntakeToHopper.MoveManipulator;
-import edu.wpi.first.wpilibj.Timer;
+
 
 public class IrHopper extends Command {
   public int count;
@@ -13,7 +11,7 @@ public class IrHopper extends Command {
     super("IrHopper");
     requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+   
   }
 
   // Called just before this Command runs the first time

@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
@@ -108,6 +107,7 @@ public class Hopper extends Subsystem {
 
     public void loadingWithIR(){
         if(Constants.BALL_VALUE < getIRSensor()){
+
             if (isUpperSensorTripped()) {
                 setHopper(
                 Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
@@ -117,7 +117,9 @@ public class Hopper extends Subsystem {
                     Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
                     Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
             }
-        } else{
+        }
+        
+        else{
             setHopper(0, 0);
         }
     }
