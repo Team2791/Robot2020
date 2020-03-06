@@ -23,8 +23,8 @@ package frc.robot.util.Camera_Switch;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DigitalOutput;
-import edu.wpi.first.wpilibj.Victor;
+
+
 
 public class CameraSwitch implements RelayPortDevice{
 
@@ -37,7 +37,7 @@ public class CameraSwitch implements RelayPortDevice{
 
    public static Relay camrelay1;
    public Relay camrelay2;
-   public DigitalOutput DO;
+  
 
 
    private int cameraState;
@@ -53,25 +53,27 @@ public class CameraSwitch implements RelayPortDevice{
      constants for cameras are- "kcamera(camera#)" (these can be changed in the switch statment)
      This switch has four possible ports. */
       cameraState = camSelected; 
+
      switch (camSelected) {
         case kcamera1 :
           camrelay1.set(Value.kReverse);
-           camrelay2.set(Value.kOff);
+          camrelay2.set(Value.kOff);
             break;
         case kcamera2 :
-        camrelay1.set(Value.kForward);
-        camrelay2.set(Value.kOff);
+          camrelay1.set(Value.kForward);
+          camrelay2.set(Value.kOff);
          
             break;
         case kcamera3 :
-            camrelay2.set(Value.kReverse);
+             camrelay2.set(Value.kReverse);
              camrelay1.set(Value.kOff);
         case kcamera4 :
             camrelay2.set(Value.kForward);
-           camrelay1.set(Value.kOff);
+            camrelay1.set(Value.kOff);
             break;
         default:
             camrelay1.set(Value.kReverse);
+            camrelay2.set(Value.kOff);
             System.err.print("Camera not properly selected, setting to case 1,Camera1");
             break;
      }//This switch statement is what actually writes to the relay port

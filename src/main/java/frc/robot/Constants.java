@@ -69,16 +69,17 @@ public final class Constants {
     public static final double ELEVATOR_OUTPUT = -.05;
     
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .62;  //.5 for limit 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .82;  //.5 for limit 
 
 
-    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.86;   // 0.30;   0.70; 
+    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.60;   // 0.30;   0.70; 
+    //FIX 0.86
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = 1.0;    // .35;    0.80;[\]
 
 
-    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .07;   //0.15 for limit
+    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .1;   //0.15 for limit
     
 
     public static final double REVERSE_HOPPER = -.40;
@@ -113,7 +114,7 @@ public final class Constants {
 	public static final double TURN_FACTOR = 0.7;
 
 
-	public static final int BALL_VALUE = 2425;
+	public static final int BALL_VALUE = 2350;
 
 
 
