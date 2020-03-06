@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.RobotMap;
-
-
+import frc.robot.util.Util;
 import frc.robot.util.Camera_Switch.*;
 
 public class Drivetrain extends Subsystem {
@@ -101,6 +100,18 @@ public class Drivetrain extends Subsystem {
 
     public double getRightCPR(){
         return m_leftAlternateEncoder.getCountsPerRevolution();
+    }
+
+    public double getAverageDistance(){
+        return Util.average(getDistanceLeft(), getDistanceRight());
+    }
+    
+    public double getDistanceLeft(){
+        return Math.PI*Constants.wheelDiameterInches*getLeftCPR()/12; // returns distance in feet
+    }
+    
+    public double getDistanceRight(){
+        return Math.PI*Constants.wheelDiameterInches*getLeftCPR()/12; // returns distance in feet
     }
 
     public void setBrakeMode(boolean isbrake) {

@@ -23,6 +23,7 @@ public final class Constants {
     public static final double kCamStraightSuperFast = 0.75;
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
+    public static final double wheelDiameterInches = 5;
     
 
     public static final double ShooterTrenchkP = 0.002525;
@@ -43,7 +44,7 @@ public final class Constants {
     public static final double jamCurrent = 20;
     public static final double fixSpaceTime = 0.2;
 
-    public static final double DrivekP = 0.025;
+    public static final double DrivekP = 0.000025;
     public static final double DrivekI = 0;
     public static final double DrivekD = 0;
     public static final double DriveIz = 0;
@@ -52,7 +53,7 @@ public final class Constants {
     public static final double DriveMinOutput = -1;
     public static final double DrivemaxRPM = 4500;
 
-    public static final double LimelightkP = 0.35;
+    public static final double LimelightkP = 0.025;
     public static final double LimelightkI = 0.0;
     public static final double LimelightkD = 0.0;
 
@@ -140,5 +141,8 @@ public final class Constants {
 
 
 	public static final double kHopperTimer = 0.12;
+
+
+	public static final double TrenchBallOneDist = 7;
 
 }
