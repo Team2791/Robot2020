@@ -36,8 +36,8 @@ public class CameraSwitch implements RelayPortDevice{
 
 
    public static Relay camrelay1;
-   public Relay camrelay2;
-  
+   public static Relay camrelay2;
+
 
 
    private int cameraState;
@@ -53,7 +53,6 @@ public class CameraSwitch implements RelayPortDevice{
      constants for cameras are- "kcamera(camera#)" (these can be changed in the switch statment)
      This switch has four possible ports. */
       cameraState = camSelected; 
-
      switch (camSelected) {
         case kcamera1 :
           camrelay1.set(Value.kReverse);
@@ -62,7 +61,7 @@ public class CameraSwitch implements RelayPortDevice{
         case kcamera2 :
           camrelay1.set(Value.kForward);
           camrelay2.set(Value.kOff);
-         
+        
             break;
         case kcamera3 :
              camrelay2.set(Value.kReverse);
