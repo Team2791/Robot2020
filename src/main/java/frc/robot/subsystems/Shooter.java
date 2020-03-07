@@ -44,7 +44,7 @@ public class Shooter extends Subsystem {
         shooter_leader.getPIDController().setD(Constants.ShooterTrenchkD);
         shooter_leader.getPIDController().setOutputRange(-1, 1);
 
-        shooter_leader.enableVoltageCompensation(12.4);
+        shooter_leader.enableVoltageCompensation(11.9);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;

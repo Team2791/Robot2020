@@ -23,6 +23,7 @@ public final class Constants {
     public static final double kCamStraightSuperFast = 0.75;
     public static final double kCamStraightMedium = 0.45;
     public static final double kCamStraightSlow = 0.25;
+    public static final double wheelDiameterInches = 5;
     
 
     public static final double ShooterTrenchkP = 0.002525;
@@ -43,7 +44,7 @@ public final class Constants {
     public static final double jamCurrent = 20;
     public static final double fixSpaceTime = 0.2;
 
-    public static final double DrivekP = 0.025;
+    public static final double DrivekP = 0.000025;
     public static final double DrivekI = 0;
     public static final double DrivekD = 0;
     public static final double DriveIz = 0;
@@ -52,7 +53,7 @@ public final class Constants {
     public static final double DriveMinOutput = -1;
     public static final double DrivemaxRPM = 4500;
 
-    public static final double LimelightkP = 0.35;
+    public static final double LimelightkP = 0.025;
     public static final double LimelightkI = 0.0;
     public static final double LimelightkD = 0.0;
 
@@ -68,16 +69,17 @@ public final class Constants {
     public static final double ELEVATOR_OUTPUT = -.05;
     
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .62;  //.5 for limit 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = 0.85;//.82;  //.5 for limit 
 
 
-    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.86;   // 0.30;   0.70; 
+    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT =  0.60;   // 0.30;   0.70; 
+    //FIX 0.86
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = 1.0;    // .35;    0.80;[\]
 
 
-    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .07;   //0.15 for limit
+    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .15;   //0.15 for limit
     
 
     public static final double REVERSE_HOPPER = -.40;
@@ -97,7 +99,7 @@ public final class Constants {
     public static final double MANUAL_POWER = .2;
 
 
-    public static final double INTAKE_MOTORSPEED = 0.28; // .135 old speed: Temp value please test it out and do stuff yes
+    public static final double INTAKE_MOTORSPEED = 0.18; // .135 old speed: Temp value please test it out and do stuff yes
 
     
     public static final double SHOOTER_VELOCITY = 100; //Temporary value
@@ -112,7 +114,7 @@ public final class Constants {
 	public static final double TURN_FACTOR = 0.7;
 
 
-	public static final int BALL_VALUE = 2425;
+	public static final int BALL_VALUE = 2350;
 
 
 
@@ -139,6 +141,12 @@ public final class Constants {
 	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
 
 
-	public static final double kHopperTimer = 0.12;
+	public static final double kHopperTimer = 0.037;//0.12;
+
+
+	public static final double LimelightSetpoint = -1;
+
+
+	public static final double TrenchBallOneDist = 7;
 
 }

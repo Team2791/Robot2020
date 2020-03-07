@@ -24,7 +24,7 @@ public class DrivetrainAlignToGoal extends Command {
     // eg. requires(chassis);
     requires(Robot.drivetrain);
     requires(Robot.limelight);
-    pid = new PIDController(Constants.DrivekP, Constants.DrivekI, Constants.DrivekD);
+    pid = new PIDController(Constants.LimelightkP, Constants.LimelightkI, Constants.LimelightkD);
   }
 
   // Called just before this Command runs the first time
@@ -32,8 +32,8 @@ public class DrivetrainAlignToGoal extends Command {
   protected void initialize() {
     Robot.limelight.setCamMode(CamMode.VISION_CAM);
     Robot.limelight.setLedMode(LedMode.PIPELINE);
-    pid.setSetpoint(0.0);
-    pid.setTolerance(0.3);
+    pid.setSetpoint(Constants.LimelightSetpoint);
+    pid.setTolerance(0.1);  //0.3 old
   }
 
   // Called repeatedly when this Command is scheduled to run
