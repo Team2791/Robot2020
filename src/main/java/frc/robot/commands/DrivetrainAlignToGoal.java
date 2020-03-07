@@ -32,8 +32,8 @@ public class DrivetrainAlignToGoal extends Command {
   protected void initialize() {
     Robot.limelight.setCamMode(CamMode.VISION_CAM);
     Robot.limelight.setLedMode(LedMode.PIPELINE);
-    pid.setSetpoint(0.0);
-    pid.setTolerance(0.3);
+    pid.setSetpoint(Constants.LimelightSetpoint);
+    pid.setTolerance(0.1);  //0.3 old
   }
 
   // Called repeatedly when this Command is scheduled to run

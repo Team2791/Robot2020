@@ -29,8 +29,8 @@ public class Hopper extends Subsystem {
     public CANSparkMax hopper_vertical;
     public Solenoid hopper_stopper; 
     public IrSensor entrySensor, upperSensor;
-    public DigitalInput limitSwitch = new DigitalInput(9);
-    public Counter counter= new Counter(limitSwitch);
+    public DigitalInput beamBreak = new DigitalInput(9);//Switched from Limit switch to bream break
+    public Counter counter= new Counter(beamBreak);
 
     public Hopper(){
         hopper_horizontal = new CANSparkMax(RobotMap.HORIZONTAL_HOPPER, MotorType.kBrushless);
@@ -141,7 +141,7 @@ public class Hopper extends Subsystem {
         SmartDashboard.putNumber("Upper IR Value", upperSensor.getValue());
         SmartDashboard.putBoolean("Jammed", checkJammed());
         SmartDashboard.putNumber("Counter Value", counter.get());
-        SmartDashboard.putBoolean("Limit Switch", limitSwitch.get());
+        SmartDashboard.putBoolean("Beam Break", beamBreak.get());  //Switched from Limit switch to bream break
     }
     @Override
     protected void initDefaultCommand() {

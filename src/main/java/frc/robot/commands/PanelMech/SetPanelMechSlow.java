@@ -15,7 +15,7 @@ public class SetPanelMechSlow extends Command {
     //Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        
+        Robot.panelMech.extendPanelMech();
     }
     
     
@@ -35,7 +35,7 @@ public class SetPanelMechSlow extends Command {
     //Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.panelMech.setPanelMech(0);
+        // Robot.panelMech.setPanelMech(0);
     }
 
     //Called when another command which requires one or more of the same 

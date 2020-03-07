@@ -7,7 +7,7 @@ import frc.robot.commands.Shooter.OpenHopperPiston;
 public class ManipulatorToLimitHopper extends CommandGroup{
     public ManipulatorToLimitHopper(){
         addSequential(new MoveManipulator());
-        addSequential(new LimitSwitch());
+        addSequential(new BeamBreak());
         //addSequential(new OpenHopperPiston());
     }
 }

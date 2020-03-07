@@ -77,24 +77,28 @@ public class OI {
             }
         }.whenInactive(new StopHopper());
 
-        operatorA.whenPressed(new InstantCommand(() -> {
-            Robot.hopper.hopper_stopper.set(true);
-        })) ;
+        // operatorA.whenPressed(new InstantCommand(() -> {  //PLEASE CHANGE THIS BUTTON BC IT IS THE SAME AS PANEL MECH STUFF!!!
+        //     Robot.hopper.hopper_stopper.set(true);
+        // })) ;
 
         operatorB.whileHeld(new SetPanelMechSlow());
-        operatorB.whenPressed(new ExtendPanelMech());
+        // operatorB.whenPressed(new ExtendPanelMech());
         operatorB.whenReleased(new DefaultPanelMech());
         operatorB.whenReleased(new StopPanelMech());
 
         operatorA.whileHeld(new SetPanelMechFast());
-        operatorA.whenPressed(new ExtendPanelMech());
+        // operatorA.whenPressed(new ExtendPanelMech());
         operatorA.whenReleased(new StopPanelMech());
         operatorA.whenReleased(new DefaultPanelMech());
 
         operatorY.whileHeld(new MoveHopperWall());//moves hopper at constant speeds
         operatorY.whenReleased(new StopHopper());
 
-        operatorX.whileHeld(new IrHopper());
+        operatorX.whileHeld(new BeamBreak());
+        operatorX.whenPressed(new InstantCommand(() -> {
+            Robot.hopper.setRetracted();;
+            
+        }));
         operatorX.whenReleased(new StopHopper());
 
         operatorRB.whenPressed(new WallShot());
@@ -128,8 +132,8 @@ public class OI {
             }
         }.whenActive(new StopShooter());
 
-        // driverA.whenPressed(new ManipulatorToLimitHopper());
-        driverA.whileHeld(new ManipulatorToIrHopper());
+        driverA.whenPressed(new ManipulatorToLimitHopper());
+        // driverA.whileHeld(new ManipulatorToLimitHopper());
         
         driverA.whenPressed(new InstantCommand(() -> {
                 Robot.Cam_switch.select(CameraSwitch.kcamera2);;

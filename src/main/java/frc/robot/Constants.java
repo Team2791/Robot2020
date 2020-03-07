@@ -68,17 +68,17 @@ public final class Constants {
     public static final double ELEVATOR_OUTPUT = -.05;
     
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = .82;  //.5 for limit 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = 0.85;//.82;  //.5 for limit 
 
 
-    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT = 0.60;   // 0.30;   0.70; 
+    public static final double HOPPER_WALL_HORIZONTAL_OUTPUT =  0.60;   // 0.30;   0.70; 
     //FIX 0.86
 
 
     public static final double HOPPER_VERTICAL_OUTPUT = 1.0;    // .35;    0.80;[\]
 
 
-    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .1;   //0.15 for limit
+    public static final double HOPPER_LOADING_VERTICAL_OUTPUT = .15;   //0.15 for limit
     
 
     public static final double REVERSE_HOPPER = -.40;
@@ -98,7 +98,7 @@ public final class Constants {
     public static final double MANUAL_POWER = .2;
 
 
-    public static final double INTAKE_MOTORSPEED = 0.28; // .135 old speed: Temp value please test it out and do stuff yes
+    public static final double INTAKE_MOTORSPEED = 0.18; // .135 old speed: Temp value please test it out and do stuff yes
 
     
     public static final double SHOOTER_VELOCITY = 100; //Temporary value
@@ -140,6 +140,9 @@ public final class Constants {
 	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
 
 
-	public static final double kHopperTimer = 0.12;
+	public static final double kHopperTimer = 0.037;//0.12;
+
+
+	public static final double LimelightSetpoint = -1;
 
 }

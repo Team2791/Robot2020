@@ -9,7 +9,7 @@ import frc.robot.commands.Shooter.OpenHopperPiston;
 public class TrenchHoodAndFire extends CommandGroup{
 
     public TrenchHoodAndFire(){
-        addSequential(new LongShotHood(), 0.2);
+        addSequential(new LongShotHood(), 0.21);
         addSequential(new OpenPistonsAndMoveHopper());
         // addSequential(new OpenHopperPiston());
         // addSequential(new MoveHopperLong());
