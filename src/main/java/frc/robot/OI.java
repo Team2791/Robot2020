@@ -67,7 +67,7 @@ public class OI {
                 // TODO Auto-generated method stub
                 return operatorStick.getRawAxis(1) > 0.8;
             }
-        }.whenActive(new ReverseHopper());
+        }.whenActive(new ReverseHopper()); //or try ReverseUntilBeamBreak
  
         new Trigger(){
             @Override
