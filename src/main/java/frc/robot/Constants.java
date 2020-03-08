@@ -69,7 +69,7 @@ public final class Constants {
     public static final double ELEVATOR_OUTPUT = -.05;
     
 
-    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = 0.85;//.82;  //.5 for limit 
+    public static final double HOPPER_LOADING_HORIZONTAL_OUTPUT = 0.82;//.82;  //.5 for limit 
 
 
     public static final double HOPPER_WALL_HORIZONTAL_OUTPUT =  0.60;   // 0.30;   0.70; 
@@ -148,6 +148,9 @@ public final class Constants {
 
 
 	public static final double TrenchBallOneDist = 7;
+
+
+	public static final double kHopperTimerBeams = 0.02;
 
 
 	public static double reverseTime = 1.0;

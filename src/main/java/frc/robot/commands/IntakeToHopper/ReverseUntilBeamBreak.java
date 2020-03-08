@@ -19,7 +19,7 @@ public class ReverseUntilBeamBreak extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(!Robot.hopper.beamBreak.get()){
+    if(!Robot.hopper.beamBreak1.get()){
         Robot.hopper.setHopper(0, 0);
       }
     else{
