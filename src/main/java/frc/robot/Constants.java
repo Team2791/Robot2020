@@ -149,4 +149,10 @@ public final class Constants {
 
 	public static final double TrenchBallOneDist = 7;
 
+
+	public static double reverseTime = 1.0;
+
+
+	public static double tempOffset;
+
 }
