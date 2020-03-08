@@ -43,8 +43,10 @@ public class Shooter extends Subsystem {
         shooter_leader.getPIDController().setFF(Constants.ShooterTrenchkFF);
         shooter_leader.getPIDController().setD(Constants.ShooterTrenchkD);
         shooter_leader.getPIDController().setOutputRange(-1, 1);
+        shooter_leader.setSmartCurrentLimit(75);
 
         shooter_leader.enableVoltageCompensation(11.9);
+        SmartDashboard.putNumber("Shooter Current", 0);
     }
     public double idealVelocity(double angle, double dist, double height){
         double gravityInches = Constants.kGravity*12;
@@ -138,5 +140,6 @@ public class Shooter extends Subsystem {
         SmartDashboard.putBoolean("Hood Position Down", !getHood1());
         SmartDashboard.putNumber("Voltage", getShooterVoltage());
         SmartDashboard.putNumber("Calculated Velcoity", getShooterVelocity2());
+        SmartDashboard.putNumber("Shooter Current", shooter_leader.getOutputCurrent());
     }
 }
