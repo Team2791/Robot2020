@@ -141,7 +141,7 @@ public final class Constants {
 	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
 
 
-	public static final double kHopperTimer = 0.037;//0.12;
+	public static final double kHopperTimer = 0.06;//0.037;//0.12;
 
 
 	public static final double LimelightSetpoint = -1;
