@@ -8,19 +8,15 @@ import frc.robot.commands.IntakeToHopper.MoveManipulator;
 import edu.wpi.first.wpilibj.Timer;
 
 public class DoubleBeamBreakHopper extends Command {
-  public int count;
-  private boolean timerStart = false;
-  public Timer timer = new Timer();
+  public boolean firstBeamBroken = false;
   public DoubleBeamBreakHopper() {
     super("DoubleBeamBreakHopper");
     requires(Robot.hopper);
-    
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // count = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -29,17 +25,13 @@ public class DoubleBeamBreakHopper extends Command {
 
       SmartDashboard.putBoolean("Beam Break Hopper Running", true);
       if(!Robot.hopper.beamBreak1.get()){
-        timer.start();
         Robot.hopper.setHopper(Constants.HOPPER_LOADING_HORIZONTAL_OUTPUT,
         Constants.HOPPER_LOADING_VERTICAL_OUTPUT);
-        timerStart = true;
+        firstBeamBroken = true;
       }
-      if(timerStart){
-        if (timer.get()>=Constants.kHopperTimer){
-          timer.stop();
-          timer.reset();
+      if(!Robot.hopper.beamBreak2.get() && firstBeamBroken){
           Robot.hopper.setHopper(0,0);
-        }
+          firstBeamBroken = false;
     }
 
   }
