@@ -125,6 +125,7 @@ public class OI {
         }.whenInactive(new StopShooterGroup());
 
         new Trigger(){
+            
             @Override
             public boolean get() {
                 // TODO Auto-generated method stub

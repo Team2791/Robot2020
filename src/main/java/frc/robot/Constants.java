@@ -26,7 +26,7 @@ public final class Constants {
     public static final double wheelDiameterInches = 5;
     
 
-    public static final double ShooterTrenchkP = 0.002525;
+    public static final double ShooterTrenchkP = 0.002535; //.002535 good for comp //was .002525
     public static final double ShooterTrenchkD = 0.22;
     public static final double ShooterTrenchkFF = 0.0002;
     public static final double ShooterWallkP = 0.001500;
@@ -117,7 +117,9 @@ public final class Constants {
 	public static final int BALL_VALUE = 2350;
 
 
-
+    //TODO: MAKE CONSTANTS FOR SHOOTER PID SPEEDS FOR WALL AND
+    //TODO: LONG SHOT SO THEY ARE NOT IN THE COMMANDS AND ARE EASIER 
+    //TODO: CHANGED FOR LATER USE AND REPURPOSE!!!!!!!!!!!
 
      //climber
      public static final double CLIMBER_CREEP = 0.25;
@@ -138,7 +140,9 @@ public final class Constants {
      public static final double PANEL_MECH_FAST = 0.45;
 
 
-	public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
+    public static final double HOPPER_LONG_HORIZONTAL_OUTPUT = 0.25;
+    public static final double HOPPER_AUTO_HORIZONTAL = 0.4;
+    public static final double HOPPER_AUTO_VERTICAL = 0.9;
 
 
 	public static final double kHopperTimer = 0.06;//0.037;//0.12;
@@ -147,7 +151,7 @@ public final class Constants {
 	public static final double LimelightSetpoint = -1;
 
 
-	public static final double TrenchBallOneDist = 7;
+	public static final double TrenchBallOneDist = 7; //was 7
 
 
 	public static final double kHopperTimerBeams = 0.02;

@@ -34,6 +34,7 @@ public class FourBallTrench extends Command {
     double output = pid.calculate(Robot.drivetrain.getAverageDistance());
     Robot.drivetrain.setMotors(output, output);
     SmartDashboard.putBoolean("Drivetrain Distance Complete", false);
+    SmartDashboard.putNumber("Drivetrain Auto Output", output);
   }
 
   // Make this return true when this Command no longer needs to run execute()

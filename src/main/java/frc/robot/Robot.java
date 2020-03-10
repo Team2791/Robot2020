@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.setCameraOne;
+import frc.robot.commands.AutoCommands.FourBallTrench;
 import frc.robot.controller.DPadButton;
 import frc.robot.subsystems.*;
 import frc.robot.util.LedMode;
 import frc.robot.util.Camera_Switch.CameraSwitch;
 import frc.robot.OI.*;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
@@ -27,6 +29,9 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
 
 	long loopCounter = 0;
+
+    //m_ds = DriverStation.getInstance;
+
 
     public static Joystick pitStick;
     public static OI oi;
@@ -124,8 +129,19 @@ public class Robot extends TimedRobot {
     }
 
     @Override
+    public void autonomousInit(){
+        // if(m_ds.isAutonomous()){ 
+        //     new FourBallTrench();
+        // }
+        drivetrain.driveTime.start();
+    }
+
+    @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        drivetrain.BackupAndShoot();
+
+        
     }
 
     @Override
@@ -142,7 +158,7 @@ public class Robot extends TimedRobot {
 
         manipulator.setRetracted();
         Robot.hopper.hopper_stopper.set(true);
-        Robot.shooter.setHood1(false);
+        Robot.shooter.setHood1(true);
     }
 
 
@@ -152,19 +168,19 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         
         
-        // double kp = SmartDashboard.getNumber("Shooter kP", 0);
-        // double kf = SmartDashboard.getNumber("Shooter kF", 0);
-        // double kd = SmartDashboard.getNumber("Shooter kD", 0);
+        double kp = SmartDashboard.getNumber("Shooter kP", Constants.DrivekP);
+        double kf = SmartDashboard.getNumber("Shooter kF", Constants.DrivekFF);
+        double kd = SmartDashboard.getNumber("Shooter kD", Constants.DrivekD);
 
-        // shooter.shooter_leader.getPIDController().setP(kp);
-        // shooter.shooter_leader.getPIDController().setFF(kf);
-        // shooter.shooter_leader.getPIDController().setD(kd);
+        shooter.shooter_leader.getPIDController().setP(kp);
+        shooter.shooter_leader.getPIDController().setFF(kf);
+        shooter.shooter_leader.getPIDController().setD(kd);
 
-        // double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
-        // if (setpoint==0)
-        //     shooter.setShooter(0);
-        // else
-        //     shooter.setShooterPID(setpoint);
+        double setpoint = SmartDashboard.getNumber("Shooter setpoint", 0);
+        if (setpoint==0)
+            shooter.setShooter(0);
+        else
+            shooter.setShooterPID(setpoint);
     }
     @Override
     public void testPeriodic() {

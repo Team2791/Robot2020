@@ -7,10 +7,12 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.AlternateEncoderType;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.util.Util;
 import frc.robot.util.Camera_Switch.*;
@@ -25,6 +27,8 @@ public class Drivetrain extends Subsystem {
     private static final AlternateEncoderType kAltEncType = AlternateEncoderType.kQuadrature;
     private CANEncoder m_leftAlternateEncoder;
     private CANEncoder m_rightAlternateEncoder;
+
+    public Timer driveTime;
     
     
 
@@ -62,6 +66,7 @@ public class Drivetrain extends Subsystem {
             rightFollowers[i].follow(rightLeader);
         }
 
+        driveTime = new Timer();
         setBrakeMode(true);
     }
 
@@ -107,11 +112,11 @@ public class Drivetrain extends Subsystem {
     }
     
     public double getDistanceLeft(){
-        return Math.PI*Constants.wheelDiameterInches*getLeftCPR()/12; // returns distance in feet
+        return Math.PI*Constants.wheelDiameterInches*(getLeftCPR()/1024)/12; // returns distance in feet
     }
     
     public double getDistanceRight(){
-        return Math.PI*Constants.wheelDiameterInches*getLeftCPR()/12; // returns distance in feet
+        return Math.PI*Constants.wheelDiameterInches*(getLeftCPR()/1024)/12; // returns distance in feet
     }
 
     public void setBrakeMode(boolean isbrake) {
@@ -133,6 +138,61 @@ public class Drivetrain extends Subsystem {
     }
 
 
+    public void BackupAndShoot(){
+        //driveTime.start();
+        if(driveTime.get() < 1.85){
+            setMotors(-0.5,-0.5);
+            Robot.shooter.setShooterPID(-3200);
+        }
+        if (driveTime.get() >= 1.85){
+            Robot.shooter.setShooterPID(-3200);
+            Robot.shooter.setHood1(true);
+            Robot.hopper.setExtended();
+            setMotors(0, 0);
+            if(driveTime.get() > 6.45){
+                Robot.hopper.setHopper(Constants.HOPPER_AUTO_HORIZONTAL, Constants.HOPPER_AUTO_VERTICAL);
+            } 
+        }
+    }
+    public void BackAndShoot2(){
+        //driveTime.start();
+        if(driveTime.get() < 1.5){
+            setMotors(-0.5,-0.5);
+            Robot.shooter.setShooterPID(-2900);
+        }
+        if (driveTime.get() >= 1.5){
+            Robot.shooter.setShooterPID(-2900);
+            Robot.shooter.setHood1(true);
+            Robot.hopper.setExtended();
+            setMotors(0, 0);
+            if(driveTime.get() > 6.3){
+                Robot.hopper.setHopper(Constants.HOPPER_AUTO_HORIZONTAL, Constants.HOPPER_AUTO_VERTICAL);
+            }
+            
+        }
+
+
+
+
+    }
+    public void BackAndShoot3(){
+        //driveTime.start();
+        if(driveTime.get() < 1.5){
+            setMotors(-0.5,-0.5);
+            Robot.shooter.setShooterPID(-2900);
+        }
+        if (driveTime.get() >= 1.5){
+            Robot.shooter.setShooterPID(-2900);
+            Robot.shooter.setHood1(true);
+            Robot.hopper.setExtended();
+            setMotors(0, 0);
+            if(driveTime.get() > 6.3){
+                Robot.hopper.setHopper(Constants.HOPPER_AUTO_HORIZONTAL, Constants.HOPPER_AUTO_VERTICAL);
+            }  
+        }
+    }
+
+
     public void debug() {
         SmartDashboard.putNumber("Get Left Velocity", getLeftMotor());
         SmartDashboard.putNumber("Get Right Velocity", getRightMotor());
@@ -140,6 +200,7 @@ public class Drivetrain extends Subsystem {
         SmartDashboard.putNumber("Get Left Position", getLeftPosition());
         SmartDashboard.putNumber("Get Right CPR", getRightCPR());
         SmartDashboard.putNumber("Get Left CPR", getLeftCPR());
+        SmartDashboard.putNumber("Drivetimer", driveTime.get());
     }
     
 }  

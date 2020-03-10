@@ -30,6 +30,7 @@ public class LongShot extends Command {
   @Override
   protected void execute() {
         Robot.shooter.setShooterPID(-2791);
+        //-3100 good for comp bot
   }
 
 
