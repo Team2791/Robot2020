@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.IntakeToHopper;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class StopElevator extends Command {
-  public StopElevator() {
-    super("StopElevator");
-    requires(Robot.elevator);
+public class StopHopper extends Command {
+  public StopHopper() {
+    super("StopHopper");
+    requires(Robot.hopper);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,7 +26,7 @@ public class StopElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.setElevator(0);
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,7 +38,7 @@ public class StopElevator extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.setElevator(0);
+    Robot.hopper.setHopper(0, 0);
   }
 
   // Called when another command which requires one or more of the same

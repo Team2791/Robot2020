@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveShooter extends Command {
-  public MoveShooter() {
-    super("MoveShooter");
+public class LongShot extends Command {
+  public LongShot() {
+    super("LongShot");
     requires(Robot.shooter);
 
     // Use requires() here to declare subsystem dependencies
@@ -29,19 +29,26 @@ public class MoveShooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT);
+        Robot.shooter.setShooterPID(-2791);
   }
+
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
+  //   if(Robot.shooter.checkWheelSpeed_Long() == true) {
+  //       return true; 
+  //   }
+
+  //   return false; 
+  // }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.setShooter(0);
+    // Robot.shooter.setShooter(0);
   }
 
   // Called when another command which requires one or more of the same

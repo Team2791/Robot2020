@@ -42,7 +42,6 @@ public class RobotMap {
     public static final int kVertHopper = 41;
     public static final int kHoriHopper = 42;
 
-    public static final int kControlPan = 50;
 
     public static final int kWinch = 60;
     public static final int kActivePos = 61;
@@ -80,15 +79,32 @@ public class RobotMap {
     public static final int kCargoLimitSwitch = 0;
   
   // Shoooter
-    public static final int SHOOTER_NEO = 2;
+    public static final int SHOOTER_NEO = 2; //what is this for???
   
     // Elevator
     public static final int ELEVATOR_TALON = 23;
 
     //Hopper
-
-    public static final int HOPPER_TALON = 24;
+    // public static final int HOPPER_TALON = 40;
     //Drivetrain
-  public static final int DRIVETRAIN_NEO = 22;
+public static final int HOOD_SOLENOID = 3;
+public static final int HOPPER_SOLENOID = 1;
+public static final int VERTICAL_HOPPER = 41;
+public static final int HORIZONTAL_HOPPER = 42;
+public static final int MANIPULATOR_SOLENOID = 6;
+public static final int MANIPULATOR_NEO = 40;
   
+  public static final int DRIVETRAIN_NEO = 22;
+
+  //Climber
+  public static final int WINCH_NEO=60;
+  public static final int SELFCLIMB_NEO=61;
+
+ public static final int CLIMB_SOLENOID=0;  
+//  public static final int CLIMB_GYRO=1;
+
+  //PanelMech
+  public static final int PANEL_NEO=50;
+  public static final int PANEL_SOLENOID=2;
+
 }

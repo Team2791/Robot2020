@@ -5,17 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.IntakeToHopper;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class MoveShooterPassive extends Command {
-  public MoveShooterPassive() {
-    super("MoveShooterPassive");
-    requires(Robot.shooter);
-
+public class OpenPistonsAndMoveHopper extends Command {
+  Timer timeForHopper;
+  public OpenPistonsAndMoveHopper() {
+    super("OpenPistonsAndMoveHopper");
+    requires(Robot.hopper);
+    timeForHopper = new Timer();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,13 +25,17 @@ public class MoveShooterPassive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    timeForHopper.start();
+    Robot.hopper.setExtended();
 
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.setShooter(Constants.SHOOTER_OUTPUT_PASSIVE);
+    if(timeForHopper.get() > .25){
+      Robot.hopper.setHopper(Constants.HOPPER_WALL_HORIZONTAL_OUTPUT, Constants.HOPPER_VERTICAL_OUTPUT);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +47,8 @@ public class MoveShooterPassive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.setShooter(0);
+    Robot.hopper.setHopper(0, 0);
+    Robot.hopper.setRetracted();
   }
 
   // Called when another command which requires one or more of the same
