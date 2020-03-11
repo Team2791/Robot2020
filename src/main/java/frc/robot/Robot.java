@@ -130,17 +130,20 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit(){
-        // if(m_ds.isAutonomous()){ 
-        //     new FourBallTrench();
-        // }
         drivetrain.driveTime.start();
+
+            //LOAD COMMAND BASED AUTO HERE
+            
+            /*******************************/
     }
 
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        drivetrain.BackupAndShoot();
 
+     //LOAD ITERATIVE BASED AUTO HERE
+        drivetrain.BackupAndShoot();
+     /*******************************/
         
     }
 
