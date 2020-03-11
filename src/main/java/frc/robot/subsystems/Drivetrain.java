@@ -139,6 +139,7 @@ public class Drivetrain extends Subsystem {
 
 
     public void BackupAndShoot(){
+        SmartDashboard.putString("AUTO_LOADED", "BackupAndShoot");
         //driveTime.start();
         if(driveTime.get() < 1.85){
             setMotors(-0.5,-0.5);
@@ -155,6 +156,7 @@ public class Drivetrain extends Subsystem {
         }
     }
     public void BackAndShoot2(){
+        SmartDashboard.putString("AUTO_LOADED", "BackAndShoot2");
         //driveTime.start();
         if(driveTime.get() < 1.5){
             setMotors(-0.5,-0.5);
@@ -176,6 +178,7 @@ public class Drivetrain extends Subsystem {
 
     }
     public void BackAndShoot3(){
+        SmartDashboard.putString("AUTO_LOADED", "BackAndShoot3");
         //driveTime.start();
         if(driveTime.get() < 1.5){
             setMotors(-0.5,-0.5);
@@ -190,6 +193,27 @@ public class Drivetrain extends Subsystem {
                 Robot.hopper.setHopper(Constants.HOPPER_AUTO_HORIZONTAL, Constants.HOPPER_AUTO_VERTICAL);
             }  
         }
+    }
+
+
+
+    public void driveBackAndShoot_angled(){
+        SmartDashboard.putString("AUTO_LOADED", "DriveBackAndShoot_angled");
+        if(driveTime.get() < 2.25){
+            setMotors(-0.5,-0.5);
+            Robot.shooter.setShooterPID(-2900);
+        }
+        if (driveTime.get() >= 2.25){
+            setMotors(0, 0);
+            Robot.shooter.setShooterPID(-2900);
+            Robot.shooter.setHood1(true);
+            Robot.hopper.setExtended();
+            if(driveTime.get() > 6.3){
+                Robot.hopper.setHopper(Constants.HOPPER_AUTO_HORIZONTAL, Constants.HOPPER_AUTO_VERTICAL);
+            }
+            
+        }
+
     }
 
 
