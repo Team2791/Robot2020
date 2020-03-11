@@ -2,27 +2,17 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.setCameraOne;
-import frc.robot.commands.AutoCommands.FourBallTrench;
 import frc.robot.controller.DPadButton;
 import frc.robot.subsystems.*;
-import frc.robot.util.LedMode;
 import frc.robot.util.Camera_Switch.CameraSwitch;
-import frc.robot.OI.*;
-import edu.wpi.first.wpilibj.DriverStation;
-
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
-
 import edu.wpi.first.cameraserver.CameraServer;
-
 import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.*;
+
 
 
                                                                                                    
@@ -30,7 +20,7 @@ public class Robot extends TimedRobot {
 
 	long loopCounter = 0;
 
-    //m_ds = DriverStation.getInstance;
+   
 
 
     public static Joystick pitStick;

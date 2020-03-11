@@ -19,8 +19,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.commands.*;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class Climber extends Subsystem { 
     private CANSparkMax winch_Neo;

@@ -1,6 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Timer;
 
 public final class Constants {
     public static final boolean debugMode = false;

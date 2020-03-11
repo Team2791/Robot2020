@@ -6,21 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import frc.robot.Constants;
 import frc.robot.RobotMap;
-import frc.robot.util.Util;
 
-
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
