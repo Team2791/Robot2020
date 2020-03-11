@@ -148,6 +148,7 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         // autoCommand.cancel();
         compressor.start(); 
+        drivetrain.driveTime.stop();
         System.out.println("This is init");
         
 
